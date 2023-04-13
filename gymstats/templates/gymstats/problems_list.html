@@ -1,0 +1,9 @@
+{% if problems_list %}
+    <ul>
+    {% for problem in problems_list %}
+        <li><a href="/gymstats/problems/{{ problem.id }}">{{ problem.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No problems stored.</p>
+{% endif %}

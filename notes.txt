@@ -1,0 +1,28 @@
+jug: Easy-to-grasp shape with big opening so that entire hand can fit in. Offers good rest.
+sloper: Large rounded and smooth holds with no positive edge. The textured surface is used to create friction and hold them.
+
+
+tiny footholds: Tiny, eventually slippery foot holds.
+edging: Using the edge of the climbing shoe to push on a foothold. Usually done when the climber stands parallel to the wall and wants to keep it that way.
+smearing: 
+contre-pointe: Using the upper part of the foot (toes) to hold on to a hold or volume. Often done to control an imbalance.
+heel-hook: Locking the heel between the wall and a hold or against a volume or hold. This technique is used to keep the body close to the wall when doing a move or to control an imbalance. This is also used when mantling on top of a boulder.
+
+
+
+python manage.py makemigrations app:
+	create files in 'migrations' subfolder
+
+python manage.py migrate:
+	actually applies the modification to the databases
+	
+WHY: so that people can modify auto-generated files in 'migrations' before applying the modifs to the database
+
+
+
+models with Image:
+
+from django.core.files import File
+
+m = MyModel(name="blabla", other_field="coucou")
+m.image_field.save("/path/to/local/image.jpg", File(open("image.jpg", "rb")))
