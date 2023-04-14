@@ -145,6 +145,17 @@ class Review(models.Model):
     comment = models.CharField(max_length=120)
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
 
+    class Rating(models.IntegerChoices):
+        NOT_RATED = 0
+        VERY_BAD = 1
+        BAD = 2
+        AVERAGE = 3
+        COOL = 4
+        VERY_COOL = 5
+    
+    rating = models.IntegerField(choices=Rating.choices)
+    date = models.DateField(default=datetime.date.today)
+    
     def __str__(self) -> str:
         return "[{}] ({}): {}".format(self.reviewer, self.problem, self.comment)
 
