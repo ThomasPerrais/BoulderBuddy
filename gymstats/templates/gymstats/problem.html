@@ -1,1 +1,51 @@
-{{ problem }}
+{% load pb_extras %}
+<h1>{{ problem|display }}</h1>
+<img src={{ problem.picture.url }}
+     alt="Boulder picture"
+     width="400"
+     height="503">
+
+<span>
+    <h3>Handholds</h3>
+    <ul>
+        {% for desc in problem.hand_holds.all %}
+            <li>{{ desc.name }}</li>
+        {% endfor %}
+    </ul>
+</span>
+<span>
+    <h3>Footworks</h3>
+    <ul>
+        {% for desc in problem.footwork.all %}
+            <li>{{ desc.name }}</li>
+        {% endfor %}
+    </ul>
+</span>
+<span>
+    <h3>Methods</h3>
+    <ul>
+        {% for desc in problem.problem_method.all %}
+            <li>{{ desc.name }}</li>
+        {% endfor %}
+    </ul>
+</span>
+
+<form action="{% url 'pb-review' problem.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h2>Review problem</h2></legend>
+    <textarea id="comment" name="comment"
+        rows="3" cols="33">Comment here...
+    </textarea>
+
+    <label for="climber-select">Climber:</label>
+    <select name="climber" id="climber-select">
+        <option value="">--Please choose an option--</option>
+        {% for cl in Climber.objects.all %}
+            <option value="dog">Dog</option>
+        {% endfor %}
+    </select>
+
+</fieldset>
+<input type="submit" value="Submit">
+</form>

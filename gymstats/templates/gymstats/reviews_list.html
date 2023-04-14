@@ -1,0 +1,9 @@
+{% if reviews_list %}
+    <ul>
+    {% for review in reviews_list %}
+        <li><a href="/gymstats/problems/{{ problem.id }}/reviews/{{ review.id }}">{{ review }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews for this problem</p>
+{% endif %}

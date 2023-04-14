@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body>
+
+<span style="font-weight:bold;font-size:30px;">{{ review.reviewer }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% with ''|center:5 as range %}
+{% for _ in range %}
+    <span style="font-size:30px" class="fa fa-star {% if review.rating >= forloop.counter %} checked {% endif %}"></span>
+{% endfor %}
+{% endwith %}
+
+<p>{{ review.comment }}</p>
+
+</body>
+</html>
