@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 
 from .models import Problem, Gym, Review, Climber
 
@@ -63,13 +64,14 @@ def review_problem(request, problem_id):
     try:
         # get comment from POST
         comment = request.POST['comment']
-        climber = get_object_or_404(Climber, name="Thomas")
-        rating = 3
-
+        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
+        rating = int(request.POST["rating"])
+    except KeyError:
+        return render(request, 'gymstats/problem.html', {
+            'problem': problem,
+            'error_message': "Error while handling comment - try again",
+        })
+    else:
         r = Review(reviewer=climber, comment=comment, problem=problem, rating=rating)
         r.save()
-        # return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-    except:
-        pass
-    else:
-        pass
+        return HttpResponseRedirect(reverse('gs:pb-review-display', args=(problem.id, r.id,)))

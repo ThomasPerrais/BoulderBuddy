@@ -30,22 +30,20 @@
     </ul>
 </span>
 
-<form action="{% url 'pb-review' problem.id %}" method="post">
+<form action="{% url 'gs:pb-review' problem.id %}" method="post">
 {% csrf_token %}
 <fieldset>
     <legend><h2>Review problem</h2></legend>
-    <textarea id="comment" name="comment"
-        rows="3" cols="33">Comment here...
-    </textarea>
-
-    <label for="climber-select">Climber:</label>
-    <select name="climber" id="climber-select">
-        <option value="">--Please choose an option--</option>
-        {% for cl in Climber.objects.all %}
-            <option value="dog">Dog</option>
-        {% endfor %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div>
+        <textarea id="comment" name="comment"
+        rows="3" cols="33">Comment here...</textarea>
+    </div>
+    <div>
+        <label for="rating"><strong>Rating</strong></label>
+        <input type="range" max="5" step="1" value="0" id="rating" name="rating">
+    </div>       
     </select>
-
 </fieldset>
 <input type="submit" value="Submit">
 </form>
