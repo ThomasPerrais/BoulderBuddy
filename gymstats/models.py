@@ -81,16 +81,27 @@ class Footwork(Describable):  # choices: [tiny, edging, smearing, heelhook, cont
         super().__init__('footwork', *args, **kwargs)
 
 
-class ProblemType(Describable):  # choices: [vertical, slab, overhanging]
+class ProblemType(Describable):  # choices: [vertical, slab, overhanging, roof, traverse]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('problem-type', *args, **kwargs)
 
 
-class ProblemMethod(Describable):  # choices: [dyno, coordo, lolotte, flex, mantle]
+class ProblemMethod(Describable):  # choices: [dyno, coordo, lolotte, flex, mantle, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('problem-method', *args, **kwargs)
+
+
+class Sector(models.Model):
+
+    wall_types = models.ManyToManyField(ProblemType, blank=False)
+    sector_id = models.IntegerField()
+    gym = models.ForeignKey(Gym, on_delete=models.CASCADE)  # deleting a gym -> delete its sectors
+    map = models.ImageField(upload_to='sectors-maps', blank=True)
+    
+    def __str__(self) -> str:
+        return self.gym.abv + " - Sector " + str(self.sector_id)
 
 
 class Problem(models.Model):
@@ -110,8 +121,12 @@ class Problem(models.Model):
 
     # Retrieving the problem
     gym = models.ForeignKey(Gym, on_delete=models.PROTECT)  # PROTECT: cannot delete a gym that has boulder problems 
+    sector = models.ForeignKey(Sector, on_delete=models.PROTECT, blank=True, null=True)  # cannot delete a sector that has problems associated
     date_added = models.DateField(default=datetime.date.today)
     
+    # track problem life cycle
+    removed = models.BooleanField(default=False)
+
     def upload_picture(instance, filename):
         _, ext = os.path.splitext(filename)
         return os.path.join('problems', instance._pic_name() + ext)
@@ -155,7 +170,7 @@ class Review(models.Model):
     
     rating = models.IntegerField(choices=Rating.choices)
     date = models.DateField(default=datetime.date.today)
-    
+
     def __str__(self) -> str:
         return "[{}] ({}): {}".format(self.reviewer, self.problem, self.comment)
 
@@ -213,6 +228,9 @@ class Try(models.Model):
     
     def name(self):
         return self.session.date.strftime("%d/%m/%y") + " " + str(self.problem)
+
+    def pb_grade(self):
+        return self.problem.grade
 
     class Meta:
         abstract = True
