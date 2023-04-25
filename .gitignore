@@ -131,5 +131,5 @@ dmypy.json
 # Visual Studio Code
 .vscode/
 
-# problems folder containing JPG images
-problems/
+# media folder containing JPG images
+media/
