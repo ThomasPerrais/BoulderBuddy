@@ -28,7 +28,7 @@ class SessionAdmin(admin.ModelAdmin):
 
 
 class ProblemAdmin(admin.ModelAdmin):
-    list_filter = ['gym__abv', 'grade', 'removed']
+    list_filter = ['gym__abv', 'grade', 'removed', 'problem_type', 'hand_holds']
     list_display = ('gym', 'grade', 'picture', 'removed')
     list_editable = ("removed",)
 
