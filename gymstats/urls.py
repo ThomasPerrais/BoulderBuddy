@@ -6,6 +6,13 @@ app_name = 'gs'
 urlpatterns = [
     path('', views.index, name='index'),
     
+    # Home Page
+    path('home/', views.home, name="home"),
+
+    # Session
+    path('session/<int:session_id>/', views.session, name="session"),
+    path('session/<int:session_id>/details', views.session_details, name="session-details"),
+
     # Gym views
     path('gyms/', views.gyms_homepage, name="gym-homepage"),
     path('gyms/<str:gym_abv>/', views.gym_details, name="gym"),

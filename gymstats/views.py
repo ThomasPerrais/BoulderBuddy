@@ -1,10 +1,12 @@
+from datetime import date
+
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
-from .models import Problem, Gym, Review, Climber
+from .models import Problem, Gym, Review, Climber, Session
 
 
 # Create your views here.
@@ -12,6 +14,26 @@ from .models import Problem, Gym, Review, Climber
 def index(request):
     # Main page: explore gyms, explore problems, explore sessions, ... -> put in a side menu 
     return HttpResponse("Hello, world. You're at the gymstats index.")
+
+# Homepage view
+
+def home(request):
+    sessions = {elt.date.strftime("%d/%m/%Y"): elt.id for elt in Session.objects.only("date")}
+    return render(request, 'gymstats/home.html', {'sessions': sessions})
+
+
+# Session views
+
+def session(request, session_id):
+    session = get_object_or_404(Session, id=session_id)
+    # TODO display infos
+    return render(request, 'gymstats/session.html', {'session': session})
+
+
+def session_details(request, session_id):
+    session = get_object_or_404(Session, abv=session_id)
+    # TODO display infos
+    return render(request, 'gymstats/session_details.html', {'session': session})
 
 
 # GYM views
