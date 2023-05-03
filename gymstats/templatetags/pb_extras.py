@@ -9,4 +9,4 @@ def problem_title(pb: Problem):
     """
     Display function used as title for a Problem
     """
-    return "{} - {} {} ({})".format(pb.grade, pb.gym.brand, pb.gym.location, pb.date_added.strftime("%d/%m/%y"))
+    return "{} - {} {} ({})".format(pb.grade, pb.gym.brand, pb.gym.city, pb.date_added.strftime("%d/%m/%y"))
