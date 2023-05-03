@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'gymstats/review.css' %}">
+
 {% load pb_extras %}
 <h1>{{ problem|display }}</h1>
 <img src={{ problem.picture.url }}
@@ -41,7 +45,14 @@
     </div>
     <div>
         <label for="rating"><strong>Rating</strong></label>
-        <input type="range" max="5" step="1" value="0" id="rating" name="rating">
+        <input 
+            class="rating"
+            type="range"
+            max="5"
+            oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+            step="1"
+            id="rating"
+            name="rating">
     </div>       
     </select>
 </fieldset>

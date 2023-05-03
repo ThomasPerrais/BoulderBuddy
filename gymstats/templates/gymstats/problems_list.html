@@ -1,7 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'gymstats/style.css' %}">
+
 {% if problems_list %}
     <ul>
     {% for problem in problems_list %}
-        <li><a href="/gymstats/problems/{{ problem.id }}">{{ problem.name }}</a></li>
+        <li><a href="{% url 'gs:pb-details' problem.id %}">{{ problem.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
