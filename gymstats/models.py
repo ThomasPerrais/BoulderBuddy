@@ -1,4 +1,5 @@
 from django.db import models
+from location_field.models.plain import PlainLocationField
 import datetime
 from typing import Any
 import os
@@ -10,9 +11,11 @@ class Gym(models.Model):
     Gym model represents a climbing gym where a Session takes place.
     Climbing gyms with both lead climbing and bouldering should be split in 2 instances
     """
-    location = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     abv = models.CharField(max_length=10)
+
+    location = PlainLocationField(based_fields=['city'], zoom=12)
 
     class GymType(models.TextChoices):
         BOULDER = 'Boulder'
@@ -21,7 +24,7 @@ class Gym(models.Model):
     gym_type = models.CharField(max_length=10, choices=GymType.choices, default=GymType.BOULDER)
 
     def __str__(self) -> str:
-        return "{} {} ({})".format(self.brand, self.location, self.gym_type)
+        return "{} {} ({})".format(self.brand, self.city, self.gym_type)
 
 
 class Shoes(models.Model):
@@ -137,10 +140,9 @@ class Problem(models.Model):
         return ", ".join(self.hand_holds + self.footwork + self.problem_method)
 
     def name(self, desc: bool = False):
-        name = "{} {}: {} {}".format(self.gym.abv,
-                                     self.date_added.strftime("%b. %y"),
-                                     self.grade,
-                                     self.problem_type)
+        name = "{}: {} {}".format(self.sector,
+                                  self.grade,
+                                  self.problem_type)
         if desc:
             name += " ({})".format(self.description())
         return name
