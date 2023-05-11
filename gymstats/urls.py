@@ -9,8 +9,12 @@ urlpatterns = [
     # Home Page
     path('home/', views.home, name="home"),
 
+    # Profil Page
+    path('profil/', views.profil, name="profil"),
+
     # Session
     path('session/<int:session_id>/', views.session, name="session"),
+    path('session/<int:session_id>/statistics/', views.session_statistics, name='session-statistics'),
     path('session/<int:session_id>/details', views.session_details, name="session-details"),
 
     # Gym views

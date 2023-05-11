@@ -1,0 +1,78 @@
+
+.title {
+    width: 450px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(21, 21, 21, 0.12);
+    margin-bottom: 1%;
+  }
+
+  .title p {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+    font-size: 1.45rem;
+    font-weight: 500;
+  }
+
+  .summary {
+    display: flex; /* equal height of the children */
+    background-color: #fff;
+    border-radius: 10px;
+    width: 450px;
+    margin-bottom: 1%;
+  }
+
+  .stats-wrapper {
+    background-color: #fff;
+    width: 450px;
+  }
+  
+  .col {
+    flex: 1; /* additionally, equal width */
+    padding: 1em;
+  }
+
+  .emoji{
+    font-size:40px;
+  }
+
+  /* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: #fefefe;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    border-radius: 20%;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 18px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #9B59B6;
+    border: 2px solid #fff;
+    color: #fff;
+  }
+  
+  /* Style the tab content */
+  .statstab {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

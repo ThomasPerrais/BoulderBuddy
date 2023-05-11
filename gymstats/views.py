@@ -1,12 +1,15 @@
 from datetime import date
+import math
+from collections import defaultdict
+import itertools
 
 from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
-from .models import Problem, Gym, Review, Climber, Session
+from .models import Problem, Gym, Review, Climber, Session, Try
 
 
 # Create your views here.
@@ -22,12 +25,71 @@ def home(request):
     return render(request, 'gymstats/home.html', {'sessions': sessions})
 
 
+# Profil view
+
+def profil(request):
+    data = {}
+    return render(request, 'gymstats/profil.html', {'data': data})
+
+
+
 # Session views
 
 def session(request, session_id):
     session = get_object_or_404(Session, id=session_id)
-    # TODO display infos
-    return render(request, 'gymstats/session.html', {'session': session})
+    sess_data = __session_stats(session)
+    return render(request, 'gymstats/session.html', {'session': session, 'sess_data': sess_data})
+
+
+def __session_stats(session: Session):
+    
+    ## general data
+        # percentage of successes
+    tops = session.tops.count()
+    fails = session.failures.count() + session.zones.count()
+    total = tops + fails
+    successes = math.floor(tops * 100/ total) if total > 0 else "??"
+
+    # problems specific data
+        # types, grades, holds
+    pb_types = defaultdict(lambda: [0,0])
+    pb_grades = defaultdict(lambda: [0,0])
+    if session.gym.brand == "Block'Out":  # needed to order correctly, TODO: handle this elsewhere
+        pb_grades = { 'B' + str(i): [0,0] for i in range(14) }
+    pb_holds = defaultdict(lambda: [0,0])
+
+    def _add(t: Try, pos: int):
+        pb_types[str(t.problem.problem_type)][pos] += 1
+        pb_grades[str(t.problem.grade)][pos] += 1
+        for hh in t.problem.hand_holds.all():
+            pb_holds[str(hh)][pos] += 1
+
+    for t in session.tops.all():
+        _add(t, 0)
+    for t in itertools.chain(session.failures.all(), session.zones.all()):
+        _add(t, 1)
+
+    pb_grades = { k: v for k,v in pb_grades.items() if sum(v) > 0 }
+
+    data = {
+        # general data
+        "duration": session.duration,
+        "grade": session.overall_grade,
+        "successes": successes,
+
+        # pb specific
+        'problems': {
+            'types': pb_types,
+            'grades': pb_grades,
+            'holds': pb_holds
+        }
+    }
+    return data
+
+
+def session_statistics(request, session_id):
+    session = get_object_or_404(Session, id=session_id)
+    return JsonResponse(data=__session_stats(session))
 
 
 def session_details(request, session_id):

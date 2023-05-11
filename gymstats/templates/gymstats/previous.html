@@ -1,0 +1,122 @@
+
+
+{% block content %}
+    <div class="tab">
+        <button class="tablinks" onclick="showGraphics(event, 'types')">Types</button>
+        <button class="tablinks" onclick="showGraphics(event, 'grades')">Grades</button>
+        <button class="tablinks" onclick="showGraphics(event, 'holds')">Holds</button>
+    </div>
+
+    <div id="types" class="statstab">
+        <canvas id="pb-types" data-url="{% url 'gs:session-statistics' session.id %}"></canvas>
+    </div>
+    <div id="grades" class="statstab">
+        <canvas id="pb-grades" data-url="{% url 'gs:session-statistics' session.id %}"></canvas>
+    </div>
+    <div id="holds" class="statstab">
+        <canvas id="pb-holds" data-url="{% url 'gs:session-statistics' session.id %}"></canvas>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+        $(function () {
+            // var tabs = ["types", "grades"];
+            var tabs = ["grades"];
+            tabs.forEach(tab => {
+                var $types = $("#pb-" + tab);
+                $.ajax({
+                    url: $types.data("url"),
+                    success: function (data) {
+                        var ctx = $types[0].getContext("2d");
+                        new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: data[tab]["labels"],
+                                    datasets: [{
+                                        label: 'Problem ' + tab,
+                                        backgroundColor: ['#d894f3', '#9B59B6', '#e5c6f1', '#ba27f4', '#75328f'],
+                                        data: data[tab]["data"]
+                                    }]        
+                                },
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        position: 'right',
+                                        display: false
+                                    },
+                                    title: {
+                                        display: false,
+                                        text: 'Problem ' + tab
+                                    }
+                                }
+                            });
+                    }
+                });
+            })
+
+            $types = $("#pb-holds");
+            $.ajax({
+                    url: $types.data("url"),
+                    success: function (data) {
+                        var ctx = $types[0].getContext("2d");
+                        new Chart(ctx, {
+                            type: "radar",
+                            data: {
+                                labels: data["holds"]["labels"],
+                                datasets: [{
+                                    label: 'HANDHOLDS',
+                                    data: data["holds"]["data"],
+                                    fill: true,
+                                    backgroundColor: '#c692db53',
+                                    borderColor: '#c692db',
+                                    pointBackgroundColor: '#c692db',
+                                    pointBorderColor: '#fff',
+                                    pointHoverBackgroundColor: '#fff',
+                                    pointHoverBorderColor: '#c692db'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    position: 'right',
+                                    display: true
+                                },
+                                scale: {
+                                    ticks: {
+                                        min: 0,
+                                        max: data["holds"].length
+                                    }
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Problem Holds'
+                                }
+                            }
+                        })
+                    }
+                })
+        });
+
+        function showGraphics(evt, statsName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // hide 'statstab'
+            statstab = document.getElementsByClassName("statstab");
+            for (i = 0; i < statstab.length; i++) {
+                statstab[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(statsName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    {% endblock %}
