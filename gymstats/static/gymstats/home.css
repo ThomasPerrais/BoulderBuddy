@@ -6,21 +6,24 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  justify-content: center;
-  min-height: 100vh;
-  background: #9B59B6;
+
+.add-sess button {
+  width: 450px;
+  height: 60px;
+  border-radius: 10px;
+  background: #fff;
+  margin: 40px;
+  font-size: 1.9rem;
+  border-color: #fff;
 }
-.wrapper{
+
+.calendar-wrapper {
   width: 450px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 }
-.wrapper header{
+.calendar-wrapper header{
   display: flex;
   align-items: center;
   padding: 25px 30px 10px;

@@ -23,9 +23,9 @@ const renderCalendar = () => {
     }
     for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
         // adding active class to li if the current day, month, and year matched
-        let calendarDate = new Date(currYear, currMonth, i).toLocaleDateString("fr")
-        let isToday = calendarDate in sessions ? "active" : "";
-        liTag += `<li class="${isToday}">${i}</li>`;
+        let calendarDate = new Date(currYear, currMonth, i).toLocaleDateString("fr");
+        let status = calendarDate in sessions ? "active" : "";
+        liTag += `<li class="${status}">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
@@ -56,4 +56,4 @@ document.getElementById("days").addEventListener("click", function(e) {
       let d = new Date(currYear, currMonth, e.target.innerText).toLocaleDateString("fr")
       document.location.href = "/gymstats/session/" + sessions[d]  // TODO: change complete URL
     }
-  });
+});
