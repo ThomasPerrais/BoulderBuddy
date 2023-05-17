@@ -10,7 +10,8 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from .models import Problem, Gym, Review, Climber, Session, Try
-
+from .helper.parser import parse_filters
+from .helper.query import query_problems_from_filters
 
 # Create your views here.
 
@@ -113,7 +114,8 @@ def gym_details(request, gym_abv):
 
 def problems_by_gym(request, gym_abv):
     pbs = Problem.objects.filter(gym__abv = gym_abv)
-    return render(request, 'gymstats/problems_list.html', {'problems_list': pbs})
+    filters = {"gym": gym_abv}
+    return render(request, 'gymstats/problem_results.html', {'results': pbs, 'filters': filters})
 
 
 # PROBLEM views
@@ -159,3 +161,39 @@ def review_problem(request, problem_id):
         r = Review(reviewer=climber, comment=comment, problem=problem, rating=rating)
         r.save()
         return HttpResponseRedirect(reverse('gs:pb-review-display', args=(problem.id, r.id,)))
+
+
+
+def problem_searchbar(request):
+    return render(request, 'gymstats/problem_searchbar.html')
+
+
+def problem_search_results(request):
+    try:
+        # get comment from POST
+        raw_filters = request.POST['search']
+        parsed, unparsed = parse_filters(raw_filters)
+        problems = query_problems_from_filters(parsed)
+    except KeyError:
+        return render(request, 'gymstats/problem_results.html', {
+            'results': [],
+            'filters': {},
+            'unparsed': ["no filters provided"],            
+            'error_message': "No filters provided",
+        })
+    except ParseError:
+        return render(request, 'gymstats/problem_results.html', {
+            'results': [],
+            'filters': {},
+            'unparsed': [raw_filters],            
+            'error_message': "Unable to parse given filters",
+        })
+    except SearchError:
+        return render(request, 'gymstats/problem_results.html', {
+            'results': [],
+            'filters': parsed,
+            'unparsed': unparsed,            
+            'error_message': "Search failed, try again later...",
+        })
+    else:
+        return render(request, 'gymstats/problem_results.html', {'results': problems, 'filters': parsed, 'unparsed': unparsed })

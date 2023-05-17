@@ -4,6 +4,7 @@ const sidebarMenus = {
     "fa-home": "/gymstats/home",
     "fa-user-ninja": "/gymstats/profil",
     "fa-chart-pie": "/gymstats/statistics",
+    "fa-magnifying-glass": "/gymstats/problems/searchbar"
 };
 
 function LoadSidebar() {

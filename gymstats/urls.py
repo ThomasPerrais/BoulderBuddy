@@ -27,5 +27,7 @@ urlpatterns = [
     path('problems/<int:problem_id>/', views.problem_detail, name="pb-details"),
     path('problems/<int:problem_id>/review/', views.review_problem, name="pb-review"),
     path('problems/<int:problem_id>/reviews/<int:review_id>/', views.problem_review, name="pb-review-display"),
-    path('problems/<int:problem_id>/reviews/', views.problem_reviews, name="pb-reviews")
+    path('problems/<int:problem_id>/reviews/', views.problem_reviews, name="pb-reviews"),
+    path('problems/searchbar/', views.problem_searchbar, name="pb-searchbar"),
+    path('problems/search-results', views.problem_search_results, name="pb-searchresults")
 ]

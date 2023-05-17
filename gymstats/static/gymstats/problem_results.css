@@ -1,0 +1,88 @@
+
+
+.filters {
+    margin-left: 80px;
+    padding-top: 15px;
+}
+
+.filters .title {
+    padding-right: 30px;
+    color: #fff;
+    align-self: center;
+    font-size: 2em;
+    height: 30px;  
+    line-height: 30px;
+  }
+
+.filters .title a {
+    cursor: pointer;
+    font-size: 0.5em;
+    border-color: #fff;
+    border-radius: 70%;
+    padding: 3px;
+}
+
+.filters .title a:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.filters .filter-bloc {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+.filter-list li {
+    height: 40px;
+    border-radius: 20%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgb(233, 233, 233);
+}
+
+
+.filter-list .fw {
+    background-color: #d3f088;
+}
+
+.filter-list .hh {
+    background-color: #88eef0;
+}
+
+.filter-list .me {
+    background-color: #f0b988;
+}
+
+.filter-list .ty {
+    background-color: #f0889f;
+}
+
+.filter-list li .close {
+    cursor: pointer;
+    margin-left: 3px;
+    color: rgb(164, 164, 164);
+}
+
+.filter-list li .editable {
+    cursor: pointer;
+    margin-right: 5px;
+    /* color: rgb(129, 128, 128); */
+}
+
+.filter-list li .editable[contenteditable]:empty::before {
+    content: 'new..';
+    display: inline-block;
+}
+
+
+.wrapper {
+    margin-left: 160px;
+}
