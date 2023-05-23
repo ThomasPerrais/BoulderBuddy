@@ -156,6 +156,26 @@ class Problem(models.Model):
         return self.name()
 
 
+class RIC(models.Model):
+    
+    reviewer = models.ForeignKey(Climber, on_delete=models.PROTECT)
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
+    
+    class RICGrade(models.IntegerChoices):
+        VERY_LOW = 1
+        LOW = 2
+        AVERAGE = 3
+        HIGH = 4
+        VERY_HIGH = 5
+    
+    risk = models.IntegerField(choices=RICGrade.choices)
+    intensity = models.IntegerField(choices=RICGrade.choices)
+    complexity = models.IntegerField(choices=RICGrade.choices)
+
+    def ric_avg(self):
+        return (self.risk + self.intensity + self.complexity) / 3
+
+
 class Review(models.Model):
 
     reviewer = models.ForeignKey(Climber, on_delete=models.PROTECT)  # PROTECT: cannot remove a climber who posted reviews

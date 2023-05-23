@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber
-from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review  # ideally those should be removed once views are written
+from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
 
 class TopInline(admin.TabularInline):
@@ -54,3 +54,4 @@ admin.site.register(Top, TryAdmin)
 admin.site.register(Zone, TryAdmin)
 admin.site.register(Failure, TryAdmin)
 admin.site.register(Review)
+admin.site.register(RIC)
