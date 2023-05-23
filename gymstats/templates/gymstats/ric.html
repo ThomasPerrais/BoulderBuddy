@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body>
+
+<span style="font-weight:bold;font-size:30px;">{{ ric.reviewer }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div>
+  <h1>Risk</h1>
+  {% with ''|center:5 as range %}
+    {% for _ in range %}
+      <span style="font-size:30px" class="fa fa-star {% if ric.risk >= forloop.counter %} checked {% endif %}"></span>
+    {% endfor %}
+  {% endwith %}
+</div>
+<div>
+  <h1>Intensity</h1>
+  {% with ''|center:5 as range %}
+    {% for _ in range %}
+      <span style="font-size:30px" class="fa fa-star {% if ric.intensity >= forloop.counter %} checked {% endif %}"></span>
+    {% endfor %}
+  {% endwith %}
+</div>
+<div>
+  <h1>Complexity</h1>
+  {% with ''|center:5 as range %}
+    {% for _ in range %}
+      <span style="font-size:30px" class="fa fa-star {% if ric.complexity >= forloop.counter %} checked {% endif %}"></span>
+    {% endfor %}
+  {% endwith %}
+</div>
+
+
+
+
+
+</body>
+</html>
