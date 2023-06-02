@@ -30,14 +30,33 @@ const parseFilters = () => {
             }
         }
     }
-     // TODO: handle removed, date
+    
+     if ("rm" in filters) {
+        document.getElementById("current-filter").checked = !filters["rm"];
+     }
+
+     // TODO: change this if we want to handle zones
+     if ("top" in filters) {
+        var select = document.getElementById("achievement-filter");
+        select.selectedIndex = 1;
+     }
+     else if ("fail" in filters) {
+        var select = document.getElementById("achievement-filter");
+        select.selectedIndex = 3;
+     }
+
+     // TODO: handle date
+
 }
 
 
 const addFilterToList = (list, text, className="") => {
     const newLi = document.createElement("li");
     if (className != "") {
-        newLi.className = className;
+        newLi.className = "large " + className;
+    }
+    else {
+        newLi.className = "large"
     }
 
     const xSpan = document.createElement("span");
@@ -56,6 +75,7 @@ const linkToFilterList = (button, list, allowPrefix) => {
     
     button.addEventListener('click', (e) => {
         const newLi = document.createElement("li");
+        newLi.className = "large";
         
         const newI = document.createElement("i");
         newI.contentEditable = true;
@@ -80,7 +100,10 @@ const linkToFilterList = (button, list, allowPrefix) => {
                 }
 
                 newLi.innerHTML = text;
-                newLi.className = cl;
+                if (cl != "") {
+                    newLi.className +=  " " + cl;
+                }
+
                 newLi.appendChild(xSpan);
                 xSpan.onclick = () => {
                     xSpan.parentElement.style.display = "none";
