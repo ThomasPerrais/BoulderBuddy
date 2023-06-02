@@ -1,7 +1,8 @@
 from typing import Dict, List
 from functools import reduce
-from ..models import Problem, Footwork, HandHold, ProblemMethod
+from gymstats.models import Problem, Footwork, HandHold, ProblemMethod
 from gymstats.helper.names import *
+from gymstats.helper.statistics import attr_statistics, fisher_overrepr
 from django.db.models import Q
 
 
@@ -17,10 +18,29 @@ def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]]):
     """
     problems = Problem.objects.all()
 
+    # TODO: test for statistics change this
+    achievement = "all"
     for key, val in parsed.items():
+        if key in {"top", "fail"}:
+            achievement = key
+            continue
         problems = _add_filter(problems, key, val)
 
-    return problems
+    # filtering on achievement at the end so that we can extract stats
+    fisher_stats = {}
+    if achievement != "all":
+        superset_stats = attr_statistics(problems)
+        superset_size = len(problems)
+        if achievement == "top":
+            problems = problems.filter(~Q(tops=None))
+        else:
+            problems = problems.filter(Q(tops=None))
+        subset_stats = attr_statistics(problems)
+        subset_size = len(problems)
+
+        fisher_stats = fisher_overrepr(superset_stats, subset_stats, superset_size, subset_size)
+
+    return problems, fisher_stats
 
 
 def _add_filter(problems, k, v):
@@ -32,6 +52,10 @@ def _add_filter(problems, k, v):
         attributes = __get_attr_objects(v["eq"], k)
         subset = reduce(lambda x,y: x|y, [attr.problem_set.all() for attr in attributes])
         return problems & subset
+    elif k == "top":
+        return problems.filter(~Q(tops=None))
+    elif k == "fail":
+        return problems.filter(Q(tops=None))
     elif k == DATE:
         return problems
     else:
