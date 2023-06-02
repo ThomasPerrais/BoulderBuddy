@@ -15,6 +15,9 @@ class FailureInline(admin.TabularInline):
     model = Failure
     extra = 3
 
+class RICInline(admin.TabularInline):
+    model = RIC
+    extra = 1
 
 class SessionAdmin(admin.ModelAdmin):
     list_display = ('gym', 'date', 'climber')
@@ -31,6 +34,7 @@ class ProblemAdmin(admin.ModelAdmin):
     list_filter = ['gym__abv', 'grade', 'removed', 'problem_type', 'hand_holds']
     list_display = ('gym', 'grade', 'picture', 'removed')
     list_editable = ("removed",)
+    inlines = [RICInline]
 
 
 class TryAdmin(admin.ModelAdmin):
