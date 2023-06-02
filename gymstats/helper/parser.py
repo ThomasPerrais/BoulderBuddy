@@ -24,10 +24,15 @@ def parse_filters(raw_filters: str):
     for elt in raw_filters.split(';'):
         match = filter_pattern.search(elt.replace("<=", " lte ").replace(">=", " gte "))
         if not match:
-            if elt.strip() == "removed":
+            if elt.strip() in {"removed", "rm"}:
                 parsed["rm"] = True
-            elif elt.strip() == "!removed":
+                continue
+            elif elt.strip() in {"!removed", "!rm"}:
                 parsed["rm"] = False
+                continue
+            elif elt in {'top', 'fail'}:
+                parsed[elt] = True
+                continue
             else:
                 unparsed.append("Pattern unknown: " + elt)
                 continue
@@ -114,10 +119,15 @@ def parse_filters(raw_filters: str):
         
         parsed[GRADE] = {"eq": res }
 
+    if 'top' in parsed and 'fail' in parsed:
+        del parsed["top"]
+        del parsed["fail"]
+
     # turning sets to lists
     for key in parsed:
-        for comparer in parsed[key]:
-            parsed[key][comparer] = list(parsed[key][comparer])
+        if type(parsed[key]) == dict:
+            for comparer in parsed[key]:
+                parsed[key][comparer] = list(parsed[key][comparer])
 
     return parsed, unparsed
 
