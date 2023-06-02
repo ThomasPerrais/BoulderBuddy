@@ -1,11 +1,18 @@
 const daysTag = document.querySelector(".days"),
-currentDate = document.querySelector(".current-date"),
+currentDate = document.querySelector(".date"),
 prevNextIcon = document.querySelectorAll(".icons span");
 
 let sessions = JSON.parse(document.getElementById('sessions').textContent);
 
+let date = new Date();
+let dateInfo = document.getElementById('date');
+if (dateInfo) {
+    date = new Date(dateInfo.textContent);
+}
+let frDate = date.toLocaleDateString("fr"),
+    currentTag = "current";
+
 // getting new date, current year and month
-let date = new Date(),
 currYear = date.getFullYear(),
 currMonth = date.getMonth();
 // storing full name of all months in array
@@ -18,13 +25,31 @@ const renderCalendar = () => {
     lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
     lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
     let liTag = "";
+
     for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
         liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
     }
     for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
         // adding active class to li if the current day, month, and year matched
+        
         let calendarDate = new Date(currYear, currMonth, i).toLocaleDateString("fr");
-        let status = calendarDate in sessions ? "active" : "";
+        let status = "";
+        if (calendarDate in sessions) {
+            status = "active";
+            if (sessions[calendarDate].length > 1) {
+                status += " " + sessions[calendarDate][1]
+            }
+        }
+        
+        if (calendarDate == frDate) {
+            if (status == "") {
+                status = currentTag;
+            }
+            else {
+                status += " " + currentTag;
+            }
+        }
+        
         liTag += `<li class="${status}">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
@@ -54,6 +79,6 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
 document.getElementById("days").addEventListener("click", function(e) {
     if (e.target && e.target.matches("li.active")) {
       let d = new Date(currYear, currMonth, e.target.innerText).toLocaleDateString("fr")
-      document.location.href = "/gymstats/session/" + sessions[d]  // TODO: change complete URL
+      document.location.href = "/gymstats/session/" + sessions[d][0]  // TODO: change complete URL
     }
 });

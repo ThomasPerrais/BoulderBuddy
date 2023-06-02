@@ -1,0 +1,146 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.calendar-wrapper {
+    width: 450px;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+  
+.calendar-wrapper header {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+  
+.calendar-wrapper header .icons{
+    display: flex;
+}
+  
+.calendar-wrapper header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+  
+.calendar-wrapper header .icons span:last-child{
+    margin-right: -10px;
+}
+
+.calendar-wrapper header .icons span:hover{
+    background: #f2f2f2;
+}
+  
+.calendar-wrapper header .date{
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+  
+.calendar{
+    padding: 20px;
+}
+  
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+.calendar .days{
+    margin-bottom: 20px;
+}
+
+.calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+}
+
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+
+.calendar .days li{
+    z-index: 1;
+    cursor: default;
+    position: relative;
+    margin-top: 30px;
+}
+
+.calendar .days li.active{
+    cursor: pointer;
+}
+
+.days li.current::before{
+    border: 2px solid #9B59B6;
+}
+
+.days li.active::before{
+    background: #9c59b6a3;
+}
+  
+.days li.active:hover::before{
+    background: #9B59B6;
+}
+
+.days li.t::before{
+    background: #76b947a3;
+}
+  
+.days li.t:hover::before{
+    background: #76b947;
+}
+
+.days li.z::before{
+    background: #dec356a3;
+}
+  
+.days li.z:hover::before{
+    background: #dec356;
+}
+
+.days li.f::before{
+    background: #b65964a3;
+}
+  
+.days li.f:hover::before{
+    background: #b65964;
+}
+
+.days li.inactive{
+    color: #aaa;
+}
+
+.days li.active{
+    color: #fff;
+}
+
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
