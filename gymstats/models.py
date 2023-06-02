@@ -172,7 +172,7 @@ class RIC(models.Model):
     intensity = models.IntegerField(choices=RICGrade.choices)
     complexity = models.IntegerField(choices=RICGrade.choices)
 
-    def ric_avg(self):
+    def average(self):
         return (self.risk + self.intensity + self.complexity) / 3
 
 
