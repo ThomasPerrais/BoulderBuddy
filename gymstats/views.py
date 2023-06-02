@@ -9,7 +9,7 @@ from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
-from .models import Problem, Gym, Review, Climber, Session, Try
+from .models import Problem, Gym, Review, Climber, Session, Try, RIC
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 
@@ -22,7 +22,7 @@ def index(request):
 # Homepage view
 
 def home(request):
-    sessions = {elt.date.strftime("%d/%m/%Y"): elt.id for elt in Session.objects.only("date")}
+    sessions = {elt.date.strftime("%d/%m/%Y"): (elt.id,) for elt in Session.objects.only("date")}
     return render(request, 'gymstats/home.html', {'sessions': sessions})
 
 
@@ -127,7 +127,41 @@ def problems_homepage(request):
 
 def problem_detail(request, problem_id):
     problem = get_object_or_404(Problem, id=problem_id)
-    return render(request, 'gymstats/problem.html', {'problem': problem})
+
+    # Problem data: rating & RIC
+    ratings = problem.review_set.all()
+    if len(ratings) > 0:
+        avg_rating = sum([r.rating for r in ratings]) / len(ratings)
+    else:
+        avg_rating = "NA"
+    
+    rics = problem.ric_set.all()
+    if len(rics) > 0:
+        avg_ric = sum([r.average() for r in rics]) / len(rics)
+    else:
+        avg_ric = "NA"
+
+    # Sessions where problem was tried
+    only = ["session__date", "session__id"]
+    status = "Not Tried";
+    sessions = {}
+    for elt in problem.failures.only(*only):
+        status = "Fail"
+        sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "f")
+    for elt in problem.zones.only(*only):
+        status = "Zone"
+        sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "z")
+    for elt in problem.tops.only(*only):
+        status = "Top"
+        sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "t")
+
+    return render(request, 'gymstats/problem.html', {
+        "problem": problem,
+        "rating": avg_rating,
+        "status": status,
+        "ric": avg_ric,
+        "sessions": sessions
+    })
 
 
 def problem_reviews(request, problem_id):
@@ -155,13 +189,39 @@ def review_problem(request, problem_id):
     except KeyError:
         return render(request, 'gymstats/problem.html', {
             'problem': problem,
-            'error_message': "Error while handling comment - try again",
+            'review_error_message': "Error while handling review - try again",
         })
     else:
         r = Review(reviewer=climber, comment=comment, problem=problem, rating=rating)
         r.save()
         return HttpResponseRedirect(reverse('gs:pb-review-display', args=(problem.id, r.id,)))
 
+
+def problem_ric(request, problem_id, ric_id):
+    problem = get_object_or_404(Problem, id=problem_id)
+    try:
+        ric = problem.ric_set.get(id=ric_id)
+    except RIC.DoesNotExist:
+        raise Http404("RIC does not exist")
+    return render(request, 'gymstats/ric.html', {'ric': ric})
+
+
+def evaluate_ric_problem(request, problem_id):
+    problem = get_object_or_404(Problem, id=problem_id)
+    try:
+        risk = int(request.POST['risk'])
+        intensity = int(request.POST['intensity'])
+        complexity = int(request.POST['complexity'])
+        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
+    except KeyError:
+        return render(request, 'gymstats/problem.html', {
+            'problem': problem,
+            'ric_error_message': "Error while handling RIC - try again",
+        })
+    else:
+        ric = RIC(reviewer=climber, problem=problem, risk=risk, intensity=intensity, complexity=complexity)
+        ric.save()
+        return HttpResponseRedirect(reverse('gs:pb-ric-display', args=(problem.id, ric.id,)))
 
 
 def problem_searchbar(request):
@@ -173,10 +233,11 @@ def problem_search_results(request):
         # get comment from POST
         raw_filters = request.POST['search']
         parsed, unparsed = parse_filters(raw_filters)
-        problems = query_problems_from_filters(parsed)
+        problems, stats = query_problems_from_filters(parsed)
     except KeyError:
         return render(request, 'gymstats/problem_results.html', {
             'results': [],
+            'stats': {},            
             'filters': {},
             'unparsed': ["no filters provided"],            
             'error_message': "No filters provided",
@@ -184,6 +245,7 @@ def problem_search_results(request):
     except ParseError:
         return render(request, 'gymstats/problem_results.html', {
             'results': [],
+            'stats': {},            
             'filters': {},
             'unparsed': [raw_filters],            
             'error_message': "Unable to parse given filters",
@@ -191,9 +253,16 @@ def problem_search_results(request):
     except SearchError:
         return render(request, 'gymstats/problem_results.html', {
             'results': [],
+            'stats': {},            
             'filters': parsed,
             'unparsed': unparsed,            
             'error_message': "Search failed, try again later...",
         })
     else:
-        return render(request, 'gymstats/problem_results.html', {'results': problems, 'filters': parsed, 'unparsed': unparsed })
+        return render(request, 'gymstats/problem_results.html', 
+                    {
+                        'results': problems,
+                        'stats': stats,
+                        'filters': parsed,
+                        'unparsed': unparsed
+                    })
