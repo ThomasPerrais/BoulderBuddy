@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "dal",
+    "dal_select2",
     "gymstats.apps.GymstatsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
