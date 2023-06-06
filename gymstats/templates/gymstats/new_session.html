@@ -1,0 +1,42 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0">
+<!-- {{ sessions|json_script:'sessions' }} -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Add Session</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font Link for Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- <script src="{% static 'gymstats/calendar.js' %}" defer></script> -->
+</head>
+
+<body>
+    <script src="{% static 'gymstats/sidebar.js' %}" defer></script>
+    <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px;"></div>
+
+    <div class="wrapper">
+
+        {% if error_message %}
+        <div>
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+
+        <form action="{% url 'gs:session-add' %}" method="post">
+            {% csrf_token %}
+            <table>
+                {{ session_form.as_table }}
+            </table>
+            <input type="submit" value="Next Step">
+
+            <!-- <label>Bonjour</label>
+            <input type="text" name="fname" id="fname" required minlength="2" maxlength="8">
+            <button>Gooo</button> -->
+        </form>
+
+    </div>
+</body>

@@ -23,7 +23,9 @@
     <div class="wrapper">
         
         <div class="add-sess">
-            <button>Add Session</button>
+            <form action="{% url 'gs:session-add-new' %}" method="get">
+                <button>Add Session</button>
+            </form>
         </div>
 
         <div class="calendar-wrapper">

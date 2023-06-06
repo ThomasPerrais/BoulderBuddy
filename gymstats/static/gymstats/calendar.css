@@ -89,8 +89,8 @@
     cursor: pointer;
 }
 
-.days li.current::before{
-    border: 2px solid #9B59B6;
+.days li.current::before {
+    border: 1px solid black;
 }
 
 .days li.active::before{
