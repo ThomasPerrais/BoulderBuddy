@@ -1,17 +1,22 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from .forms import ProblemForm, TryForm
 from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
 
 class TopInline(admin.TabularInline):
+    form = TryForm
     model = Top
     extra = 5
 
 class ZoneInline(admin.TabularInline):
+    form = TryForm
     model = Zone
     extra = 3
 
 class FailureInline(admin.TabularInline):
+    form = TryForm
     model = Failure
     extra = 3
 
@@ -31,13 +36,23 @@ class SessionAdmin(admin.ModelAdmin):
 
 
 class ProblemAdmin(admin.ModelAdmin):
+
+    form = ProblemForm
     list_filter = ['gym__abv', 'grade', 'removed', 'problem_type', 'hand_holds']
     list_display = ('gym', 'grade', 'picture', 'removed')
     list_editable = ("removed",)
+
+    readonly_fields = ["picture_display"]
+    fieldsets = [
+        ('General', {'fields': ["gym", "grade", "sector", "date_added"]}),
+        ('Picture', {'fields': ["picture", "picture_display"]}),
+        ('Details', {'fields': ["problem_type", "hand_holds", "footwork", "problem_method"]}),
+    ]
     inlines = [RICInline]
 
 
 class TryAdmin(admin.ModelAdmin):
+    form = TryForm
     list_display = ('session', 'pb_grade', 'attempts')
 
 

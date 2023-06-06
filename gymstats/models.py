@@ -134,6 +134,10 @@ class Problem(models.Model):
         _, ext = os.path.splitext(filename)
         return os.path.join('problems', instance._pic_name() + ext)
     
+    def picture_display(self):
+        from django.utils.html import format_html
+        return format_html('<img src="{}" width="400px" height="500px">', self.picture.url)
+
     picture = models.ImageField(upload_to=upload_picture)
 
     def description(self):

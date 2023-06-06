@@ -1,19 +1,99 @@
-from datetime import date
-import math
 from collections import defaultdict
+from datetime import date
 import itertools
+import math
+import re
 
-from django.shortcuts import render
+from dal import autocomplete
+
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, get_object_or_404, render
 from django.template import loader
-from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils.html import format_html
 
-from .models import Problem, Gym, Review, Climber, Session, Try, RIC
+from .forms import SessionForm
+from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
+from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER
 
 # Create your views here.
+
+# AutoComplete views
+
+class GymAutocompleteView(autocomplete.Select2QuerySetView):
+    
+    def get_queryset(self):
+        gyms = Gym.objects.all()
+        if self.q:
+            gyms = gyms.filter(abv__startswith=self.q)
+        return gyms
+
+class SectorAutocompleteView(autocomplete.Select2QuerySetView):
+    
+    def get_queryset(self):
+
+        sectors = Sector.objects.all()
+
+        gym = self.forwarded.get('gym', None)
+        if gym:
+            sectors = sectors.filter(gym__id=gym)
+
+        if self.q:
+            sectors = sectors.filter(gym__abv__startswith=self.q)
+        return sectors
+
+class ProblemAutocompleteView(autocomplete.Select2QuerySetView):
+
+    re_num = re.compile("^(\d+)(.*)")
+
+    def get_queryset(self):
+        problems = Problem.objects.all()
+
+        # Forwarded in Session Form
+        gym = self.forwarded.get('gym', None)
+        if gym:
+            problems = problems.filter(gym__id=gym)
+        
+        sector = self.forwarded.get('sector', None)
+        if sector:
+            problems = problems.filter(sector__id=sector)
+        
+        # Forwarded in Try Form --> TODO: why is it not working???
+        sess_id = self.forwarded.get('session', None)
+        if sess_id:
+            gym_id = Session.objects.get(id=sess_id).gym.id
+            problems = problems.filter(gym__id=gym_id)
+
+        if self.q:
+            m = self.re_num.search(self.q)
+            if m:
+                sector = m.group(1)
+                grade = m.group(2)
+                problems = problems.filter(sector__sector_id=int(sector))
+            else:
+                grade = self.q
+            problems = problems.filter(grade__startswith=grade)
+        return problems
+
+
+class GradeAutocompleteView(autocomplete.Select2ListView):
+
+    def get_list(self):
+
+        grades = []
+        gym = self.forwarded.get('gym', None)
+        if gym:
+            gym_brand = Gym.objects.get(id=gym).brand
+            if gym_brand in BRAND_TO_ABV:
+                grades = GRADE_ORDER[BRAND_TO_ABV[gym_brand]]
+            else:
+                grades = GRADE_ORDER["@default"]
+            grades = [elt[0].upper() + elt[1:] for elt in grades]
+
+        return grades
+
 
 def index(request):
     # Main page: explore gyms, explore problems, explore sessions, ... -> put in a side menu 
@@ -35,6 +115,34 @@ def profil(request):
 
 
 # Session views
+
+def new_session(request):
+    form = SessionForm();
+    return render(request, 'gymstats/new_session.html', {"session_form": form})
+
+
+def add_session(request):
+    try:
+        # get comment from POST
+        comment = request.POST['comment']
+        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
+        rating = int(request.POST["rating"])
+    except KeyError:
+        return render(request, 'gymstats/new_session.html', {
+            'error_message': "Error while adding session, try again",
+        })
+    else:
+        s = Session()
+        s.save()
+        return HttpResponseRedirect(reverse('gs:session-add-problems', args=(s.id,)))
+
+    
+
+
+def add_session_problems(request):
+    return render(request, 'gymstats/add_session_problems.html')
+
+
 
 def session(request, session_id):
     session = get_object_or_404(Session, id=session_id)

@@ -4,6 +4,14 @@ from . import views
 
 app_name = 'gs'
 urlpatterns = [
+
+    # Autocomplete routes
+    path('sector-autocomplete/', views.SectorAutocompleteView.as_view(), name='sector-autocomplete'),
+    path('gym-autocomplete/', views.GymAutocompleteView.as_view(), name="gym-autocomplete"),
+    path('problem-autocomplete/', views.ProblemAutocompleteView.as_view(), name="problem-autocomplete"),
+    path('grade-autocomplete/', views.GradeAutocompleteView.as_view(), name="grade-autocomplete"),
+
+
     path('', views.index, name='index'),
     
     # Home Page
@@ -13,6 +21,10 @@ urlpatterns = [
     path('profil/', views.profil, name="profil"),
 
     # Session
+    path('session/add-new/', views.new_session, name="session-add-new"),
+    path('session/add/', views.add_session, name="session-add"),
+    path('session/<int:session_id>/add-problems/', views.add_session_problems, name="session-add-problems"),
+    
     path('session/<int:session_id>/', views.session, name="session"),
     path('session/<int:session_id>/statistics/', views.session_statistics, name='session-statistics'),
     path('session/<int:session_id>/details', views.session_details, name="session-details"),
