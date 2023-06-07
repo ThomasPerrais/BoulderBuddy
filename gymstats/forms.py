@@ -1,13 +1,69 @@
-from django.forms import ModelForm
+from typing import Any, Dict, Mapping, Optional, Type, Union
+from django.core.files.base import File
+from django.db.models.base import Model
+from django.forms import ModelForm, Textarea
+from django.forms.utils import ErrorList
 from gymstats.models import Session, Climber, Sector, Problem, Try
 from django import forms
 from dal import autocomplete
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Row, Column, HTML, Submit, Button
+from crispy_forms.bootstrap import AppendedText, PrependedAppendedText, PrependedText, FormActions
 
 
 class SessionForm(ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.layout = Layout(
+            Fieldset(
+                'General',
+                Row(
+                    Column(PrependedText('climber', '👤'), css_class="form-group ml-3 mr-4"),
+                    Column(PrependedText('gym', '🏢'), css_class="form-group mb-1 mr-3"),
+                ),
+                Column("partners", css_class="form-group"),
+            ),
+            Fieldset(
+                'Time',
+                Row(
+                    Column(PrependedText("date", "📅"), css_class="mr-2"),
+                    Column(PrependedText("time", "🕒"), css_class="mr-2"),
+                    Column(AppendedText('duration', "h"))
+                )
+            ),
+            Fieldset(
+                'Data',
+                PrependedText("shoes", "👟"),
+                Row(
+                    Column(PrependedText("sleep", "🛏️")),
+                    Column(PrependedText("alcohol", "🍺")),
+                )
+            ),
+            Fieldset(
+                'Feelings',
+                PrependedText("notes", "🗈"),
+                PrependedText("overall_grade", "⭐"),
+                Row(
+                    Column(PrependedText("strength", "💪"), css_class="mr-2"),
+                    Column(PrependedText("motivation", "🔥"), css_class="mr-2"),
+                    Column(PrependedText('fear', "😨"))
+                )
+            ),
+            FormActions(
+                Submit('save', 'Save changes', css_class="btn btn-light"),
+                Button('cancel', 'Cancel')
+            ),
+        )
+
     class Meta:
         model = Session
-        fields = ["gym", "time", "date", "climber", "partners"]
+        fields = '__all__'
+
+        widget = {
+            "notes": Textarea(attrs={"cols": 150, "rows": 40}),
+        }
 
 
 class TryForm(ModelForm):

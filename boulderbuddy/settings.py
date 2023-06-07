@@ -36,6 +36,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "dal",
     "dal_select2",
+    'crispy_forms',
+    'crispy_bootstrap4',
     "gymstats.apps.GymstatsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -131,3 +133,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .forms import ProblemForm, TryForm
+from .forms import ProblemForm, TryForm, SessionForm
 from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
@@ -25,13 +25,14 @@ class RICInline(admin.TabularInline):
     extra = 1
 
 class SessionAdmin(admin.ModelAdmin):
-    list_display = ('gym', 'date', 'climber')
+    # form = SessionForm
     fieldsets = [
-        (None, {'fields': ['gym', 'climber', 'partners']}),
+        ('General', {'fields': ['gym', 'climber', 'partners']}),
         ('Time', {'fields': ['date', 'time', 'duration']}),
         ('Data', {'fields': ['shoes', 'sleep', 'alcohol']}),
-        ('Feelings', {'fields': ['notes', 'overall_grade', 'strength', 'motivation', 'fear']}),
+        ('Feelings', {'fields': ['notes', 'overall_grade', 'strength', 'motivation', 'fear']})
     ]
+    list_display = ('gym', 'date', 'climber')
     inlines = [TopInline, ZoneInline, FailureInline]
 
 
