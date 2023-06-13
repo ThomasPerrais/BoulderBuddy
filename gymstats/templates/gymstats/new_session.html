@@ -3,7 +3,6 @@
 
 <link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0">
 
-
 <head>
     <meta charset="utf-8">
     <title>Add Session</title>
@@ -14,7 +13,6 @@
 
     <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!-- <script src="{% static 'gymstats/calendar.js' %}" defer></script> -->
 </head>
 
 <body>
@@ -22,17 +20,9 @@
     <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px;"></div>
 
     <div class="wrapper">
-
-        {% if error_message %}
-        <div>
-            <p>{{ error_message }}</p>
-        </div>
-        {% endif %}
-
-        <form action="{% url 'gs:session-add' %}" method="post">
+        <form method="post">
             {% csrf_token %}
             {% crispy session_form %}
         </form>
-
     </div>
 </body>

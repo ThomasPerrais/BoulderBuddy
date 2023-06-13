@@ -11,10 +11,8 @@ urlpatterns = [
     path('problem-autocomplete/', views.ProblemAutocompleteView.as_view(), name="problem-autocomplete"),
     path('grade-autocomplete/', views.GradeAutocompleteView.as_view(), name="grade-autocomplete"),
 
-
-    path('', views.index, name='index'),
-    
     # Home Page
+    path('', views.index, name='index'),
     path('home/', views.home, name="home"),
 
     # Profil Page
@@ -22,7 +20,6 @@ urlpatterns = [
 
     # Session
     path('session/add-new/', views.new_session, name="session-add-new"),
-    path('session/add/', views.add_session, name="session-add"),
     path('session/<int:session_id>/add-problems/', views.add_session_problems, name="session-add-problems"),
     
     path('session/<int:session_id>/', views.session, name="session"),

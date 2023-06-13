@@ -12,7 +12,7 @@ from crispy_forms.bootstrap import AppendedText, PrependedAppendedText, Prepende
 
 
 class SessionForm(ModelForm):
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)

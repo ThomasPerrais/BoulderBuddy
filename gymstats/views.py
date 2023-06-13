@@ -7,13 +7,13 @@ import re
 from dal import autocomplete
 
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, get_object_or_404, render
+from django.shortcuts import render, redirect, get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
 from django.utils.html import format_html
 
 from .forms import SessionForm
-from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector
+from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER
@@ -117,31 +117,64 @@ def profil(request):
 # Session views
 
 def new_session(request):
-    form = SessionForm();
+    if request.method == 'POST':
+        form = SessionForm(request.POST)
+        if form.is_valid():
+            instance = form.save()
+            return redirect('gs:session-add-problems', session_id=instance.id)  # Redirect to a session problem page
+    else:
+        form = SessionForm()
     return render(request, 'gymstats/new_session.html', {"session_form": form})
 
 
-def add_session(request):
-    try:
-        # get comment from POST
-        comment = request.POST['comment']
-        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
-        rating = int(request.POST["rating"])
-    except KeyError:
-        return render(request, 'gymstats/new_session.html', {
-            'error_message': "Error while adding session, try again",
+def add_session_problems(request, session_id):
+
+    sess = get_object_or_404(Session, id=session_id)
+    msg = ""
+    success = True
+    if request.method == "POST":
+        try:
+            pb = get_object_or_404(Problem, id=request.POST['pb-id'])
+            attempts = int(request.POST["attempts"])
+            result = request.POST["achievement"]
+            if result == "top":
+                t = Top(session=sess, attempts=attempts, problem=pb)
+            elif result == "zone":
+                t = Zone(session=sess, attempts=attempts, problem=pb)
+            elif result == "fail":
+                t = Failure(session=sess, attempts=attempts, problem=pb)
+            else:
+                # TODO: error message
+                msg = "Unknown achievement..."
+                success = False
+            if success:
+                t.save()
+                msg = "achievemement successfully added to current session"
+        except ValueError as e:
+            msg = "attempts should be a positive integer..."
+            success = False
+        except KeyError as e:
+            msg = "all fields must be filled..."
+            success = False
+
+    sectors = Sector.objects.filter(gym=sess.gym)
+    sectors_img = set([s.map.url for s in sectors])
+    num_sectors = sectors.count()
+
+    problems_by_sector = [[] for i in range(num_sectors)]
+    for pb in Problem.objects.filter(gym=sess.gym, removed=False):
+        problems_by_sector[pb.sector.sector_id - 1].append(pb)
+
+    return render(request, 'gymstats/add_session_problems.html', {
+            "message": {
+                "content": msg,
+                "success": "yes" if success else "no"
+            },
+            "session": session,
+            "sectors_img": sectors_img,
+            "problems": problems_by_sector,
+            "num_sectors": num_sectors
         })
-    else:
-        s = Session()
-        s.save()
-        return HttpResponseRedirect(reverse('gs:session-add-problems', args=(s.id,)))
-
-    
-
-
-def add_session_problems(request):
-    return render(request, 'gymstats/add_session_problems.html')
-
 
 
 def session(request, session_id):

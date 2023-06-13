@@ -1,0 +1,55 @@
+Gymstats next step
+
+
+======= FRONTEND =======
+
+- profil page
+    - week/month training: curved progress bar + emoji animal -> tortoise, panda, cat, monkey, lizzard / same with objective in term of Red, Black, B7, B8, etc...
+    - statistiques (/gymstats/profil/statistiques)
+        - since begining of year
+            - raw
+                - training hour
+                - total tops
+            - month per month training time
+        - all time
+            - raw
+                - training hours
+                - total tops
+            - by gym
+                - bar similar to session bar with all grades
+
+    - reviews (gymstats/profil/reviews)
+        - all reviews with sliding bar, simple filter
+        - top options with (RIC, Reviews)
+
+
+- add session page
+    - Finish implementation of first part with ModelForm
+    - Second part: adding problems to sessions
+
+- session page:
+    - footholds?
+    - failed boulders: hachuré rather than transparent
+    - Details
+        - every problem with border green/orange/red + num attempts
+
+
+- search page -> IN PROGRESS
+    - filters: implement refresh method (How??)
+
+- problem page:
+    - nice display --> IN PROGRESS
+
+- Review / RIC 
+    -> ModelForm
+    -> change code in problem.html
+
+======= BACKEND =======
+
+- admin
+    - problem
+        - show img when uploaded
+        - grade autocomplete?
+    - session
+        - problem autocomplete & filtering (+ show img?) in Tops/Zones/Fails
+
