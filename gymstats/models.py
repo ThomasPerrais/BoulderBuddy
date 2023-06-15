@@ -1,9 +1,11 @@
+import datetime
+import os
+
 from django.db import models
 from location_field.models.plain import PlainLocationField
-import datetime
 from typing import Any
-import os
-import random
+
+from gymstats.helper.utils import rand_name
 
 
 class Gym(models.Model):
@@ -49,10 +51,35 @@ class ShoesFixing(models.Model):
 
 class Climber(models.Model):
 
+    def upload_picture(instance, filename):
+        _, ext = os.path.splitext(filename)
+        return os.path.join('climbers', instance.name + "_" + rand_name() + ext)
+    
     name = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to=upload_picture, blank=True)
+
+    class StatsPreference(models.IntegerChoices):
+        WEEK = 1
+        MONTH = 2
+        YEAR = 3
+        ALL_TIME = 4
+    
+    stats_preference = models.IntegerField(choices=StatsPreference.choices, default=1)
+
+    week_hour_target = models.IntegerField(default=3)  # training hour target
+    week_hard_boulder_target = models.IntegerField(default=3)  # target number of hard boulders to top every week
+
+    mail = models.EmailField(blank=True)
+    pwd = models.CharField(max_length=30, blank=True)
 
     def __str__(self) -> str:
         return self.name
+
+
+class HardBoulderThreshold(models.Model):
+    climber = models.ForeignKey(Climber, on_delete=models.CASCADE, related_name="hard_boulders")
+    gym = models.ForeignKey(Gym, on_delete=models.CASCADE)
+    grade_threshold = models.CharField(max_length=10)
 
 
 class Describable(models.Model):
@@ -152,9 +179,7 @@ class Problem(models.Model):
         return name
 
     def _pic_name(self):
-        def _rand_id():
-            return "".join([chr(random.randint(97, 122)) for _ in range(5)])
-        return "{}_{}_{}_{}".format(self.gym.abv, self.grade, self.date_added.strftime("%m%y"), _rand_id())
+        return "{}_{}_{}_{}".format(self.gym.abv, self.grade, self.date_added.strftime("%m%y"), rand_name())
 
     def __str__(self) -> str:
         return self.name()

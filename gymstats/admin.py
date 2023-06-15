@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .forms import ProblemForm, TryForm, SessionForm
-from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber
+from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber, HardBoulderThreshold
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
 
@@ -24,6 +24,12 @@ class RICInline(admin.TabularInline):
     model = RIC
     extra = 1
 
+class HardBoulderInline(admin.TabularInline):
+    model = HardBoulderThreshold
+    extra = 1
+
+
+@admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):
     # form = SessionForm
     fieldsets = [
@@ -36,6 +42,7 @@ class SessionAdmin(admin.ModelAdmin):
     inlines = [TopInline, ZoneInline, FailureInline]
 
 
+@admin.register(Problem)
 class ProblemAdmin(admin.ModelAdmin):
 
     form = ProblemForm
@@ -51,27 +58,29 @@ class ProblemAdmin(admin.ModelAdmin):
     ]
     inlines = [RICInline]
 
-
+@admin.register(Top, Zone, Failure)
 class TryAdmin(admin.ModelAdmin):
     form = TryForm
     list_display = ('session', 'pb_grade', 'attempts')
 
 
+@admin.register(Climber)
+class ClimberAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('General', {'fields': ["name", "picture", "mail", "pwd"]}),
+        ('Preferences', {'fields': ["stats_preference", "week_hour_target", "week_hard_boulder_target"]}),
+    ]
+    inlines = [HardBoulderInline]
+
 # Register your models here.
-admin.site.register(Problem, ProblemAdmin)
 admin.site.register(ProblemType)
 admin.site.register(ProblemMethod)
 admin.site.register(HandHold)
 admin.site.register(Footwork)
 admin.site.register(Gym)
 admin.site.register(Sector)
-admin.site.register(Climber)
 
 admin.site.register(Shoes)
 admin.site.register(ShoesFixing)
-admin.site.register(Session, SessionAdmin)
-admin.site.register(Top, TryAdmin)
-admin.site.register(Zone, TryAdmin)
-admin.site.register(Failure, TryAdmin)
 admin.site.register(Review)
 admin.site.register(RIC)
