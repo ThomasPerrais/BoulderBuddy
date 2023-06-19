@@ -2,7 +2,8 @@ from typing import Dict, List
 from functools import reduce
 from gymstats.models import Problem, Footwork, HandHold, ProblemMethod
 from gymstats.helper.names import *
-from gymstats.helper.statistics import attr_statistics, fisher_overrepr
+from gymstats.statistics.base import fisher_overrepr
+from gymstats.statistics.problems import attr_statistics
 from django.db.models import Q
 
 

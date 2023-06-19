@@ -1,6 +1,5 @@
 from collections import defaultdict
 from datetime import date
-import itertools
 import math
 import re
 
@@ -17,6 +16,8 @@ from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, To
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER
+from .helper.utils import float_duration_to_hour
+from .statistics.sessions import statistics
 
 # Create your views here.
 
@@ -109,8 +110,35 @@ def home(request):
 # Profil view
 
 def profil(request):
-    data = {}
-    return render(request, 'gymstats/profil.html', {'data': data})
+    climber = get_object_or_404(Climber, name="Thomas")  # TODO: change this, logged in climber
+    
+    data = {
+        "all_time": {
+
+        },
+        "year": {
+
+        },
+        "pref": {
+
+        }
+    }
+    
+    # All Time information
+    sessions = Session.objects.filter(climber=climber).only("duration")
+    data["all_time"] = statistics(sessions, duration=True, length=True, top_zone_fail=False)
+
+    # Month information
+    first_day_of_year = "{}-01-01".format(date.today().year)
+    year_sessions = Session.objects.filter(date__gte=first_day_of_year).order_by("date")
+    threshold = {}
+    for thres in climber.hard_boulders.all():
+        threshold[thres.gym] = thres.grade_threshold
+
+    data["year"] = statistics(year_sessions, duration=False, length=False,
+                               top_zone_fail=True, threshold=threshold)
+
+    return render(request, 'gymstats/profil.html', {'data': data, 'climber': climber})
 
 
 
@@ -179,59 +207,13 @@ def add_session_problems(request, session_id):
 
 def session(request, session_id):
     session = get_object_or_404(Session, id=session_id)
-    sess_data = __session_stats(session)
+    sess_data = session.statistics()
     return render(request, 'gymstats/session.html', {'session': session, 'sess_data': sess_data})
-
-
-def __session_stats(session: Session):
-    
-    ## general data
-        # percentage of successes
-    tops = session.tops.count()
-    fails = session.failures.count() + session.zones.count()
-    total = tops + fails
-    successes = math.floor(tops * 100/ total) if total > 0 else "??"
-
-    # problems specific data
-        # types, grades, holds
-    pb_types = defaultdict(lambda: [0,0])
-    pb_grades = defaultdict(lambda: [0,0])
-    if session.gym.brand == "Block'Out":  # needed to order correctly, TODO: handle this elsewhere
-        pb_grades = { 'B' + str(i): [0,0] for i in range(14) }
-    pb_holds = defaultdict(lambda: [0,0])
-
-    def _add(t: Try, pos: int):
-        pb_types[str(t.problem.problem_type)][pos] += 1
-        pb_grades[str(t.problem.grade)][pos] += 1
-        for hh in t.problem.hand_holds.all():
-            pb_holds[str(hh)][pos] += 1
-
-    for t in session.tops.all():
-        _add(t, 0)
-    for t in itertools.chain(session.failures.all(), session.zones.all()):
-        _add(t, 1)
-
-    pb_grades = { k: v for k,v in pb_grades.items() if sum(v) > 0 }
-
-    data = {
-        # general data
-        "duration": session.duration,
-        "grade": session.overall_grade,
-        "successes": successes,
-
-        # pb specific
-        'problems': {
-            'types': pb_types,
-            'grades': pb_grades,
-            'holds': pb_holds
-        }
-    }
-    return data
 
 
 def session_statistics(request, session_id):
     session = get_object_or_404(Session, id=session_id)
-    return JsonResponse(data=__session_stats(session))
+    return JsonResponse(data=session.statistics())
 
 
 def session_details(request, session_id):

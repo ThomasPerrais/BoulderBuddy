@@ -1,11 +1,15 @@
 import datetime
+import itertools
 import os
+import math
 
+from collections import defaultdict
 from django.db import models
 from location_field.models.plain import PlainLocationField
 from typing import Any
 
 from gymstats.helper.utils import rand_name
+from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 
 
 class Gym(models.Model):
@@ -79,7 +83,7 @@ class Climber(models.Model):
 class HardBoulderThreshold(models.Model):
     climber = models.ForeignKey(Climber, on_delete=models.CASCADE, related_name="hard_boulders")
     gym = models.ForeignKey(Gym, on_delete=models.CASCADE)
-    grade_threshold = models.CharField(max_length=10)
+    grade_threshold = models.CharField(max_length=20)
 
 
 class Describable(models.Model):
@@ -269,6 +273,50 @@ class Session(models.Model):
 
     def __str__(self) -> str:
         return "{} - {}".format(self.gym, self.date)
+    
+    def statistics(self):
+        ## general data
+        # percentage of successes
+        tops = self.tops.count()
+        fails = self.failures.count() + self.zones.count()
+        total = tops + fails
+        successes = math.floor(tops * 100/ total) if total > 0 else "??"
+
+        # problems specific data
+            # types, grades, holds
+        pb_types = defaultdict(lambda: [0,0])
+        pb_grades = defaultdict(lambda: [0,0])
+        if self.gym.brand in BRAND_TO_ABV:
+            pb_grades = { elt[0].upper() + elt[1:]: [0,0] for elt in GRADE_ORDER[BRAND_TO_ABV[self.gym.brand]]}
+        pb_holds = defaultdict(lambda: [0,0])
+
+        def _add(t, pos: int):
+            pb_types[str(t.problem.problem_type)][pos] += 1
+            pb_grades[str(t.problem.grade)][pos] += 1
+            for hh in t.problem.hand_holds.all():
+                pb_holds[str(hh)][pos] += 1
+
+        for t in self.tops.all():
+            _add(t, 0)
+        for t in itertools.chain(self.failures.all(), self.zones.all()):
+            _add(t, 1)
+
+        pb_grades = { k: v for k,v in pb_grades.items() if sum(v) > 0 }
+
+        data = {
+            # general data
+            "duration": self.duration,
+            "grade": self.overall_grade,
+            "successes": successes,
+
+            # pb specific
+            'problems': {
+                'types': pb_types,
+                'grades': pb_grades,
+                'holds': pb_holds
+            }
+        }
+        return data
 
 
 class Try(models.Model):
