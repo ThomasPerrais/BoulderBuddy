@@ -1,1 +1,76 @@
-coucou c'est Toto
+{% load static %}
+{% load custom_filters %}
+{% load pb_extras %}
+
+
+<link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0.3">
+<link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.0.5">
+
+<!-- {{ message|json_script:'message' }} -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font Link for Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'gymstats/profil.js' %}?ver=2.2.0" defer></script>
+</head>
+
+<body>
+    
+    <script src="{% static 'gymstats/sidebar.js' %}" defer></script>
+    <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px; margin-top: 0%;"></div>
+
+    <div class="wrapper">
+
+        <div class="profil">
+            <img src={{ climber.picture.url }}
+            alt="Profil Picture"
+            width="80"
+            height="80"
+            style="border-radius: 100%; margin-right: 20px;">
+            <h1 style="vertical-align: middle;">{{ climber }}</h1>
+        </div>
+        <div class="all-time">
+            {% for key, value in data|iterate_items:"all_time" %}
+                <p>{{key}}: {{ value }}</p>
+            {% endfor %}
+        </div>
+                
+        <div class="month-view">
+            <h1>Since the begining of the year</h1>
+            {% for key, value in data|iterate_items:"year" %}
+                <p>{{key}}: {{ value }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="week">
+            <div class="progress">
+                <h2>Training time</h2>
+                <div class="bar-overflow">
+                    <div class="bar"></div>
+                </div>
+                <span class="training-time">10</span>%
+            </div>
+
+            <div class="progress">
+                <h2>Hard boulders</h2>
+                <div class="bar-overflow">
+                    <div class="bar"></div>
+                </div>
+                <span class="hard-boulders">10</span>%
+            </div>
+    
+        </div>
+
+        <div class="shoe-usage">
+            TODO fill shoe usage histogram
+        </div>
+
+    </div>
+
+</body>
