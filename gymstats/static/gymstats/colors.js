@@ -12,6 +12,7 @@ export const colorMap = {
     "Green": "#64e059",
     "Blue": "#77adea",
     "Red": "#eb4545",
+    "Pink": "#f170f8",
     "Black": "#353535",
     "Purple": "#b739c2",
     "B5": "#77adea",

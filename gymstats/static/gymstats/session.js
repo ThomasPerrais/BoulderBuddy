@@ -1,5 +1,3 @@
-// import { Chart } from 'https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js';
-
 import * as chartJs from 'https://cdn.jsdelivr.net/npm/chart.js@4.3.0/auto/+esm'
 
 import { colorMap } from "./colors.js";
@@ -21,6 +19,24 @@ const ProblemsOutcome = {
 
 
 let sessData = JSON.parse(document.getElementById('sessData').textContent);
+
+
+function createDiagonalPattern(color) {
+    let shape = document.createElement('canvas')
+    shape.width = 10
+    shape.height = 10
+    let c = shape.getContext('2d')
+    c.strokeStyle = color
+    c.beginPath()
+    c.moveTo(2, 0)
+    c.lineTo(10, 8)
+    c.stroke()
+    c.beginPath()
+    c.moveTo(0, 8)
+    c.lineTo(2, 10)
+    c.stroke()
+    return c.createPattern(shape, 'repeat')
+}
 
 
 const drawRadarMultiple = (pbData, options, successOnly) => {
@@ -104,7 +120,7 @@ const drawBarMultiple = (pbData, options) => {
     let a = "a0";
     let colorsMiddle = [];
     colors.forEach(c => {
-        colorsMiddle.push(c + a);
+        colorsMiddle.push(createDiagonalPattern(c));
     });
     
     new chartJs.Chart(ctx, {
