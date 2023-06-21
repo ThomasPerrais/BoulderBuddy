@@ -10,4 +10,4 @@ def float_duration_to_hour(duration):
     f = float(duration)
     s = math.floor(f)
     dec = math.floor((f - s) * 60)
-    return "{}h {}mn".format(s, dec)
+    return "{}h{}".format(s, dec)

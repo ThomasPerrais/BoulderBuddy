@@ -68,7 +68,7 @@ class TryAdmin(admin.ModelAdmin):
 class ClimberAdmin(admin.ModelAdmin):
     fieldsets = [
         ('General', {'fields': ["name", "picture", "mail", "pwd"]}),
-        ('Preferences', {'fields': ["stats_preference", "week_hour_target", "week_hard_boulder_target"]}),
+        ('Preferences', {'fields': ["stats_preference", "month_hour_target", "month_hard_boulder_target"]}),
     ]
     inlines = [HardBoulderInline]
 
