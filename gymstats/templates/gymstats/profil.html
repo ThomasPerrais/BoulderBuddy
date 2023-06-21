@@ -4,9 +4,10 @@
 
 
 <link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0.3">
-<link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.0.5">
+<link rel="stylesheet" href="{% static 'gymstats/tab.css' %}?ver=1.0">
+<link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.0.7">
 
-<!-- {{ message|json_script:'message' }} -->
+{{ data|json_script:'data' }}
 
 <head>
     <meta charset="utf-8">
@@ -17,7 +18,9 @@
     <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'gymstats/profil.js' %}?ver=2.2.0" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <script src="{% static 'gymstats/profil.js' %}?ver=2.4.1" type="module" defer></script>
+    <script src="{% static 'gymstats/change_tab.js' %}?ver=1.0" type="module" defer></script>
 </head>
 
 <body>
@@ -35,39 +38,62 @@
             style="border-radius: 100%; margin-right: 20px;">
             <h1 style="vertical-align: middle;">{{ climber }}</h1>
         </div>
+
         <div class="all-time">
-            {% for key, value in data|iterate_items:"all_time" %}
-                <p>{{key}}: {{ value }}</p>
-            {% endfor %}
+        </div>
+
+        <div class="month box">
+            <p style="text-align: center;">This month</p>
+
+            <div class="month-progress">
+                <svg class="progress time">
+                    <text text-anchor="middle" x="100" y="110" style="font-size:40px">&#128337;</text>
+                    <circle class="bg" cx="100" cy="100" r="90" />
+                    <circle class="progress-bar" cx="100" cy="100" r="90" />
+                    <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Training time: </text>
+                </svg>
+                <svg class="progress tops">
+                    <text class="center-image" text-anchor="middle" x="100" y="110" style="font-size:40px">🦍</text>
+                    <circle class="bg" cx="100" cy="100" r="90" />
+                    <circle class="progress-bar" cx="100" cy="100" r="90" />
+                    <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Hard boulders: </text>
+                </svg>
+            </div>
         </div>
                 
-        <div class="month-view">
-            <h1>Since the begining of the year</h1>
-            {% for key, value in data|iterate_items:"year" %}
-                <p>{{key}}: {{ value }}</p>
-            {% endfor %}
-        </div>
+        <div class="year box">
+            <p style="text-align: center;">Year problems by difficulty</p>
 
-        <div class="week">
-            <div class="progress">
-                <h2>Training time</h2>
-                <div class="bar-overflow">
-                    <div class="bar"></div>
-                </div>
-                <span class="training-time">10</span>%
+            <div class="tab">
+                <button class="tablinks" id="defaultOpen" data-id="all-pb">All</button>
+                <button class="tablinks" data-id="lower-pb">Lower</button>
+                <button class="tablinks" data-id="expect-pb">Expect</button>
+                <button class="tablinks" data-id="higher-pb">Higher</button>
+                <button class="tablinks" data-id="unk-pb">Unk</button>
             </div>
 
-            <div class="progress">
-                <h2>Hard boulders</h2>
-                <div class="bar-overflow">
-                    <div class="bar"></div>
-                </div>
-                <span class="hard-boulders">10</span>%
+            <div id="all-pb" class="statstab">
+                <canvas id="year-all-problems"></canvas>
             </div>
-    
+            <div id="lower-pb" class="statstab">
+                <canvas id="year-lower-problems"></canvas>
+            </div>
+            <div id="expect-pb" class="statstab">
+                <canvas id="year-expect-problems"></canvas>
+            </div>
+            <div id="higher-pb" class="statstab">
+                <canvas id="year-higher-problems"></canvas>
+            </div>
+            <div id="unk-pb" class="statstab">
+                <canvas id="year-unk-problems"></canvas>
+            </div>
         </div>
 
-        <div class="shoe-usage">
+        <div class="by-gym-stats box">
+            TODO: bar chart of successes by gym
+        </div>
+
+        <div class="shoe-usage box">
             TODO fill shoe usage histogram
         </div>
 

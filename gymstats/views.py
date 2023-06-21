@@ -112,34 +112,42 @@ def home(request):
 def profil(request):
     climber = get_object_or_404(Climber, name="Thomas")  # TODO: change this, logged in climber
     
-    data = {
-        "all_time": {
-
-        },
-        "year": {
-
-        },
-        "pref": {
-
-        }
-    }
+    data = {}
     
     # All Time information
     sessions = Session.objects.filter(climber=climber).only("duration")
-    data["all_time"] = statistics(sessions, duration=True, length=True, top_zone_fail=False)
+    data["all_time"] = statistics(sessions=sessions, start_date=None, duration=True, length=True,
+                                  top_zone_fail=False, hard_tops=False, threshold_positions=None)
+
+    today = date.today()
+    threshold_positions = __preprocess_threshold(climber)
 
     # Month information
-    first_day_of_year = "{}-01-01".format(date.today().year)
-    year_sessions = Session.objects.filter(date__gte=first_day_of_year).order_by("date")
-    threshold = {}
-    for thres in climber.hard_boulders.all():
-        threshold[thres.gym] = thres.grade_threshold
+    first_day_of_month = today.replace(day=1)
+    month_sessions = Session.objects.filter(climber=climber, date__gte=first_day_of_month)
+    data["month"] = statistics(sessions=month_sessions, start_date=first_day_of_month, duration=True,
+                               length=True, top_zone_fail=False, hard_tops=True, threshold_positions=threshold_positions)
+    # fill target percentages
+    data["month"]["training_time_target"] = min(100, data["month"]["duration"] * 100 / climber.month_hour_target)
+    data["month"]["hard_boulders_target"] = min(100, data["month"]["hard_tops"] * 100 / climber.month_hard_boulder_target)
 
-    data["year"] = statistics(year_sessions, duration=False, length=False,
-                               top_zone_fail=True, threshold=threshold)
+    # Year information
+    first_day_of_year = today.replace(day=1, month=1)
+    year_sessions = Session.objects.filter(climber=climber, date__gte=first_day_of_year).order_by("date")
+    
+    data["year"] = statistics(sessions=year_sessions, start_date=first_day_of_year, duration=False,
+                              length=False, top_zone_fail=True, hard_tops=False, threshold_positions=threshold_positions)
 
     return render(request, 'gymstats/profil.html', {'data': data, 'climber': climber})
 
+
+def __preprocess_threshold(climber):
+    threshold_positions = {}
+    for th in climber.hard_boulders.all():
+        order = GRADE_ORDER[BRAND_TO_ABV[th.gym.brand]]
+        positions = [order.index(g.lower()) for g in th.grade_threshold.split(',') if g.lower() in order]
+        threshold_positions[th.gym] = sorted(positions)
+    return threshold_positions
 
 
 # Session views
