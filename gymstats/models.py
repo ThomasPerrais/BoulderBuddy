@@ -74,6 +74,8 @@ class Climber(models.Model):
     month_hour_target = models.IntegerField(default=10)  # training hour target
     month_hard_boulder_target = models.IntegerField(default=10)  # target number of hard boulders to top every month
 
+    preferred_gyms = models.ManyToManyField(Gym, blank=True, verbose_name="My Gyms")
+
     mail = models.EmailField(blank=True)
     pwd = models.CharField(max_length=30, blank=True)
 
