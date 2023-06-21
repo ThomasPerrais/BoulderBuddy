@@ -1,5 +1,6 @@
 from scipy.stats import fisher_exact
 from typing import Dict
+from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 
 
 def fisher_overrepr(superset_stats: Dict, subset_stats: Dict, superset_size: int,
@@ -16,3 +17,4 @@ def fisher_overrepr(superset_stats: Dict, subset_stats: Dict, superset_size: int
                 current.append((val, fisher_stat.statistic, fisher_stat.pvalue))
         res[attr] = sorted(current, key=lambda t: t[1], reverse=True)[:topk]
     return res
+

@@ -1,24 +1,26 @@
+import datetime
 import math
+import itertools
 
 from typing import List, Dict
 from collections import defaultdict
 
-from gymstats.models import Try, Session, Gym
+from gymstats.models import Try, Session, Gym, Rank, Top
 from gymstats.helper.utils import float_duration_to_hour
 from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 
 
-def statistics(sessions: List[Session], duration: bool = True, length: bool = True, 
-               top_zone_fail: bool = True, threshold: Dict[Gym, str] = None):
+def statistics(sessions: List[Session], start_date: datetime.date, duration: bool = True, length: bool = True, 
+               top_zone_fail: bool = True, hard_tops: bool = True, threshold_positions: Dict[Gym, List[int]] = None):
 
     result = {}
-
+        
     if length:
-        result["Sessions"] = len(sessions)
+        result["sessions"] = len(sessions)
     
     if duration:
         result["duration"] = sum([s.duration for s in sessions])
-        result["Training Hours"] = float_duration_to_hour(result["duration"])
+        result["duration_human_readable"] = float_duration_to_hour(result["duration"])
     
     if top_zone_fail:
         problems_achievement = {}
@@ -50,79 +52,42 @@ def statistics(sessions: List[Session], duration: bool = True, length: bool = Tr
                     # no else since it cannot be worse
                     problems_achievement[fail.problem] = "fail"
         
-        # TODO: there might be a problem with flash (and other) if a problem was tried the previous month...
+        # TODO: there might be a problem with flash (and other) if a problem was tried the previous month/year/...
 
         result["pb_all_try"] = 0
         result["pb_all_flash"] = 0
         result["pb_all_top"] = 0
         result["pb_all_zone"] = 0
         result["pb_all_fail"] = 0
-        if threshold:
-            result["pb_lower_try"] = 0
-            result["pb_lower_flash"] = 0
-            result["pb_lower_top"] = 0
-            result["pb_lower_zone"] = 0
-            result["pb_lower_fail"] = 0
-
-            result["pb_expect_try"] = 0
-            result["pb_expect_flash"] = 0
-            result["pb_expect_top"] = 0
-            result["pb_expect_zone"] = 0
-            result["pb_expect_fail"] = 0
-
-            result["pb_higher_try"] = 0
-            result["pb_higher_flash"] = 0
-            result["pb_higher_top"] = 0
-            result["pb_higher_zone"] = 0
-            result["pb_higher_fail"] = 0
-
-            result["pb_unk_try"] = 0
-            result["pb_unk_flash"] = 0
-            result["pb_unk_top"] = 0
-            result["pb_unk_zone"] = 0
-            result["pb_unk_fail"] = 0
+        if threshold_positions:
+            for v in Rank:
+                result["pb_{}_try".format(v.value)] = 0
+                result["pb_{}_flash".format(v.value)] = 0
+                result["pb_{}_top".format(v.value)] = 0
+                result["pb_{}_zone".format(v.value)] = 0
+                result["pb_{}_fail".format(v.value)] = 0
 
         for problem, value in problems_achievement.items():
-            keys = ["pb_all_try", "pb_all_" + value]
-            if threshold:
-                if problem.gym in threshold:
-                    # scale order in the current gym
-                    order = GRADE_ORDER[BRAND_TO_ABV[problem.gym.brand]]
-                    try:
-                        grade_pos = order.index(problem.grade.lower()) # position of problem grade in the scale
-                        
-                        threshold_positions = []
-                        for grade in threshold[problem.gym].split(','):
-                            low_gr = grade.lower()
-                            if low_gr in order:
-                                threshold_positions.append(order.index(low_gr))
-                        threshold_positions = sorted(threshold_positions)
-
-                        if len(threshold_positions) == 0:
-                            # problem in threshold of the current user, need to update them
-                            keys.append("pb_unk_try")
-                            keys.append("pb_unk_" + value)
-                        elif grade_pos < threshold_positions[0]:
-                            keys.append("pb_lower_try")
-                            keys.append("pb_lower_" + value)
-                        elif grade_pos > threshold_positions[-1]:
-                            keys.append("pb_higher_try")
-                            keys.append("pb_higher_" + value)
-                        else:
-                            keys.append("pb_expect_try")
-                            keys.append("pb_expect_" + value)
-
-                    except KeyError:
-                        # key error somewhere, maybe problem grade has an error
-                        # default to 'unk'
-                        keys.append("pb_unk_try")
-                        keys.append("pb_unk_" + value)
-                else:
-                    # climber did not provide a threshold for this gym... adding to 'unk'
-                    keys.append("pb_unk_try")
-                    keys.append("pb_unk_" + value)
-            
+            r = problem.rank(threshold_positions)
+            keys = ["pb_all_try", "pb_all_" + value, "pb_{}_try".format(r.value), "pb_{}_{}".format(r.value, value)]
             for k in keys:
                 result[k] += 1
     
+    if hard_tops:
+        if not threshold_positions:
+            # impossible to compute hard tops without climber threshold
+            result["hard_tops"] = "NA"
+        else:
+            allowed = {Rank.EXPECT, Rank.HIGHER}  # problem ranked at least EXPECT 
+            all_tops = itertools.chain(*[s.tops.all() for s in sessions])  # all tops in the current sessions set
+
+            problems = { t.problem for t in all_tops if t.problem.rank(threshold_positions) in allowed }
+            # need to check if some problems where topped the month before.
+            result["hard_tops"] = 0
+            for pb in problems:
+                if Top.objects.filter(problem=pb, session__date__lt=start_date).count() == 0:
+                    # problem was topped before the given start date of the session set
+                    # this means that it is not an actual new top of the given time slot
+                    result["hard_tops"] += 1
+
     return result
