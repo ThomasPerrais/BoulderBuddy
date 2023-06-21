@@ -5,6 +5,7 @@ import math
 
 from collections import defaultdict
 from django.db import models
+from enum import Enum
 from location_field.models.plain import PlainLocationField
 from typing import Any
 
@@ -70,8 +71,8 @@ class Climber(models.Model):
     
     stats_preference = models.IntegerField(choices=StatsPreference.choices, default=1)
 
-    week_hour_target = models.IntegerField(default=3)  # training hour target
-    week_hard_boulder_target = models.IntegerField(default=3)  # target number of hard boulders to top every week
+    month_hour_target = models.IntegerField(default=10)  # training hour target
+    month_hard_boulder_target = models.IntegerField(default=10)  # target number of hard boulders to top every month
 
     mail = models.EmailField(blank=True)
     pwd = models.CharField(max_length=30, blank=True)
@@ -138,6 +139,13 @@ class Sector(models.Model):
         return self.gym.abv + " - Sector " + str(self.sector_id)
 
 
+class Rank(Enum):
+    UNK = "unk"
+    LOWER = "lower"
+    EXPECT = "expect"
+    HIGHER = "higher"
+
+
 class Problem(models.Model):
 
     class Meta:
@@ -181,6 +189,23 @@ class Problem(models.Model):
         if desc:
             name += " ({})".format(self.description())
         return name
+
+    def rank(self, threshold_positions):
+        if not threshold_positions or self.gym not in threshold_positions or len(threshold_positions[self.gym]) == 0:
+            return Rank.UNK
+        try:
+            order = GRADE_ORDER[BRAND_TO_ABV[self.gym.brand]]
+            grade_pos = order.index(self.grade.lower()) # position of problem grade in the scale
+            positions = threshold_positions[self.gym]
+            if grade_pos < positions[0]:
+                return Rank.LOWER
+            elif grade_pos > positions[-1]:
+                return Rank.HIGHER
+            else:
+                return Rank.EXPECT
+        except KeyError:
+            return Rank.UNK
+
 
     def _pic_name(self):
         return "{}_{}_{}_{}".format(self.gym.abv, self.grade, self.date_added.strftime("%m%y"), rand_name())
