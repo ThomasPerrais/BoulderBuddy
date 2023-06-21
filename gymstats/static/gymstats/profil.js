@@ -1,6 +1,3 @@
-import * as chartJs from 'https://cdn.jsdelivr.net/npm/chart.js@4.3.0/auto/+esm'
-
-
 let data = JSON.parse(document.getElementById('data').textContent);
 
 const animalEmoji = ["🦥", "🐨", "🐈‍⬛", "🐆", "🐅", "🐒", "🦧", "🦍"]
@@ -69,30 +66,14 @@ const renderAllTimeInfo = () => {
 renderAllTimeInfo();
 
 
-// $(".progress").each(function(){
-    
-//     var $bar = $(this).find(".bar");
-//     var $val = $(this).find("span");
-//     var perc = parseInt($val.text(), 10);
-//     $({p:0}).animate({p:perc}, {
-//       duration: 3000,
-//       easing: "swing",
-//       step: function(p) {
-//         $bar.css({
-//           transform: "rotate("+ (45+(p*1.8)) +"deg)", // 100%=180° so: ° = % * 1.8
-//           // 45 is to add the needed rotation to have the green borders at the bottom
-//         });
-//         $val.text(p|0);
-//       }
-//     });
-//   });
-
-
 var defaultOptions = {
     responsive: true,
     plugins: {
         labels: {
-            render: "value"
+            render: 'percentage',
+            fontColor: '#000',
+            fontSize: 12,
+            fontStyle: 'bold'
         },
         legend: {
             position: 'right',
@@ -111,7 +92,7 @@ const drawPbPie = (ctx, prefix, options) => {
         pbData.push(data["year"]["pb_" + prefix + "_" + l]);
     });
 
-    new chartJs.Chart(ctx, {
+    new Chart(ctx, {
         type: "pie",
         data: {
             labels: achievementProblemlabels,
@@ -131,3 +112,91 @@ for (let i = 0; i < prefixes.length; i++) {
     var ctx = $types[0].getContext("2d");
     drawPbPie(ctx, prefixes[i], defaultOptions);
 }
+
+
+// gym stats
+var gymSelect = document.querySelector(".gym-select");
+for (let key in data["by_gym"]) {
+    let opt = document.createElement("option");
+    opt.value = key;
+    opt.text = key;
+    gymSelect.appendChild(opt);
+}
+
+var $gymStats = $("#gym-stats");
+var ctx = $gymStats[0].getContext("2d");
+
+// Attach event listener to the select element
+gymSelect.addEventListener('change', function(event) {
+    // Get the selected option
+    var selectedGym = event.target.value;
+    
+    // Clear the existing chart, if any
+    if (window.GymChart) {
+        window.GymChart.destroy();
+    }
+
+    if (selectedGym.length > 0) {
+        gymData = data["by_gym"][selectedGym];
+        window.GymChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: gymData["labels"],
+                datasets: [{
+                    label: 'Flash',
+                    backgroundColor: achievementProblemColors[0],
+                    data: gymData["flash"],
+                    barPercentage: 0.6
+                }, {
+                    label: 'Top',
+                    backgroundColor: achievementProblemColors[1],
+                    data: gymData["top"],
+                    barPercentage: 0.6
+                }, {
+                    label: 'Zone',
+                    backgroundColor: achievementProblemColors[2],
+                    data: gymData["zone"],
+                    barPercentage: 0.6
+                }, {
+                    label: 'Fail',
+                    backgroundColor: achievementProblemColors[3],
+                    data: gymData["fail"],
+                    barPercentage: 0.6
+                }, {
+                    label: 'Not Tried',
+                    backgroundColor: "white",
+                    borderColor: "black",
+                    borderWidth: 1,
+                    data: gymData["not tried"],
+                    barPercentage: 0.6
+                }
+            ]},
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        display: true
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+            
+                    }
+                }
+            }
+        });
+    }
+});
+
+

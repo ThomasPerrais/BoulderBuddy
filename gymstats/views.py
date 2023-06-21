@@ -18,6 +18,7 @@ from .helper.query import query_problems_from_filters
 from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER
 from .helper.utils import float_duration_to_hour
 from .statistics.sessions import statistics
+from .statistics.gym import current_problems_achievement
 
 # Create your views here.
 
@@ -137,6 +138,11 @@ def profil(request):
     
     data["year"] = statistics(sessions=year_sessions, start_date=first_day_of_year, duration=False,
                               length=False, top_zone_fail=True, hard_tops=False, threshold_positions=threshold_positions)
+
+    # By gym information
+    data["by_gym"] = {}
+    for gym in climber.preferred_gyms.all():
+        data["by_gym"][str(gym)] = current_problems_achievement(gym)
 
     return render(request, 'gymstats/profil.html', {'data': data, 'climber': climber})
 

@@ -18,9 +18,9 @@
     <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
-    <script src="{% static 'gymstats/profil.js' %}?ver=2.4.1" type="module" defer></script>
-    <script src="{% static 'gymstats/change_tab.js' %}?ver=1.0" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'gymstats/profil.js' %}?ver=2.4.4" defer></script>
+    <script src="{% static 'gymstats/change_tab.js' %}?ver=1.0.1" defer></script>
 </head>
 
 <body>
@@ -90,7 +90,13 @@
         </div>
 
         <div class="by-gym-stats box">
-            TODO: bar chart of successes by gym
+            <label for="gym-select">Gym:</label>
+            <select name="gym" class="gym-select">
+                <option value="">--select gym--</option>
+            </select>
+            <div>
+                <canvas id="gym-stats"></canvas>
+            </div>
         </div>
 
         <div class="shoe-usage box">
