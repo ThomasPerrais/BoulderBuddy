@@ -231,7 +231,7 @@ def session_statistics(request, session_id):
 
 
 def session_details(request, session_id):
-    session = get_object_or_404(Session, abv=session_id)
+    session = get_object_or_404(Session, id=session_id)
     # TODO display infos
     return render(request, 'gymstats/session_details.html', {'session': session})
 

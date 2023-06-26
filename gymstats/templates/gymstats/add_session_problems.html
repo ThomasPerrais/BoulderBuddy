@@ -6,21 +6,17 @@
 
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'gymstats/add_session_problems.css' %}?ver=1.0.3">
+<link rel="stylesheet" href="{% static 'gymstats/gym_problems.css' %}?ver=1.0">
 {{ message|json_script:'message' }}
 {% endblock %}
 
 
 {% block scripts %}
-<script src="{% static 'gymstats/session_problems.js' %}?ver=2.2.0" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'gymstats/collapsible.js' %}?ver=2.2.0" defer></script>
 {% endblock %}
 
 {% block content %}
-<div id="popup" class="popup">
-    <span id="popup-content"></span>
-    <span id="close-button" onclick="closePopup()">&times;</span>
-</div>
-
 <div class="sector-map" style="display:flex;justify-content: center;">
     {% for img in sectors_img %}
     <img src={{ img }}
