@@ -1,139 +1,129 @@
+{% extends 'gymstats/base.html' %}
+
 {% load static %}
 {% load pb_extras %}
 
-<link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0">
-<link rel="stylesheet" href="{% static 'gymstats/problem_results.css' %}?ver=1.2.13">
-<link rel="stylesheet" href="{% static 'gymstats/tagslist.css' %}?ver=1.0.0">
+{% block css %}
+<link rel="stylesheet" href="{% static 'gymstats/problem_results.css' %}?ver=1.0.1">
+<link rel="stylesheet" href="{% static 'gymstats/tagslist.css' %}?ver=1.0.1">
 {{ filters|json_script:'filters' }}
 {{ stats|json_script:'stats' }}
+{% endblock %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Explorer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font Link for Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="{% static 'gymstats/filters.js' %}?ver=2.1.13" defer></script>
-    <script src="{% static 'gymstats/overrepr.js' %}?ver=1.0" defer></script>
-</head>
+{% block title %} Explorer {% endblock %}
 
-<body>
-    
-    <script src="{% static 'gymstats/sidebar.js' %}" defer></script>
-    <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px; margin-top: 0%;"></div>
+{% block scripts %}
+<script src="{% static 'gymstats/filters.js' %}?ver=2.1.13" defer></script>
+<script src="{% static 'gymstats/overrepr.js' %}?ver=1.0" defer></script>
+{% endblock %}
 
-    <div class="filters">
-
-        <form method=POST action="{% url 'gs:pb-searchresults' %}">
-            {% csrf_token %}
-            <div class="left" style="width: 60%;">
-                <div class="filter-bloc">
-                    <div class="title">
-                        <p>
-                            Grades
-                            <a class="add-btn">+</a>
-                        </p>
-                    </div>
-                    <ul class="tagslist filter-list">
-                    </ul>
+{% block before %}
+<div class="filters">
+    <form method=POST action="{% url 'gs:pb-searchresults' %}">
+        {% csrf_token %}
+        <div class="left" style="width: 60%;">
+            <div class="filter-bloc">
+                <div class="title">
+                    <p>
+                        Grades
+                        <a class="add-btn">+</a>
+                    </p>
                 </div>
-                <hr>  
-                <div class="filter-bloc">
-                    <div class="title">
-                        <p>
-                            Gym
-                            <a class="add-btn">+</a>
-                        </p>
-                    </div>
-                    <ul class="tagslist filter-list">
-                    </ul>
-                </div>
-                <hr>
-                <div class="filter-bloc">
-                    <div class="title">
-                        <p>
-                            Attributes
-                            <a class="add-btn">+</a>
-                        </p>
-                    </div>
-                    <ul class="tagslist filter-list">
-                    </ul>
-                </div>
-                <hr>
+                <ul class="tagslist filter-list">
+                </ul>
             </div>
-            <div class="right" style="width: 35%;">
-                <div class="filter-bloc">
-                    <label class="title" for="current-filter">Currently in Gym</label>
-                    <input type="checkbox" name="current-filter" id="current-filter">
+            <hr>  
+            <div class="filter-bloc">
+                <div class="title">
+                    <p>
+                        Gym
+                        <a class="add-btn">+</a>
+                    </p>
                 </div>
-                <hr>
-                <div class="filter-bloc">
-                    <label class="title" for="achievement-filter">Achievement</label>
-                    <select name="try" id="achievement-filter">
-                        <option value="all" selected>All</option>
-                        <option value="top">Top</option>
-                        <option value="zone">Zone</option>
-                        <option value="fail">Fail</option>
-                    </select>
-                    <a class="fa fa-chart-line show-stats title" style="margin-left: 10%;"></a>
-                </div>                
-                <hr>
-                <div class="filter-bloc">
-                </div>
-                <hr>
+                <ul class="tagslist filter-list">
+                </ul>
             </div>
             <hr>
-        </form>
+            <div class="filter-bloc">
+                <div class="title">
+                    <p>
+                        Attributes
+                        <a class="add-btn">+</a>
+                    </p>
+                </div>
+                <ul class="tagslist filter-list">
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <div class="right" style="width: 35%;">
+            <div class="filter-bloc">
+                <label class="title" for="current-filter">Currently in Gym</label>
+                <input type="checkbox" name="current-filter" id="current-filter">
+            </div>
+            <hr>
+            <div class="filter-bloc">
+                <label class="title" for="achievement-filter">Achievement</label>
+                <select name="try" id="achievement-filter">
+                    <option value="all" selected>All</option>
+                    <option value="top">Top</option>
+                    <option value="zone">Zone</option>
+                    <option value="fail">Fail</option>
+                </select>
+                <a class="fa fa-chart-line show-stats title" style="margin-left: 10%;"></a>
+            </div>                
+            <hr>
+            <div class="filter-bloc">
+            </div>
+            <hr>
+        </div>
+        <hr>
+    </form>
 
 
-    </div>
-
-    <div class="parse-errors" style="margin-left: 80px;">
-        {% if unparsed %}
-            <ul>
-                {% for u in unparsed %}
-                    <li>{{ u }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <div class="statistics">
-    </div>
-    <hr class="statistics">
-
-    <div class="wrapper">
-        <h3> {{results|length}} problems found. </h3>
-
-        {% if results %}
-        <ul class="gallery">
-            {% for problem in results %}
-                <li class="gallery-item">
-                    <a href="{% url 'gs:pb-details' problem.id %}">{{ problem|gallery_display }}</a>
-                        <img src={{ problem.picture.url }}
-                            alt="Boulder picture"
-                            width="95%"
-                            height="95%">
-                        <ul class="tagslist">
-                            <li class="small ty">{{ problem.problem_type }}</li>
-                            {% for h in problem|hh %}
-                                <li class="small hh">{{ h }}</li>
-                            {% endfor %}
-                            {% for f in problem|fw %}
-                                <li class="small fw">{{ f }}</li>
-                            {% endfor %}
-                            {% for m in problem|me %}
-                                <li class="small me">{{ m }}</li>
-                            {% endfor %}
-                        </ul>
-                </li>
+</div>
+<div class="parse-errors" style="margin-left: 80px;">
+    {% if unparsed %}
+        <ul>
+            {% for u in unparsed %}
+                <li>{{ u }}</li>
             {% endfor %}
         </ul>
-        {% else %}
-            <p>No problems stored.</p>
-        {% endif %}
-    </div>
-    
-</body>
+    {% endif %}
+</div>
+<div class="statistics">
+</div>
+<hr class="statistics">
+{% endblock %}
+
+{% block content %}
+<h3> {{results|length}} problems found. </h3>
+
+{% if results %}
+<ul class="gallery">
+    {% for problem in results %}
+        <li class="gallery-item">
+            <a href="{% url 'gs:pb-details' problem.id %}">{{ problem|gallery_display }}</a>
+                <img src={{ problem.picture.url }}
+                    alt="Boulder picture"
+                    width="95%"
+                    height="95%">
+                <ul class="tagslist">
+                    <li class="small ty">{{ problem.problem_type }}</li>
+                    {% for h in problem|hh %}
+                        <li class="small hh">{{ h }}</li>
+                    {% endfor %}
+                    {% for f in problem|fw %}
+                        <li class="small fw">{{ f }}</li>
+                    {% endfor %}
+                    {% for m in problem|me %}
+                        <li class="small me">{{ m }}</li>
+                    {% endfor %}
+                </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No problems stored.</p>
+{% endif %}
+{% endblock %}

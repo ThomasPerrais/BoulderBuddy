@@ -1,3 +1,6 @@
+{% extends 'gymstats/base.html' %}
+
+{% block content %}
 {% if reviews_list %}
     <ul>
     {% for review in reviews_list %}
@@ -7,3 +10,5 @@
 {% else %}
     <p>No reviews for this problem</p>
 {% endif %}
+{% endblock %}
+

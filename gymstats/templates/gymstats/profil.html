@@ -1,108 +1,95 @@
+{% extends 'gymstats/base.html' %}
+
 {% load static %}
 {% load custom_filters %}
 {% load pb_extras %}
 
-
-<link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0.3">
+{% block css %}
 <link rel="stylesheet" href="{% static 'gymstats/tab.css' %}?ver=1.0">
 <link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.0.7">
-
 {{ data|json_script:'data' }}
+{% endblock %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Explorer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font Link for Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{% static 'gymstats/profil.js' %}?ver=2.4.4" defer></script>
-    <script src="{% static 'gymstats/change_tab.js' %}?ver=1.0.1" defer></script>
-</head>
+{% block title %}Profil{% endblock %}
 
-<body>
-    
-    <script src="{% static 'gymstats/sidebar.js' %}" defer></script>
-    <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px; margin-top: 0%;"></div>
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'gymstats/profil.js' %}?ver=2.4.4" defer></script>
+<script src="{% static 'gymstats/change_tab.js' %}?ver=1.0.1" defer></script>
+{% endblock %}
 
-    <div class="wrapper">
+{% block content %}
+<div class="profil">
+    <img src={{ climber.picture.url }}
+    alt="Profil Picture"
+    width="80"
+    height="80"
+    style="border-radius: 100%; margin-right: 20px;">
+    <h1 style="vertical-align: middle;">{{ climber }}</h1>
+</div>
 
-        <div class="profil">
-            <img src={{ climber.picture.url }}
-            alt="Profil Picture"
-            width="80"
-            height="80"
-            style="border-radius: 100%; margin-right: 20px;">
-            <h1 style="vertical-align: middle;">{{ climber }}</h1>
-        </div>
+<div class="all-time">
+</div>
 
-        <div class="all-time">
-        </div>
+<div class="month box">
+    <p style="text-align: center;">This month</p>
 
-        <div class="month box">
-            <p style="text-align: center;">This month</p>
+    <div class="month-progress">
+        <svg class="progress time">
+            <text text-anchor="middle" x="100" y="110" style="font-size:40px">&#128337;</text>
+            <circle class="bg" cx="100" cy="100" r="90" />
+            <circle class="progress-bar" cx="100" cy="100" r="90" />
+            <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Training time: </text>
+        </svg>
+        <svg class="progress tops">
+            <text class="center-image" text-anchor="middle" x="100" y="110" style="font-size:40px"></text>
+            <circle class="bg" cx="100" cy="100" r="90" />
+            <circle class="progress-bar" cx="100" cy="100" r="90" />
+            <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Hard boulders: </text>
+        </svg>
+    </div>
+</div>
+        
+<div class="year box">
+    <p style="text-align: center;">Year problems by difficulty</p>
 
-            <div class="month-progress">
-                <svg class="progress time">
-                    <text text-anchor="middle" x="100" y="110" style="font-size:40px">&#128337;</text>
-                    <circle class="bg" cx="100" cy="100" r="90" />
-                    <circle class="progress-bar" cx="100" cy="100" r="90" />
-                    <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Training time: </text>
-                </svg>
-                <svg class="progress tops">
-                    <text class="center-image" text-anchor="middle" x="100" y="110" style="font-size:40px">🦍</text>
-                    <circle class="bg" cx="100" cy="100" r="90" />
-                    <circle class="progress-bar" cx="100" cy="100" r="90" />
-                    <text text-anchor="middle" class="btm-text" x="100" y="215" style="font-size:15px">Hard boulders: </text>
-                </svg>
-            </div>
-        </div>
-                
-        <div class="year box">
-            <p style="text-align: center;">Year problems by difficulty</p>
-
-            <div class="tab">
-                <button class="tablinks" id="defaultOpen" data-id="all-pb">All</button>
-                <button class="tablinks" data-id="lower-pb">Lower</button>
-                <button class="tablinks" data-id="expect-pb">Expect</button>
-                <button class="tablinks" data-id="higher-pb">Higher</button>
-                <button class="tablinks" data-id="unk-pb">Unk</button>
-            </div>
-
-            <div id="all-pb" class="statstab">
-                <canvas id="year-all-problems"></canvas>
-            </div>
-            <div id="lower-pb" class="statstab">
-                <canvas id="year-lower-problems"></canvas>
-            </div>
-            <div id="expect-pb" class="statstab">
-                <canvas id="year-expect-problems"></canvas>
-            </div>
-            <div id="higher-pb" class="statstab">
-                <canvas id="year-higher-problems"></canvas>
-            </div>
-            <div id="unk-pb" class="statstab">
-                <canvas id="year-unk-problems"></canvas>
-            </div>
-        </div>
-
-        <div class="by-gym-stats box">
-            <label for="gym-select">Gym:</label>
-            <select name="gym" class="gym-select">
-                <option value="">--select gym--</option>
-            </select>
-            <div>
-                <canvas id="gym-stats"></canvas>
-            </div>
-        </div>
-
-        <div class="shoe-usage box">
-            TODO fill shoe usage histogram
-        </div>
-
+    <div class="tab">
+        <button class="tablinks" id="defaultOpen" data-id="all-pb">All</button>
+        <button class="tablinks" data-id="lower-pb">Lower</button>
+        <button class="tablinks" data-id="expect-pb">Expect</button>
+        <button class="tablinks" data-id="higher-pb">Higher</button>
+        <button class="tablinks" data-id="unk-pb">Unk</button>
     </div>
 
-</body>
+    <div id="all-pb" class="statstab">
+        <canvas id="year-all-problems"></canvas>
+    </div>
+    <div id="lower-pb" class="statstab">
+        <canvas id="year-lower-problems"></canvas>
+    </div>
+    <div id="expect-pb" class="statstab">
+        <canvas id="year-expect-problems"></canvas>
+    </div>
+    <div id="higher-pb" class="statstab">
+        <canvas id="year-higher-problems"></canvas>
+    </div>
+    <div id="unk-pb" class="statstab">
+        <canvas id="year-unk-problems"></canvas>
+    </div>
+</div>
+
+<div class="by-gym-stats box">
+    <label for="gym-select">Gym:</label>
+    <select name="gym" class="gym-select">
+        <option value="">--select gym--</option>
+    </select>
+    <div>
+        <canvas id="gym-stats"></canvas>
+    </div>
+</div>
+
+<div class="shoe-usage box">
+    TODO fill shoe usage histogram
+</div>
+{% endblock %}

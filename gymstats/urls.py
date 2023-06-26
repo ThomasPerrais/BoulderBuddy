@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
 app_name = 'gs'
 urlpatterns = [
+
+    path("accounts/", include("django.contrib.auth.urls")),
 
     # Autocomplete routes
     path('sector-autocomplete/', views.SectorAutocompleteView.as_view(), name='sector-autocomplete'),

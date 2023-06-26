@@ -1,33 +1,22 @@
+{% extends 'gymstats/base.html' %}
+
 {% load static %}
 
+{% block css %}
 <link rel="stylesheet" href="{% static 'gymstats/searchbar.css' %}?ver=1.0">
-<link rel="stylesheet" href="{% static 'gymstats/shared.css' %}?ver=1.0">
+{% endblock %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Explorer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font Link for Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <script src="https://kit.fontawesome.com/5bda19242b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="{% static 'gymstats/explorer.js' %}" defer></script>
-</head>
+{% block title %}Explorer{% endblock %}
 
-<body>
-    <script src="{% static 'gymstats/sidebar.js' %}" defer></script>
-    <div class="w3-sidebar w3-bar-block w3-white w3-xlarge" style="width: 70px;"></div>
+{% block scripts %}
+<script src="{% static 'gymstats/explorer.js' %}" defer></script>
+{% endblock %}
 
-    <div class="wrapper">
-        <h1 class="title"> <i class="fa fa-earth-europe"></i> Problem Explorer <i class="fa fa-earth-europe"></i></h1>
-
-        <form method=POST action="{% url 'gs:pb-searchresults' %}">
-            {% csrf_token %}
-            <input id="searchbar" class="searchbar" type="search"
-            name="search" placeholder="Search problems..">
-        </form>
-    </div>
-    
-</body>
-  
-</html>
+{% block content %}
+<h1 class="title"> <i class="fa fa-earth-europe"></i> Problem Explorer <i class="fa fa-earth-europe"></i></h1>
+<form method=POST action="{% url 'gs:pb-searchresults' %}">
+    {% csrf_token %}
+    <input id="searchbar" class="searchbar" type="search"
+    name="search" placeholder="Search problems..">
+</form>
+{% endblock %}
