@@ -1,1 +1,15 @@
-{{session}}
+{% extends 'gymstats/base_gym_problems.html' %}
+
+{% load custom_filters %}
+
+{% block title %}{{session}} - Details{% endblock %}
+
+{% block item_info %}
+<p>{{problems|achievement:pb}}</p>
+<p>{{problems|attempts:pb}}</p>
+<form method="post" style="display: flex; margin: 5px;">
+    {% csrf_token %}
+    <input type="hidden" id="pb-id" name="pb-id" value="{{ pb.id }}" />
+    <button type="delete" style="background-color: red;">DELETE</button>
+</form>
+{% endblock %}

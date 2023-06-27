@@ -1,61 +1,18 @@
-{% extends 'gymstats/base.html' %}
+{% extends 'gymstats/base_gym_problems.html' %}
 
-{% load static %}
-{% load custom_filters %}
-{% load pb_extras %}
+{% block title %}Session - Add Problems{% endblock %}
 
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'gymstats/gym_problems.css' %}?ver=1.0">
-{{ message|json_script:'message' }}
-{% endblock %}
-
-
-{% block scripts %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{% static 'gymstats/collapsible.js' %}?ver=2.2.0" defer></script>
-{% endblock %}
-
-{% block content %}
-<div class="sector-map" style="display:flex;justify-content: center;">
-    {% for img in sectors_img %}
-    <img src={{ img }}
-        alt="Boulder picture"
-        width="45%"
-        height="45%"
-        style="margin: 20px">
-    {% endfor %}
-</div>
-
-<div class="problems">
-    <h1>Gym Problems</h1>
-    {% for sector in num_sectors|num_range %}
-    <button type="button" class="collapsible">Sector {{ sector }}</button>
-    <div class="content">
-        <ul class="gallery"> 
-            {% for pb in problems|sector_problems:sector %}
-            <li class="gallery-item">
-                <a href="{% url 'gs:pb-details' pb.id %}">{{ pb|gallery_display }}</a>
-                <img src={{ pb.picture.url }}
-                    alt="Boulder picture"
-                    width="95%"
-                    height="95%">
-                <form method="post" style="display: flex; margin: 5px;">
-                    {% csrf_token %}
-                    <input type="hidden" id="pb-id" name="pb-id" value="{{ pb.id }}" />
-                    <select id="achievement" name="achievement" style="margin-right: 5%;">
-                        <option value="">---</option>
-                        <option value="top">Top</option>
-                        <option value="zone">Zone</option>
-                        <option value="fail">Fail</option>
-                    </select>
-                    <input id="attempts" name="attempts" type="text", placeholder="try.." style="width: 25%;margin-right: 5%;"></input>
-                    <button type="submit">🚀</button>
-                </form>
-            </li>
-            {% endfor %}  
-        </ul>
-    </div>
-    {% endfor %}
-</div>
+{% block item_info %}
+<form method="post" style="display: flex; margin: 5px;">
+    {% csrf_token %}
+    <input type="hidden" id="pb-id" name="pb-id" value="{{ pb.id }}" />
+    <select id="achievement" name="achievement" style="margin-right: 5%;">
+        <option value="">---</option>
+        <option value="top">Top</option>
+        <option value="zone">Zone</option>
+        <option value="fail">Fail</option>
+    </select>
+    <input id="attempts" name="attempts" type="text", placeholder="try.." style="width: 25%;margin-right: 5%;"></input>
+    <button type="submit">🚀</button>
+</form>
 {% endblock %}

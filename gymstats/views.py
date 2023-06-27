@@ -15,7 +15,7 @@ from .forms import SessionForm
 from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
-from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER
+from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER, grades_list
 from .helper.utils import float_duration_to_hour
 from .statistics.sessions import statistics
 from .statistics.gym import current_problems_achievement
@@ -87,13 +87,7 @@ class GradeAutocompleteView(autocomplete.Select2ListView):
         grades = []
         gym = self.forwarded.get('gym', None)
         if gym:
-            gym_brand = Gym.objects.get(id=gym).brand
-            if gym_brand in BRAND_TO_ABV:
-                grades = GRADE_ORDER[BRAND_TO_ABV[gym_brand]]
-            else:
-                grades = GRADE_ORDER["@default"]
-            grades = [elt[0].upper() + elt[1:] for elt in grades]
-
+            grades = grades_list(Gym.objects.get(id=gym), default=True)
         return grades
 
 
@@ -201,11 +195,11 @@ def add_session_problems(request, session_id):
 
     sectors = Sector.objects.filter(gym=sess.gym)
     sectors_img = set([s.map.url for s in sectors])
-    num_sectors = sectors.count()
+    
+    sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
+    grades = {'g:' + g: g for g in grades_list(sess.gym, default=True)}
 
-    problems_by_sector = [[] for i in range(num_sectors)]
-    for pb in Problem.objects.filter(gym=sess.gym, removed=False):
-        problems_by_sector[pb.sector.sector_id - 1].append(pb)
+    problems = {pb: {} for pb in Problem.objects.filter(gym=sess.gym, removed=False)}
 
     return render(request, 'gymstats/add_session_problems.html', {
             "message": {
@@ -214,8 +208,8 @@ def add_session_problems(request, session_id):
             },
             "session": session,
             "sectors_img": sectors_img,
-            "problems": problems_by_sector,
-            "num_sectors": num_sectors
+            "problems": problems,
+            "sections": sectors,
         })
 
 
@@ -232,8 +226,31 @@ def session_statistics(request, session_id):
 
 def session_details(request, session_id):
     session = get_object_or_404(Session, id=session_id)
-    # TODO display infos
-    return render(request, 'gymstats/session_details.html', {'session': session})
+
+    sectors = Sector.objects.filter(gym=session.gym)
+    sectors_img = set([s.map.url for s in sectors])
+    num_sectors = sectors.count()
+
+    grades = {'g:' + g: g for g in grades_list(session.gym, default=True)}
+    problems = {}
+
+    for top in session.tops.all():
+       problems[top.problem] = { "achievement": "top", "attempts": top.attempts }
+    for zone in session.zones.all():
+       problems[zone.problem] = { "achievement": "zone", "attempts": zone.attempts }
+    for fail in session.failures.all():
+       problems[fail.problem] = { "achievement": "fail", "attempts": fail.attempts }
+
+    return render(request, 'gymstats/session_details.html', {
+            # "message": {
+            #     "content": msg,
+            #     "success": "yes" if success else "no"
+            # },
+            "session": session,
+            "sectors_img": sectors_img,
+            "problems": problems,
+            "sections": grades
+        })
 
 
 # GYM views
