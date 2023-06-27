@@ -1,5 +1,3 @@
-
-
 GRADE_ORDER = {
     "@default": ["white", "yellow", "orange", "green", "blue", "red", "black", "purple"],
     "cd": ["yellow", "orange", "green", "blue", "pink", "red", "black", "purple"],
@@ -14,3 +12,12 @@ BRAND_TO_ABV = {
     "Block'Out": "bo",
     "Bloc Session": "bs",
 }
+
+
+def grades_list(gym, default=True):
+    values = []
+    if gym.brand in BRAND_TO_ABV:
+        values = GRADE_ORDER[BRAND_TO_ABV[gym.brand]]
+    elif default:
+        values = GRADE_ORDER[BRAND_TO_ABV["@default"]]
+    return [elt[0].upper() + elt[1:] for elt in values]
