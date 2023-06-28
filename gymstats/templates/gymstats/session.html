@@ -43,5 +43,8 @@
     </div>
 </div>
 
-<a href="{% url 'gs:session-details' session.id %}">Details</a>
+<div style="display: flex; flex-direction: column;">
+    <a href="{% url 'gs:session-details' session.id %}">Details</a>
+    <a href="{% url 'gs:session-add-problems' session.id %}">Add Problems</a>
+</div>
 {% endblock %}

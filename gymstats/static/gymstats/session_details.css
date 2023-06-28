@@ -1,0 +1,24 @@
+
+.edit {
+    background-color: inherit;
+    cursor: pointer;
+    border: 0px;
+    position: absolute;
+    right: 4px;
+    color: white;
+}
+
+.delete {
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+}
+
+[class^="achievement-"] {
+    display: flex;
+}
+
+[class^="pb-"] {
+    flex: 1;
+    margin-right: 10px;
+}

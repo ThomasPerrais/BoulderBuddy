@@ -1,15 +1,38 @@
 {% extends 'gymstats/base_gym_problems.html' %}
 
 {% load custom_filters %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'gymstats/gym_problems.css' %}?ver=1.0">
+<link rel="stylesheet" href="{% static 'gymstats/session_details.css' %}?ver=1.0.1">
+{{ message|json_script:'message' }}
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'gymstats/collapsible.js' %}?ver=2.2.0" defer></script>
+<script src="{% static 'gymstats/session_details.js' %}?ver=1.0.0" defer></script>
+{% endblock %}
 
 {% block title %}{{session}} - Details{% endblock %}
 
 {% block item_info %}
-<p>{{problems|achievement:pb}}</p>
-<p>{{problems|attempts:pb}}</p>
-<form method="post" style="display: flex; margin: 5px;">
+<button class="edit", data-id="{{pb.id}}" onclick="showForm(this)">✏️</button>
+<div class="achievement-{{pb.id}}">{{problems|achievement:pb}} in {{problems|attempts:pb}} attempt(s)</div>
+   
+<form class="edit-{{pb.id}}" method="post" style="display: none;">
     {% csrf_token %}
     <input type="hidden" id="pb-id" name="pb-id" value="{{ pb.id }}" />
-    <button type="delete" style="background-color: red;">DELETE</button>
+    <input type="hidden" id="pb-achievement" name="pb-achievement" value="{{ problems|achievement:pb }}" />
+    <select id="achievement" name="achievement" style="margin-right: 5%;">
+        <option value="">---</option>
+        <option value="top">Top</option>
+        <option value="zone">Zone</option>
+        <option value="fail">Fail</option>
+    </select>
+    <input id="attempts" name="attempts" type="text", placeholder="try.." style="width: 25%;margin-right: 5%;"></input>
+    <button type="submit" name="action" value="send">🚀</button>
+    <button type="submit" name="action" value="delete" class="delete">DEL</button>
 </form>
 {% endblock %}

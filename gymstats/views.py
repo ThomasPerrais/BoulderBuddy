@@ -227,6 +227,61 @@ def session_statistics(request, session_id):
 def session_details(request, session_id):
     session = get_object_or_404(Session, id=session_id)
 
+    msg = ""
+    success = True
+    if request.method == "POST":
+        try:
+            # this should not raise Errors
+            pb = get_object_or_404(Problem, id=request.POST['pb-id'])
+            achievement = request.POST['pb-achievement'].lower()
+            if achievement == "top":
+                tr = Top.objects.get(session=session, problem=pb)
+            elif achievement == "zone":
+                tr = Zone.objects.get(session=session, problem=pb)
+            elif achievement == "fail":
+                tr = Failure.objects.get(session=session, problem=pb)
+            else:
+                msg = "unknown previous achievement..."
+                success = False
+
+            action = request.POST.get('action')
+            if action == "send":
+                new_achievement = request.POST["achievement"]  # this could lead to an error
+                attempts = int(request.POST["attempts"])  # this could yield a ValueError
+                if new_achievement == achievement:
+                    tr.attempts = attempts
+                    tr.save()
+                    msg = "number of attempts updated"
+                else:
+                    # need to remove achievement and create a new one
+                    tr.delete()
+                    if new_achievement == "top":
+                        t = Top(session=session, attempts=attempts, problem=pb)
+                    elif new_achievement == "zone":
+                        t = Zone(session=session, attempts=attempts, problem=pb)
+                    elif new_achievement == "fail":
+                        t = Failure(session=session, attempts=attempts, problem=pb)
+                    else:
+                        # TODO: error message
+                        msg = "Unknown new achievement selected..."
+                        success = False
+                    if success:
+                        t.save()
+                        msg = "achievemement successfully updated"
+            elif action == "delete":
+                tr.delete()
+                msg = "achievement sucessfully deleted"
+            else:
+                msg = "unknown action..."
+                success = False
+                # Do nothing...
+        except ValueError as e:
+            msg = "attempts should be a positive integer..."
+            success = False
+        except KeyError as e:
+            msg = "all fields must be filled..."
+            success = False
+
     sectors = Sector.objects.filter(gym=session.gym)
     sectors_img = set([s.map.url for s in sectors])
     num_sectors = sectors.count()
@@ -235,17 +290,17 @@ def session_details(request, session_id):
     problems = {}
 
     for top in session.tops.all():
-       problems[top.problem] = { "achievement": "top", "attempts": top.attempts }
+       problems[top.problem] = { "achievement": "Top", "attempts": top.attempts }
     for zone in session.zones.all():
-       problems[zone.problem] = { "achievement": "zone", "attempts": zone.attempts }
+       problems[zone.problem] = { "achievement": "Zone", "attempts": zone.attempts }
     for fail in session.failures.all():
-       problems[fail.problem] = { "achievement": "fail", "attempts": fail.attempts }
+       problems[fail.problem] = { "achievement": "Fail", "attempts": fail.attempts }
 
     return render(request, 'gymstats/session_details.html', {
-            # "message": {
-            #     "content": msg,
-            #     "success": "yes" if success else "no"
-            # },
+            "message": {
+                "content": msg,
+                "success": "yes" if success else "no"
+            },
             "session": session,
             "sectors_img": sectors_img,
             "problems": problems,
