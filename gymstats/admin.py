@@ -67,7 +67,7 @@ class TryAdmin(admin.ModelAdmin):
 @admin.register(Climber)
 class ClimberAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('General', {'fields': ["name", "picture", "mail", "pwd"]}),
+        ('General', {'fields': ["user", "name", "picture"]}),
         ('Preferences', {'fields': ["preferred_gyms", "stats_preference", "month_hour_target", "month_hard_boulder_target"]}),
     ]
     inlines = [HardBoulderInline]
