@@ -1,4 +1,4 @@
-from gymstats.models import Gym, Problem, Top, Zone, Failure, Session
+from gymstats.models import Gym, Problem, Top, Zone, Failure, Session, Climber
 from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 from gymstats.statistics.sessions import get_problem_achievement
 
@@ -6,7 +6,7 @@ from gymstats.statistics.sessions import get_problem_achievement
 achievements = ["flash", "top", "zone", "fail", "not tried"]
 
 
-def current_problems_achievement(gym: Gym, handle_unk="keep"):
+def current_problems_achievement(gym: Gym, cl: Climber, handle_unk="keep"):
 
     result = {}
     grade_map = {}
@@ -26,7 +26,7 @@ def current_problems_achievement(gym: Gym, handle_unk="keep"):
 
     earliest_date = min([pb.date_added for pb in problems])
 
-    sessions = Session.objects.filter(date__gte=earliest_date, gym=gym).order_by("date")
+    sessions = Session.objects.filter(climber=cl, date__gte=earliest_date, gym=gym).order_by("date")
 
     problems_achievement = get_problem_achievement(sessions, pb_filter=problems)
 
