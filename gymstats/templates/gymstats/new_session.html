@@ -12,10 +12,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="wrapper">
-    <form method="post">
-        {% csrf_token %}
-        {% crispy session_form %}
-    </form>
-</div>
+<form method="post">
+    {% csrf_token %}
+    {% crispy session_form %}
+</form>
 {% endblock %}

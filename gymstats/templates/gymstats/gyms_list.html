@@ -1,0 +1,19 @@
+{% extends 'gymstats/base.html' %}
+
+{% load static %}
+
+{% block title %} My Gyms {% endblock %}
+
+{% block content %}
+{% if gyms %}
+<ul class="gallery">
+    {% for gym in gyms %}
+        <li class="gallery-item">
+            <a href="{% url 'gs:gym' gym.abv %}">{{ gym }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>You don't have any preferred gym.</p>
+{% endif %}
+{% endblock %}
