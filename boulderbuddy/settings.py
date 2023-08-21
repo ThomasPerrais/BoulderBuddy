@@ -56,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'gymstats.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = "boulderbuddy.urls"
@@ -136,4 +137,6 @@ MEDIA_URL = "/media/"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# Specify the login URL where non-authenticated users will be redirected
+LOGIN_URL = '/gymstats/accounts/login'
 LOGIN_REDIRECT_URL = "/gymstats/home"

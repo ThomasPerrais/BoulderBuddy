@@ -4,6 +4,8 @@ import os
 import math
 
 from collections import defaultdict
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from enum import Enum
 from location_field.models.plain import PlainLocationField
@@ -59,7 +61,9 @@ class Climber(models.Model):
     def upload_picture(instance, filename):
         _, ext = os.path.splitext(filename)
         return os.path.join('climbers', instance.name + "_" + rand_name() + ext)
-    
+
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+
     name = models.CharField(max_length=100)
     picture = models.ImageField(upload_to=upload_picture, blank=True)
 
@@ -75,9 +79,6 @@ class Climber(models.Model):
     month_hard_boulder_target = models.IntegerField(default=10)  # target number of hard boulders to top every month
 
     preferred_gyms = models.ManyToManyField(Gym, blank=True, verbose_name="My Gyms")
-
-    mail = models.EmailField(blank=True)
-    pwd = models.CharField(max_length=30, blank=True)
 
     def __str__(self) -> str:
         return self.name
