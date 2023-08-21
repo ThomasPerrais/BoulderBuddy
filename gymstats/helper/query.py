@@ -1,10 +1,11 @@
 from typing import Dict, List
 from functools import reduce
-from gymstats.models import Problem, Footwork, HandHold, ProblemMethod
+from gymstats.models import Problem, Footwork, HandHold, ProblemMethod, Climber, Top
 from gymstats.helper.names import *
 from gymstats.statistics.base import fisher_overrepr
 from gymstats.statistics.problems import attr_statistics
-from django.db.models import Q
+from django.db.models import Q, Prefetch
+
 
 
 _attr_map = {
@@ -13,11 +14,11 @@ _attr_map = {
     METHOD: ProblemMethod
 } 
 
-def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]]):
+def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]], climber: Climber):
     """
     query problems given list of parsed filters
     """
-    problems = Problem.objects.all()
+    problems = Problem.objects.prefetch_related(Prefetch('tops', queryset=Top.objects.filter(session__climber=climber))).all()
 
     # TODO: test for statistics change this
     achievement = "all"
@@ -29,7 +30,7 @@ def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]]):
 
     # filtering on achievement at the end so that we can extract stats
     fisher_stats = {}
-    if achievement != "all":
+    if achievement != "all" and climber:
         superset_stats = attr_statistics(problems)
         superset_size = len(problems)
         if achievement == "top":
