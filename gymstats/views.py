@@ -5,6 +5,7 @@ import re
 
 from dal import autocomplete
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404, render
 from django.template import loader
@@ -79,7 +80,6 @@ class ProblemAutocompleteView(autocomplete.Select2QuerySetView):
             problems = problems.filter(grade__startswith=grade)
         return problems
 
-
 class GradeAutocompleteView(autocomplete.Select2ListView):
 
     def get_list(self):
@@ -97,16 +97,21 @@ def index(request):
 
 # Homepage view
 
+def __sess(climber: Climber):
+    return Session.objects.filter(climber=climber)
+
+
+
 def home(request):
-    sessions = {elt.date.strftime("%d/%m/%Y"): (elt.id,) for elt in Session.objects.only("date")}
+    climber = request.user.climber_set.first()
+    sessions = {elt.date.strftime("%d/%m/%Y"): (elt.id,) for elt in __sess(climber).only("date")}
     return render(request, 'gymstats/home.html', {'sessions': sessions})
 
 
 # Profil view
 
 def profil(request):
-    climber = get_object_or_404(Climber, name="Thomas")  # TODO: change this, logged in climber
-    
+    climber = request.user.climber_set.first()
     data = {}
     
     # All Time information
@@ -136,17 +141,18 @@ def profil(request):
     # By gym information
     data["by_gym"] = {}
     for gym in climber.preferred_gyms.all():
-        data["by_gym"][str(gym)] = current_problems_achievement(gym)
+        data["by_gym"][str(gym)] = current_problems_achievement(gym, climber)
 
     return render(request, 'gymstats/profil.html', {'data': data, 'climber': climber})
 
 
 def __preprocess_threshold(climber):
     threshold_positions = {}
-    for th in climber.hard_boulders.all():
-        order = GRADE_ORDER[BRAND_TO_ABV[th.gym.brand]]
-        positions = [order.index(g.lower()) for g in th.grade_threshold.split(',') if g.lower() in order]
-        threshold_positions[th.gym] = sorted(positions)
+    if climber:
+        for th in climber.hard_boulders.all():
+            order = GRADE_ORDER[BRAND_TO_ABV[th.gym.brand]]
+            positions = [order.index(g.lower()) for g in th.grade_threshold.split(',') if g.lower() in order]
+            threshold_positions[th.gym] = sorted(positions)
     return threshold_positions
 
 
@@ -311,14 +317,25 @@ def session_details(request, session_id):
 # GYM views
 
 def gyms_homepage(request):
-    gyms = Gym.objects.all()
-    return render(request, 'gymstats/list.html', {'list': gyms})  # TODO: change the display
+    climber = request.user.climber_set.first()
+    gyms = climber.preferred_gyms.all()
+    return render(request, 'gymstats/gyms_list.html', {'gyms': gyms})  # TODO: change the display
 
 
 def gym_details(request, gym_abv):
     gym = get_object_or_404(Gym, abv=gym_abv)
-    # TODO display infos
-    return render(request, 'gymstats/gym.html', {'gym': gym})
+    sectors = Sector.objects.filter(gym=gym)
+    sectors_img = set([s.map.url for s in sectors])
+    
+    sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
+    problems = {pb: {} for pb in Problem.objects.filter(gym=gym, removed=False)}
+
+    return render(request, 'gymstats/gym.html', {
+            "gym": gym,
+            "sectors_img": sectors_img,
+            "problems": problems,
+            "sections": sectors,
+        })
 
 
 def problems_by_gym(request, gym_abv):
@@ -335,6 +352,8 @@ def problems_homepage(request):
 
 
 def problem_detail(request, problem_id):
+
+    climber = request.user.climber_set.first()
     problem = get_object_or_404(Problem, id=problem_id)
 
     # Problem data: rating & RIC
@@ -354,13 +373,13 @@ def problem_detail(request, problem_id):
     only = ["session__date", "session__id"]
     status = "Not Tried";
     sessions = {}
-    for elt in problem.failures.only(*only):
+    for elt in problem.failures.filter(session__climber=climber).only(*only):
         status = "Fail"
         sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "f")
-    for elt in problem.zones.only(*only):
+    for elt in problem.zones.filter(session__climber=climber).only(*only):
         status = "Zone"
         sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "z")
-    for elt in problem.tops.only(*only):
+    for elt in problem.tops.filter(session__climber=climber).only(*only):
         status = "Top"
         sessions[elt.session.date.strftime("%d/%m/%Y")] = (elt.session.id, "t")
 
@@ -390,10 +409,15 @@ def problem_review(request, problem_id, review_id):
 
 def review_problem(request, problem_id):
     problem = get_object_or_404(Problem, id=problem_id)
+    climber = request.user.climber_set.first()
+    if not climber:
+        return render(request, 'gymstats/problem.html', {
+            'problem': problem,
+            'review_error_message': "Log in required to review a problem",
+        })
     try:
         # get comment from POST
         comment = request.POST['comment']
-        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
         rating = int(request.POST["rating"])
     except KeyError:
         return render(request, 'gymstats/problem.html', {
@@ -417,11 +441,16 @@ def problem_ric(request, problem_id, ric_id):
 
 def evaluate_ric_problem(request, problem_id):
     problem = get_object_or_404(Problem, id=problem_id)
+    climber = request.user.climber_set.first()
+    if not climber:
+        return render(request, 'gymstats/problem.html', {
+            'problem': problem,
+            'ric_error_message': "Log in required to evaluate problem's RIC",
+        })
     try:
         risk = int(request.POST['risk'])
         intensity = int(request.POST['intensity'])
         complexity = int(request.POST['complexity'])
-        climber = get_object_or_404(Climber, name="Thomas")  # TODO: retrieve logged in Climber
     except KeyError:
         return render(request, 'gymstats/problem.html', {
             'problem': problem,
@@ -440,9 +469,10 @@ def problem_searchbar(request):
 def problem_search_results(request):
     try:
         # get comment from POST
+        climber = request.user.climber_set.first()
         raw_filters = request.POST['search']
         parsed, unparsed = parse_filters(raw_filters)
-        problems, stats = query_problems_from_filters(parsed)
+        problems, stats = query_problems_from_filters(parsed, climber)
     except KeyError:
         return render(request, 'gymstats/problem_results.html', {
             'results': [],
