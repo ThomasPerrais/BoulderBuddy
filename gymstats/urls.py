@@ -19,6 +19,7 @@ urlpatterns = [
 
     # Profil Page
     path('profil/', views.profil, name="profil"),
+    path('profil/edit/', views.profil_edit, name="profil-edit"),
 
     # Session
     path('session/add-new/', views.new_session, name="session-add-new"),

@@ -6,7 +6,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'gymstats/tab.css' %}?ver=1.0">
-<link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.0.7">
+<link rel="stylesheet" href="{% static 'gymstats/profil.css' %}?ver=1.2.0">
 {{ data|json_script:'data' }}
 {% endblock %}
 
@@ -27,6 +27,7 @@
     height="80"
     style="border-radius: 100%; margin-right: 20px;">
     <h1 style="vertical-align: middle;">{{ climber }}</h1>
+    <h1 style="vertical-align: middle; margin-left: auto; margin-right: 0;"><a style="text-decoration: none;" href="{% url 'gs:profil-edit' %}" class="fa fa-sliders"></a></h1>
 </div>
 
 <div class="all-time">

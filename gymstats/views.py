@@ -12,7 +12,7 @@ from django.template import loader
 from django.urls import reverse
 from django.utils.html import format_html
 
-from .forms import SessionForm
+from .forms import SessionForm, ClimberForm
 from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
@@ -144,6 +144,18 @@ def profil(request):
         data["by_gym"][str(gym)] = current_problems_achievement(gym, climber)
 
     return render(request, 'gymstats/profil.html', {'data': data, 'climber': climber})
+
+
+def profil_edit(request):
+    climber = request.user.climber_set.first()
+    if request.method == 'POST':
+        form = ClimberForm(request.POST, instance=climber)
+        if form.is_valid():
+            instance = form.save()
+            return redirect('gs:profil')
+    else:
+        form = ClimberForm(instance=climber)
+        return render(request, 'gymstats/show_form.html', {"current_form": form})
 
 
 def __preprocess_threshold(climber):

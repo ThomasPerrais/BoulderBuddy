@@ -1,9 +1,10 @@
 const sidebar = document.querySelector(".w3-sidebar");
 
 const sidebarMenus = {
-    "fa-home": "/gymstats/home",
+    "fa-calendar": "/gymstats/home",
     "fa-user-ninja": "/gymstats/profil",
     "fa-chart-pie": "/gymstats/statistics",
+    "fa-mountain-city": "/gymstats/gyms",
     "fa-magnifying-glass": "/gymstats/problems/searchbar"
 };
 

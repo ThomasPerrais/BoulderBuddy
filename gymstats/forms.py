@@ -11,6 +11,42 @@ from crispy_forms.layout import Layout, Fieldset, Row, Column, HTML, Submit, But
 from crispy_forms.bootstrap import AppendedText, PrependedAppendedText, PrependedText, FormActions
 
 
+
+class ClimberForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.layout = Layout(
+            Fieldset(
+                'General',
+                Row(
+                    Column(PrependedText('name', '👤'), css_class="form-group ml-3 mr-4"),
+                    Column(PrependedText('picture', '🏢'), css_class="form-group mb-1 mr-3"),
+                )
+            ),
+            Fieldset(
+                'Preferences',
+                Row(
+                    # Column(PrependedText("stats_preference", "📅"), css_class="mr-2"),
+                    Column(PrependedText("month_hard_boulder_target", "🕒"), css_class="mr-2"),
+                    Column(AppendedText('month_hour_target', "h"))
+                )
+            ),
+            Fieldset(
+                'Gyms',
+                Column(PrependedText("preferred_gyms", ""), css_class="mr-2"),
+            ),
+            FormActions(
+                Submit('save', 'Save changes', css_class="btn btn-light"),
+                Button('cancel', 'Cancel')
+            ),
+        )
+
+    class Meta:
+        model = Climber
+        fields = ["name", "picture", "month_hard_boulder_target", "month_hour_target", "preferred_gyms"]
+
+
 class SessionForm(ModelForm):
 
     def __init__(self, *args, **kwargs):

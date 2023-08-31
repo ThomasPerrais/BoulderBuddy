@@ -2,13 +2,11 @@
 .profil {
     display: flex;
     width: 450px;
-    flex-direction: row;
 }
 
 .all-time {
     display: flex;
     width: 450px;
-    /* flex-direction: row; */
 }
   
 .col {
