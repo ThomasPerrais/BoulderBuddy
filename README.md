@@ -27,4 +27,3 @@ Search Page: search the entire boulder database with a custom query language all
 
 ![Profil](/screenshots/profil+alltime+month.png?raw=true "Profil")
 ![Problems Achievement](/screenshots/year-pb-lower.png?raw=true "Problems Achievements")
-![Searchbar](/screenshots/pb-explorer.png?raw=true "Searchbar")
