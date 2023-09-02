@@ -8,7 +8,6 @@ from collections import defaultdict
 
 from gymstats.models import Try, Session, Gym, Rank, Top, Problem
 from gymstats.helper.utils import float_duration_to_hour
-from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 
 
 def statistics(sessions: List[Session], start_date: datetime.date, duration: bool = True, length: bool = True, 

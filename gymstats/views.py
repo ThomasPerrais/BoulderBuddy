@@ -16,7 +16,7 @@ from .forms import SessionForm, ClimberForm
 from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
-from .helper.grade_order import BRAND_TO_ABV, GRADE_ORDER, grades_list
+from .helper.grade_order import grades_list
 from .helper.utils import float_duration_to_hour
 from .statistics.sessions import statistics
 from .statistics.gym import current_problems_achievement
@@ -162,8 +162,8 @@ def __preprocess_threshold(climber):
     threshold_positions = {}
     if climber:
         for th in climber.hard_boulders.all():
-            order = GRADE_ORDER[BRAND_TO_ABV[th.gym.brand]]
-            positions = [order.index(g.lower()) for g in th.grade_threshold.split(',') if g.lower() in order]
+            order = grades_list(th.gym, default=True)
+            positions = [order.index(g) for g in th.grade_threshold.split(',') if g in order]
             threshold_positions[th.gym] = sorted(positions)
     return threshold_positions
 

@@ -12,7 +12,7 @@ from location_field.models.plain import PlainLocationField
 from typing import Any
 
 from gymstats.helper.utils import rand_name
-from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
+from gymstats.helper.grade_order import grades_list
 
 
 class Gym(models.Model):
@@ -197,8 +197,8 @@ class Problem(models.Model):
         if not threshold_positions or self.gym not in threshold_positions or len(threshold_positions[self.gym]) == 0:
             return Rank.UNK
         try:
-            order = GRADE_ORDER[BRAND_TO_ABV[self.gym.brand]]
-            grade_pos = order.index(self.grade.lower()) # position of problem grade in the scale
+            order = grades_list(self.gym, default=False)
+            grade_pos = order.index(self.grade) # position of problem grade in the scale
             positions = threshold_positions[self.gym]
             if grade_pos < positions[0]:
                 return Rank.LOWER
@@ -314,8 +314,10 @@ class Session(models.Model):
             # types, grades, holds
         pb_types = defaultdict(lambda: [0,0])
         pb_grades = defaultdict(lambda: [0,0])
-        if self.gym.brand in BRAND_TO_ABV:
-            pb_grades = { elt[0].upper() + elt[1:]: [0,0] for elt in GRADE_ORDER[BRAND_TO_ABV[self.gym.brand]]}
+
+        grades = grades_list(self.gym, default=False)
+        if grades:
+            pb_grades = { elt: [0,0] for elt in grades }
         pb_holds = defaultdict(lambda: [0,0])
 
         def _add(t, pos: int):

@@ -1,6 +1,5 @@
 from scipy.stats import fisher_exact
 from typing import Dict
-from gymstats.helper.grade_order import GRADE_ORDER, BRAND_TO_ABV
 
 
 def fisher_overrepr(superset_stats: Dict, subset_stats: Dict, superset_size: int,

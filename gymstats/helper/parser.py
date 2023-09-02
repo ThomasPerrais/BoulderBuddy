@@ -83,7 +83,7 @@ def parse_filters(raw_filters: str):
     
     # post-processing grades
     if GRADE in parsed and any(map(lambda x: x in parsed[GRADE], ["lt", "gt", "lte", "gte"])):
-        if GYM in parsed:
+        if GYM in parsed:  # TODO: handle special case of gyms from same brand having different grade orders (Bloc Session...)
             vals = list({elt[:2] for elt in parsed[GYM]["eq"]})
             if len(vals) > 1:
                 unparsed.append("several gym brand and comparer on grade can lead to inacurate results")
