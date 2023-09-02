@@ -4,7 +4,9 @@ GRADE_ORDER = {
     "va": ["white", "orange", "green", "blue", "red", "black", "purple"],
     "bo": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14"],
     "bs": ["blue", "green", "orange", "pink", "black", "gray", "white"],
-    "bl": ["yellow", "orange", "blue", "red", "green", "black"]
+    "bl": ["yellow", "orange", "blue", "red", "green", "black"],
+    # special cases
+    "bsm": ["blue", "green", "red", "pink", "black", "gray"],
 }
 
 BRAND_TO_ABV = {
@@ -18,7 +20,10 @@ BRAND_TO_ABV = {
 
 def grades_list(gym, default=True):
     values = []
-    if gym.brand in BRAND_TO_ABV:
+    # check for special cases
+    if gym.abv.lower() in GRADE_ORDER:
+        values = GRADE_ORDER[gym.abv.lower()]
+    elif gym.brand in BRAND_TO_ABV:
         values = GRADE_ORDER[BRAND_TO_ABV[gym.brand]]
     elif default:
         values = GRADE_ORDER["@default"]
