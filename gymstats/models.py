@@ -9,6 +9,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from enum import Enum
 from location_field.models.plain import PlainLocationField
+from picklefield.fields import PickledObjectField
 from typing import Any
 
 from gymstats.helper.utils import rand_name
@@ -82,6 +83,21 @@ class Climber(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class IntervalStatistics(models.Model):
+    climber = models.ForeignKey(Climber, on_delete=models.CASCADE, related_name="past_statistics")
+
+    interval_id = models.IntegerField() # id of the month (1..12) or week (1..52)
+    year = models.IntegerField()
+
+    class Intervals(models.IntegerChoices):
+        WEEK = 1
+        MONTH = 2
+        YEAR = 3
+
+    interval = models.IntegerField(choices=Intervals.choices)
+    args = PickledObjectField()  # various statistics: hard boulder threshold, training time, hard boulders, ...
 
 
 class HardBoulderThreshold(models.Model):
