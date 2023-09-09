@@ -18,7 +18,7 @@ from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import grades_list
 from .helper.utils import float_duration_to_hour
-from .statistics.sessions import statistics
+from .statistics.sessions import statistics, base_sessions_stats
 from .statistics.gym import current_problems_achievement
 
 # Create your views here.
@@ -116,27 +116,26 @@ def profil(request):
     
     # All Time information
     sessions = Session.objects.filter(climber=climber).only("duration")
-    data["all_time"] = statistics(sessions=sessions, start_date=None, duration=True, length=True,
-                                  top_zone_fail=False, hard_tops=False, threshold_positions=None)
+    data["all_time"] = base_sessions_stats(sessions=sessions)
 
     today = date.today()
     threshold_positions = __preprocess_threshold(climber)
 
     # Month information
-    first_day_of_month = today.replace(day=1)
-    month_sessions = Session.objects.filter(climber=climber, date__gte=first_day_of_month)
-    data["month"] = statistics(sessions=month_sessions, start_date=first_day_of_month, duration=True,
-                               length=True, top_zone_fail=False, hard_tops=True, threshold_positions=threshold_positions)
+    fdom = today.replace(day=1)
+    month_sessions = Session.objects.filter(climber=climber, date__gte=fdom)
+    data["month"] = statistics(sessions=month_sessions, start_date=fdom, achievements=False,
+                               hard_tops=True, threshold_positions=threshold_positions, compute_prev=True)
     # fill target percentages
     data["month"]["training_time_target"] = min(100, data["month"]["duration"] * 100 / climber.month_hour_target)
     data["month"]["hard_boulders_target"] = min(100, data["month"]["hard_tops"] * 100 / climber.month_hard_boulder_target)
 
     # Year information
-    first_day_of_year = today.replace(day=1, month=1)
-    year_sessions = Session.objects.filter(climber=climber, date__gte=first_day_of_year).order_by("date")
+    fdoy = today.replace(day=1, month=1)
+    year_sessions = Session.objects.filter(climber=climber, date__gte=fdoy).order_by("date")
     
-    data["year"] = statistics(sessions=year_sessions, start_date=first_day_of_year, duration=False,
-                              length=False, top_zone_fail=True, hard_tops=False, threshold_positions=threshold_positions)
+    data["year"] = statistics(sessions=year_sessions, start_date=fdoy, achievements=True,
+                              hard_tops=False, threshold_positions=threshold_positions, compute_prev=False)
 
     # By gym information
     data["by_gym"] = {}
