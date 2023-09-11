@@ -1,9 +1,10 @@
-from gymstats.models import Gym, Problem, Top, Zone, Failure, Session, Climber
+from gymstats.models import Gym, Session, Climber
 from gymstats.helper.grade_order import grades_list
-from gymstats.statistics.sessions import get_problem_achievement, sessions_to_pandas
+from gymstats.statistics.sessions import sessions_to_pandas
+from gymstats.helper.names import Achievement, TOP_ATPS, ZONE_ATPS
 
 
-achievements = ["flash", "top", "zone", "fail", "not tried"]
+achievements = [a.value for a in Achievement] + ["not tried"]
 
 
 def current_problems_achievement(gym: Gym, cl: Climber, handle_unk="keep"):
@@ -27,7 +28,7 @@ def current_problems_achievement(gym: Gym, cl: Climber, handle_unk="keep"):
 
     # no need to specify start_date and no need to compute prev since none of the assessed problems
     # were present before the earliest_date by definition.
-    df = sessions_to_pandas(sessions, None, None, False, pb_filter=problems)
+    df, _ = sessions_to_pandas(sessions, None, None, False, pb_filter=problems)
 
     for pb in problems:
         grade = pb.grade
@@ -49,14 +50,14 @@ def current_problems_achievement(gym: Gym, cl: Climber, handle_unk="keep"):
         achievement = "not tried"
         if pb.id in df.index:
             row = df.loc[pb.id]
-            if row["top attempts"] == 1:
-                achievement = "flash"
-            elif row["top attempts"] > 0:
-                achievement = "top"
-            elif row["zone attempts"] > 0:
-                achievement = "zone"
+            if row[TOP_ATPS] == 1:
+                achievement = Achievement.FLASH.value
+            elif row[TOP_ATPS] > 0:
+                achievement = Achievement.TOP.value
+            elif row[ZONE_ATPS] > 0:
+                achievement = Achievement.ZONE.value
             else:
-                achievement = "fail"
+                achievement = Achievement.FAIL.value
         result[achievement][grade_map[grade]] += 1
 
     return result

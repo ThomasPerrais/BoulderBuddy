@@ -14,6 +14,7 @@ from typing import Any
 
 from gymstats.helper.utils import rand_name
 from gymstats.helper.grade_order import grades_list
+from gymstats.helper.names import Rank
 
 
 class Gym(models.Model):
@@ -158,13 +159,6 @@ class Sector(models.Model):
         return self.gym.abv + " - Sector " + str(self.sector_id)
 
 
-class Rank(Enum):
-    UNK = "unk"
-    LOWER = "lower"
-    EXPECT = "expect"
-    HIGHER = "higher"
-
-
 class Problem(models.Model):
 
     class Meta:
@@ -218,7 +212,7 @@ class Problem(models.Model):
             positions = threshold_positions[self.gym]
             if grade_pos < positions[0]:
                 return Rank.LOWER
-            elif grade_pos > positions[-1]:
+            if grade_pos > positions[-1]:
                 return Rank.HIGHER
             else:
                 return Rank.EXPECT
