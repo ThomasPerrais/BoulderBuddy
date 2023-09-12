@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 from gymstats.models import Gym, Session, Climber
 from gymstats.helper.grade_order import grades_list
 from gymstats.statistics.sessions import sessions_to_pandas
@@ -7,7 +9,7 @@ from gymstats.helper.names import Achievement, TOP_ATPS, ZONE_ATPS
 achievements = [a.value for a in Achievement] + ["not tried"]
 
 
-def current_problems_achievement(gym: Gym, cl: Climber, handle_unk="keep"):
+def current_problems_achievement(gym: Gym, cl: Climber, handle_unk: str = "keep") -> Dict[str, Any]:
 
     result = {}
     result["labels"] = grades_list(gym, default=True)

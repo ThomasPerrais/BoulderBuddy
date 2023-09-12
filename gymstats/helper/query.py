@@ -12,7 +12,8 @@ _attr_map = {
     HANDHOLD: HandHold,
     FOOTWORK: Footwork,
     METHOD: ProblemMethod
-} 
+}
+
 
 def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]], climber: Climber):
     """

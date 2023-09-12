@@ -1,10 +1,12 @@
 import datetime
 
 from typing import List, Set
+from deprecated import deprecated
 
-from gymstats.models import Try, Session, Gym, Rank, Top, Problem, Zone, Failure
+from gymstats.models import Try, Top, Problem, Zone, Failure
 
 
+@deprecated(reason="method should not be used anymore")
 def tops_stats(tops: List[Top], start_date: datetime.date, 
                new_tops: Set[Top] = None, new_flashes: Set[Top] = None):
     """
