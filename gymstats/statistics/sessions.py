@@ -1,14 +1,11 @@
 import datetime
-import itertools
 
 from typing import List, Dict, Set, Any
-from deprecated import deprecated
 
 import pandas as pd
 
 from gymstats.models import Session, Gym, Top, Problem, Failure, Zone
 from gymstats.helper.utils import float_duration_to_hour
-from gymstats.statistics.tries import tops_stats
 from gymstats.helper.names import ATPS, TOP_ATPS, ZONE_ATPS, RANK, PREV
 from gymstats.helper.names import RANK_TO_ID, Rank
 from gymstats.statistics.pandas import df_achievements, df_attempts, df_by_rank, df_hard_tops, df_tops, df_by_wall_type
@@ -173,94 +170,3 @@ def sessions_to_pandas(sessions: List[Session], start_date: datetime.date,
     df = pd.DataFrame(summary).transpose()
     df.columns = [ATPS, ZONE_ATPS, TOP_ATPS, RANK, PREV]
     return df, id_to_pb
-
-
-@deprecated(reason="Use sessions_to_pandas instead")
-def get_problem_achievement(sessions, pb_filter: Set[Problem] = None) -> Dict[Problem, str]:
-    problems_achievement = {}
-    for sess in sessions:
-        for top in sess.tops.all():
-            if pb_filter and not top.problem in pb_filter:
-                continue
-            if top.problem not in problems_achievement:
-                # problem not known -> either flashed ot topped
-                problems_achievement[top.problem] = "flash" if top.attempts == 1 else "top"
-            else:
-                # problem was already tried
-                # if it was flashed do not change anything
-                # otherwise it is now topped.
-                if problems_achievement[top.problem] != "flash":
-                    problems_achievement[top.problem] = "top"
-        
-        for zone in sess.zones.all():
-            if pb_filter and not zone.problem in pb_filter:
-                continue
-            if zone.problem not in problems_achievement:
-                # problem not known -> zone
-                problems_achievement[zone.problem] = "zone"
-            else:
-                # problem was already tried
-                # only change if it was failed
-                if problems_achievement[zone.problem] == "fail":
-                    problems_achievement[zone.problem] = "zone"
-        
-        for fail in sess.failures.all():
-            if pb_filter and not fail.problem in pb_filter:
-                continue
-            if fail.problem not in problems_achievement:
-                # problem not known -> fail
-                # no else since it cannot be worse
-                problems_achievement[fail.problem] = "fail"
-    
-    return problems_achievement
-
-
-@deprecated(reason="use sessions_to_pandas instead")
-def sessions_tops_stats(sessions: List[Session], start_date: datetime.date, 
-                        threshold_positions: Dict[Gym, List[int]], all: bool = True,
-                        lower: bool = True, expect: bool = True, higher: bool = True,
-                        unk: bool = True):
-    """
-    Compute *tops* statistical summary on the given list of sessions. Summary include:
-    - total number of tops
-    - total number of attempts
-    - total number of problems
-    - total number of *new* tops
-    If User threshold is given, also compute statistical summary for the different classes of *problems* (lower, expect, higher, unk) 
-    """
-    
-    # used to store all tops infos
-    results = {}  
-
-    all_tops = list(itertools.chain(*[s.tops.all() for s in sessions]))
-    
-    # TODO: add condition to use it or not
-    new_tops = set()  # if *all = True*: will be populated with new tops so that we won't have to check again in subsequent calls
-    new_flashes = set()
-
-    if all:
-        results["all"] = tops_stats(all_tops, start_date, new_tops, new_flashes)
-    
-    if threshold_positions:
-        # necessary to compute stats on Lower, Expect and Higher problems
-
-        if lower:
-            low_tops = [t for t in all_tops if t.problem.rank(threshold_positions) == Rank.LOWER]
-            results["lower"] = tops_stats(low_tops, start_date, new_tops, new_flashes)
-        
-        if expect:
-            expect_tops = [t for t in all_tops if t.problem.rank(threshold_positions) == Rank.EXPECT]
-            results["expect"] = tops_stats(expect_tops, start_date, new_tops, new_flashes)
-
-        if higher:
-            higher_tops = [t for t in all_tops if t.problem.rank(threshold_positions) == Rank.HIGHER]
-            results["higher"] = tops_stats(higher_tops, start_date, new_tops, new_flashes)
-        
-        if unk:
-            unk_tops = [t for t in all_tops if t.problem.rank(threshold_positions) == Rank.UNK]
-            results["unk"] = tops_stats(unk_tops, start_date, new_tops, new_flashes)
-    
-
-    results["new-tops-list"] = new_tops
-    results["new-flashes-list"] = new_flashes
-    return results
