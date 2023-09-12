@@ -1,8 +1,9 @@
+from typing import List, Dict, Set, Any
+from deprecated import deprecated
+
 import datetime
 import itertools
 import pandas as pd
-
-from typing import List, Dict, Set, Any
 
 from gymstats.models import Session, Gym, Top, Problem, Failure, Zone
 from gymstats.helper.utils import float_duration_to_hour
@@ -14,7 +15,7 @@ from gymstats.helper.names import Achievement, RANK_TO_ID, ID_TO_RANK, Rank
 def statistics(sessions: List[Session], start_date: datetime.date, 
                achievements: bool = True, hard_tops: bool = True,
                threshold_positions: Dict[Gym, List[int]] = None,
-               compute_prev: bool = False):
+               compute_prev: bool = False) -> Dict[str, Any]:
 
     result = base_sessions_stats(sessions)
     
@@ -30,7 +31,8 @@ def statistics(sessions: List[Session], start_date: datetime.date,
     return result
 
 
-def summary(sessions: List[Session], threshold_positions: Dict[Gym, List[int]], start_date: datetime.date):
+def summary(sessions: List[Session], threshold_positions: Dict[Gym, List[int]],
+            start_date: datetime.date) -> Dict[str, Any]:
     """
     Compute various stats to store as IntervalStatistics for a Climber
     General:
@@ -106,12 +108,12 @@ def df_achievements(df: pd.DataFrame, res: Dict = None) -> pd.DataFrame:
     for a in Achievement:
         results["pb_all_" + a.value] = sum(results["pb_{}_{}".format(v.value, a.value)] for v in Rank)
     
-    # TODO: 'try' key was removed, make sure this isn't an issue
     return results
 
 
-def df_by_rank(df: pd.DataFrame, rank: int):
+def df_by_rank(df: pd.DataFrame, rank: int) -> Dict[str, int]:
     """
+    Compute achievements and stats by problem ranking.
     """
     rank_df = df[df[RANK] == rank]
     
@@ -142,7 +144,7 @@ def _serie_wall_type_slow(df: pd.DataFrame) -> pd.Series:
     return df.apply(lambda row: str(Problem.objects.get(id=row.name).problem_type), axis=1)
 
 
-def df_by_wall_type(df: pd.DataFrame, id_to_pb: Dict[int, Problem] = None):
+def df_by_wall_type(df: pd.DataFrame, id_to_pb: Dict[int, Problem] = None) -> Dict[str, Any]:
     """
     Compute wall types statistics
     """
@@ -160,7 +162,7 @@ def df_by_wall_type(df: pd.DataFrame, id_to_pb: Dict[int, Problem] = None):
     return results
 
 
-def df_attempts(df: pd.DataFrame):
+def df_attempts(df: pd.DataFrame) -> int:
     """
     Compute the number of attempts of the given summary DataFrame
     """
@@ -217,7 +219,7 @@ def df_fails(df: pd.DataFrame) -> int:
 
 def sessions_to_pandas(sessions: List[Session], start_date: datetime.date, 
                        threshold_positions: Dict[Gym, List[int]],
-                       compute_prev: bool = True, pb_filter: Set[Problem] = None):
+                       compute_prev: bool = True, pb_filter: Set[Problem] = None) -> pd.DataFrame:
     sessions = sorted(sessions, key = lambda s: s.date)
     summary = {}
     # TODO: decide whether or not we want to return id_to_pb
@@ -284,13 +286,12 @@ def sessions_to_pandas(sessions: List[Session], start_date: datetime.date,
                 # all other cases need not be evaluated since its a failure
     
     # to pandas DataFrame
-    columns = [ATPS, ZONE_ATPS, TOP_ATPS, RANK, PREV]
     df = pd.DataFrame(summary).transpose()
-    df.columns = columns
+    df.columns = [ATPS, ZONE_ATPS, TOP_ATPS, RANK, PREV]
     return df, id_to_pb
 
 
-# @deprecated("Use sessions_to_pandas instead")
+@deprecated(reason="Use sessions_to_pandas instead")
 def get_problem_achievement(sessions, pb_filter: Set[Problem] = None) -> Dict[Problem, str]:
     problems_achievement = {}
     for sess in sessions:
@@ -330,7 +331,7 @@ def get_problem_achievement(sessions, pb_filter: Set[Problem] = None) -> Dict[Pr
     return problems_achievement
 
 
-# @deprectaed("use sessions_to_pandas instead")
+@deprecated(reason="use sessions_to_pandas instead")
 def sessions_tops_stats(sessions: List[Session], start_date: datetime.date, 
                         threshold_positions: Dict[Gym, List[int]], all: bool = True,
                         lower: bool = True, expect: bool = True, higher: bool = True,
