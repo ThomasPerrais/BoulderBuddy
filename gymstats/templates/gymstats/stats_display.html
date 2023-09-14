@@ -1,0 +1,35 @@
+{% extends 'gymstats/base.html' %}
+
+{% load static %}
+{% load pb_extras %}
+
+{% block css %}
+<!-- <link rel="stylesheet" href="{% static 'gymstats/tagslist.css' %}?ver=1.0.1"> -->
+<!-- {{ stats|json_script:'stats' }} -->
+{% endblock %}
+
+{% block title %} Statistics {% endblock %}
+
+{% block scripts %}
+<!-- <script src="{% static 'gymstats/overrepr.js' %}?ver=1.0" defer></script> -->
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <h1>General</h1>
+    {{general}}
+</div>
+<div>
+    <h1>Achievement</h1>
+    {{achievements}}
+</div>
+<div>
+    <h1>Wall Types</h1>
+    {{walls}}
+</div>
+<div>
+    <h1>Strengths & Weaknesses</h1>
+    {{sw}}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'gymstats/base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'gymstats/searchbar.css' %}?ver=1.0">
+{% endblock %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block content %}
+<h1 class="title"> <i class="fa fa-chart-pie"></i> Statistics Aggregator <i class="fa fa-chart-pie"></i></h1>
+<form method=POST action="{% url 'gs:stats-searchresults' %}">
+    {% csrf_token %}
+    <label for="from"><strong>From</strong></label>
+    <input id="from" type="date" name="from">
+    <label for="to"><strong>To</strong></label>
+    <input id="to" type="date" name="to">
+    <button type="submit">Go</button>
+</form>
+{% endblock %}

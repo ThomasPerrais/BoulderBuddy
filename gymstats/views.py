@@ -1,27 +1,24 @@
-from collections import defaultdict
-from datetime import date
-import math
+import calendar
+from datetime import date, datetime
 import re
 
 from dal import autocomplete
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404, render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.urls import reverse
-from django.utils.html import format_html
 
 from .forms import SessionForm, ClimberForm
 from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import grades_list
-from .helper.utils import float_duration_to_hour
 from .statistics.sessions import statistics, base_sessions_stats
 from .statistics.gym import current_problems_achievement
+from .statistics.sessions import summary
 
-# Create your views here.
 
 # AutoComplete views
 
@@ -119,7 +116,7 @@ def profil(request):
     data["all_time"] = base_sessions_stats(sessions=sessions)
 
     today = date.today()
-    threshold_positions = __preprocess_threshold(climber)
+    threshold_positions = climber.thresholds()
 
     # Month information
     fdom = today.replace(day=1)
@@ -157,14 +154,64 @@ def profil_edit(request):
         return render(request, 'gymstats/show_form.html', {"current_form": form})
 
 
-def __preprocess_threshold(climber):
-    threshold_positions = {}
-    if climber:
-        for th in climber.hard_boulders.all():
-            order = grades_list(th.gym, default=True)
-            positions = [order.index(g) for g in th.grade_threshold.split(',') if g in order]
-            threshold_positions[th.gym] = sorted(positions)
-    return threshold_positions
+# Statistics views
+
+def stats_searchbar(request):
+    return render(request, 'gymstats/stats_searchbar.html')
+
+
+def stats_display(request):
+    if request.method == 'POST':
+        climber = request.user.climber_set.first()
+        start = request.POST["from"]
+        end = request.POST["to"]
+        data = _range_stats(climber, start, end)
+        return render(request, 'gymstats/stats_display.html', 
+                      {
+                          "general": data["General"],
+                          "achievements": data["Achievements"],
+                          "walls": data["Wall Types"],
+                          "sw": data["Strengths & Weaknesses"],
+                      })
+
+
+def range_stats(request, range_method):
+    climber = request.user.climber_set.first()
+    if range_method == "month":
+        month = int(request.GET.get("m", date.today().month))
+        year = int(request.GET.get("y", date.today().year))
+        start = date(day=1, month=month, year=year)
+        end = date(day=calendar._monthlen(year, month), month=month, year=year)
+
+    elif range_method == "year":
+        year = int(request.GET.get("y", date.today().year))
+        start = date(day=1, month=1, year=year)
+        end = date(day=31, month=12, year=year)
+
+    elif range_method == "week":
+        return JsonResponse({"message": "not yet implemented"})
+    
+    elif range_method == "range":
+        try:
+            start = datetime.strptime(request.GET["start"], "%Y-%m-%d")
+            if "end" in request.GET:
+                end = datetime.strptime(request.GET["end"], "%Y-%m-%d")
+            else:
+                end = date.today()
+        except:
+            return JsonResponse({"message": "parsing error..."})
+    else:
+        return JsonResponse({"message": "method needs to be provided"}) 
+    return JsonResponse(_range_stats(climber, start, end), json_dumps_params={'indent': 2})
+
+
+def _range_stats(climber: Climber, start: date, end: date):
+    """
+    Compute statistics on given climber's sessions between given start and end dates.
+    """
+    sessions = Session.objects.filter(climber=climber, date__gte=start, date__lte=end)
+    thresholds = climber.thresholds()
+    return summary(sessions, thresholds, start)
 
 
 # Session views

@@ -21,6 +21,11 @@ urlpatterns = [
     path('profil/', views.profil, name="profil"),
     path('profil/edit/', views.profil_edit, name="profil-edit"),
 
+    # Statistics
+    path('statistics/', views.stats_searchbar, name="stats-searchbar"),
+    path('statistics/results', views.stats_display, name="stats-searchresults"),
+    path('statistics/json/<str:range_method>', views.range_stats, name="stats-json"),
+
     # Session
     path('session/add-new/', views.new_session, name="session-add-new"),
     path('session/<int:session_id>/add-problems/', views.add_session_problems, name="session-add-problems"),
