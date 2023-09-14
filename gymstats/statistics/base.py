@@ -1,9 +1,9 @@
 from scipy.stats import fisher_exact
-from typing import Dict, List
+from typing import Dict, List,  Tuple
 
 
 def fisher_overrepr(superset_stats: Dict, subset_stats: Dict, superset_size: int,
-                    subset_size: int, maxpvalue: float = 0.4, topk: int = 3) -> Dict[str, List[(str, float, float)]]:
+                    subset_size: int, maxpvalue: float = 0.4, topk: int = 3) -> Dict[str, List[Tuple[str, float, float]]]:
     results = {}
     for attr in superset_stats: 
         current = []
