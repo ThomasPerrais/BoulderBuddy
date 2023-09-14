@@ -1,5 +1,7 @@
 from typing import Dict, Any
+from scipy.stats import chi2_contingency
 
+import statsmodels.api as sm
 import pandas as pd
 
 from gymstats.helper.names import ATPS, TOP_ATPS, ZONE_ATPS, RANK, PREV
@@ -116,10 +118,25 @@ def df_by_wall_type(df: pd.DataFrame, wall_types: pd.Series) -> Dict[str, Any]:
     results = {}
     for t, grp in df.groupby(wall_types):
         results[t] = {
-            "boulders": len(grp)
+            "boulders": len(grp),
+            "attempts": df_attempts(grp)
         }
         for r, subgrp in grp.groupby(RANK):
             new_tops = df_tops(subgrp)
-            results[t][ID_TO_RANK[r]] = [new_tops, df_tops_all(df) - new_tops, len(subgrp)]
+            results[t][ID_TO_RANK[r]] = [new_tops, df_tops_all(subgrp) - new_tops, len(subgrp)]
 
     return results
+
+
+def features_overrepr(grp: pd.Series, features: pd.DataFrame):
+    """
+    Given a pandas boolean Series representing two groups and a *features* binary DataFrame
+    Compute representational statisics of each feature using Chi2 and Odds Ratio
+    """
+    results = []
+    for feature_column in features.columns:
+        confusion = pd.crosstab(features[feature_column], grp)
+        r = chi2_contingency(confusion)
+        oddsratio = sm.stats.Table2x2(confusion).oddsratio
+        results.append({'Name': feature_column, 'P-Value': r.pvalue, 'Odds Ratio': oddsratio})
+    return pd.DataFrame(results)
