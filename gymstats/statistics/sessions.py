@@ -4,11 +4,11 @@ from typing import List, Dict, Set, Any
 
 import pandas as pd
 
-from gymstats.models import Session, Gym, Top, Problem, Failure, Zone
+from gymstats.models import Session, Gym, Top, Problem, Failure, Zone, HandHold, Footwork, ProblemMethod
 from gymstats.helper.utils import float_duration_to_hour
 from gymstats.helper.names import ATPS, TOP_ATPS, ZONE_ATPS, RANK, PREV
 from gymstats.helper.names import RANK_TO_ID, Rank
-from gymstats.statistics.pandas import df_achievements, df_attempts, df_by_rank, df_hard_tops, df_tops, df_by_wall_type
+from gymstats.statistics.pandas import df_achievements, df_attempts, df_by_rank, df_hard_tops, df_tops, df_by_wall_type, features_overrepr
 
 
 def statistics(sessions: List[Session], start_date: datetime.date, 
@@ -69,7 +69,12 @@ def summary(sessions: List[Session], threshold_positions: Dict[Gym, List[int]],
     results["Wall Types"]  = df_by_wall_type(df, wall_types)
 
     # Hand Holds, Foot, Method, ...
-    # TODO (expected and overall)
+    sw = {}
+    results["Strengths & Weaknesses"] = sw
+    # all
+    sw["Overall"] = strength_and_weaknesses(df, id_to_pb)
+    # hard
+    sw["Hard"] = strength_and_weaknesses(df[df[RANK] > 0], id_to_pb)
 
     return results
 
@@ -81,6 +86,50 @@ def base_sessions_stats(sessions: List[Session]) -> Dict[str, Any]:
         "duration": duration,
         "duration_human_readable": float_duration_to_hour(duration)
     }
+
+
+def strength_and_weaknesses(df: pd.DataFrame, id_to_pb: Dict[int, Problem], max_pvalue: float = 0.2) -> Dict[str, Any]:
+    results = {}
+    
+    attrs = [
+        ("Hand", _serie_handholds_fast),
+        ("Foot", _serie_footworks_fast),
+        ("Method", _serie_pb_methods_fast)
+        ]
+
+    # TODO: only new tops? only new tops and remove old tops?
+    grp = df[TOP_ATPS] > 0
+    
+    for name, fn in attrs:
+        features = fn(df, id_to_pb).str.get_dummies()
+        out_df = features_overrepr(grp, features)
+        results[name] = out_df[out_df["P-Value"]<= max_pvalue].to_dict()
+
+    return results
+
+
+def _serie_handholds_fast(df: pd.DataFrame, id_to_pb: Dict[int, Problem]) -> pd.Series:
+    """
+    Return a pandas Serie containing hand holds for each problem of the given DataFrame.
+    Fastest method since it use cached Problems associated with the DataFrame.
+    """
+    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(HandHold)), axis=1)
+
+
+def _serie_footworks_fast(df: pd.DataFrame, id_to_pb: Dict[int, Problem]) -> pd.Series:
+    """
+    Return a pandas Serie containing footwork for each problem of the given DataFrame.
+    Fastest method since it use cached Problems associated with the DataFrame.
+    """
+    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(Footwork)), axis=1)
+
+
+def _serie_pb_methods_fast(df: pd.DataFrame, id_to_pb: Dict[int, Problem]) -> pd.Series:
+    """
+    Return a pandas Serie containing problem methods for each problem of the given DataFrame.
+    Fastest method since it use cached Problems associated with the DataFrame.
+    """
+    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(ProblemMethod)), axis=1)
 
 
 def _serie_wall_type_fast(df: pd.DataFrame, id_to_pb: Dict[int, Problem]) -> pd.Series:

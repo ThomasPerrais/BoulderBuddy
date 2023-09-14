@@ -10,7 +10,7 @@ from django.db import models
 from enum import Enum
 from location_field.models.plain import PlainLocationField
 from picklefield.fields import PickledObjectField
-from typing import Any
+from typing import Any,  Dict, List, Union
 
 from gymstats.helper.utils import rand_name
 from gymstats.helper.grade_order import grades_list
@@ -81,6 +81,14 @@ class Climber(models.Model):
     month_hard_boulder_target = models.IntegerField(default=10)  # target number of hard boulders to top every month
 
     preferred_gyms = models.ManyToManyField(Gym, blank=True, verbose_name="My Gyms")
+
+    def thresholds(self) -> Dict[Gym, List[int]]:
+        thresholds = {}
+        for th in self.hard_boulders.all():
+            order = grades_list(th.gym, default=True)
+            positions = [order.index(g) for g in th.grade_threshold.split(',') if g in order]
+            thresholds[th.gym] = sorted(positions)
+        return thresholds
 
     def __str__(self) -> str:
         return self.name
@@ -219,6 +227,15 @@ class Problem(models.Model):
         except KeyError:
             return Rank.UNK
 
+    def str_repr(self, attr: Union[ProblemMethod, HandHold, Footwork]):
+        if attr == ProblemMethod:
+            return "|".join(self.problem_method.values_list('name', flat=True))
+        elif attr == HandHold:
+            return "|".join(self.hand_holds.values_list('name', flat=True))
+        elif attr == Footwork:
+            return "|".join(self.footwork.values_list('name', flat=True))
+        else:
+            return ""
 
     def _pic_name(self):
         return "{}_{}_{}_{}".format(self.gym.abv, self.grade, self.date_added.strftime("%m%y"), rand_name())
