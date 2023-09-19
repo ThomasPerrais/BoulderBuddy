@@ -5,6 +5,7 @@ GRADE_ORDER = {
     "bo": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14"],
     "bs": ["blue", "green", "orange", "pink", "black", "gray", "white"],
     "bl": ["yellow", "orange", "blue", "red", "green", "black"],
+    "cu": ["yellow", "green", "blue", "purple", "red", "white", "black"],
     # special cases
     "bsm": ["blue", "green", "red", "pink", "black", "gray"],
 }
@@ -15,6 +16,7 @@ BRAND_TO_ABV = {
     "Vertical'Art": "va",
     "Block'Out": "bo",
     "Bloc Session": "bs",
+    "Climb Up": "cu",
 }
 
 
