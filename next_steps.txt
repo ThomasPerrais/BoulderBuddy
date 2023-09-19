@@ -4,52 +4,50 @@ Gymstats next step
 ======= FRONTEND =======
 
 - profil page
-    - week/month training: curved progress bar + emoji animal -> tortoise, panda, cat, monkey, lizzard / same with objective in term of Red, Black, B7, B8, etc...
-    - statistiques (/gymstats/profil/statistiques)
-        - since begining of year
-            - raw
-                - training hour
-                - total tops
-            - month per month training time
-        - all time
-            - raw
-                - training hours
-                - total tops
-            - by gym
-                - bar similar to session bar with all grades
 
-    - reviews (gymstats/profil/reviews)
-        - all reviews with sliding bar, simple filter
-        - top options with (RIC, Reviews)
+    - make all charts clickable -> redirect to problem searchresults -- P2
+
+    - Shoe usage  -- P2
+        - average time before resemelage
+        - total time used
+
+    - all time view
+        - total number of RICs / Reviews -- P3
 
 
-- add session page
-    - Finish implementation of first part with ModelForm
-    - Second part: adding problems to sessions
+- Problem search
+    - implement filter on "zone" -- P1
+    - fix filter on currently in Gym -- P1
+    - filter on 'lower/expect/higher' problems given a logged in climber with thresholds -- P2
 
-- session page:
-    - footholds?
-    - failed boulders: hachuré rather than transparent
-    - Details
-        - every problem with border green/orange/red + num attempts
+- Login / Logout 
+    - password modif in profil setting -- P1
+
+- Gym page
+    - Main page  -- P2
+        - General
+            - image
+            - map
+            - sector maps?
+            - Total number of boulders
+            - current number of boulders with histogram
+        - Current
+            boulders stats by_grade/by_wall_type/by_methods?
+            link to detail page
+        - My perfs
+            achievements in the gym (same as profil view)
+            number of training hours last month/year
+            number of sessions
+            my hard threshold
+    
+    - Detail page 
 
 
-- search page -> IN PROGRESS
-    - filters: implement refresh method (How??)
+- Problem page
+    - nicer RIC and Review form ?
+        - use ModelForm, crispy_forms? -- P2
 
-- problem page:
-    - nice display --> IN PROGRESS
-
-- Review / RIC 
-    -> ModelForm
-    -> change code in problem.html
 
 ======= BACKEND =======
 
-- admin
-    - problem
-        - show img when uploaded
-        - grade autocomplete?
-    - session
-        - problem autocomplete & filtering (+ show img?) in Tops/Zones/Fails
-
+- automatic storage of month stats at the end of each month given current threshold of the climber!
