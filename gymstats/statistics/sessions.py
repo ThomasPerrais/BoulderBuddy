@@ -216,6 +216,10 @@ def sessions_to_pandas(sessions: List[Session], start_date: datetime.date,
                 # all other cases need not be evaluated since its a failure
     
     # to pandas DataFrame
-    df = pd.DataFrame(summary).transpose()
-    df.columns = [ATPS, ZONE_ATPS, TOP_ATPS, RANK, PREV]
+    cols = [ATPS, ZONE_ATPS, TOP_ATPS, RANK, PREV]
+    if len(summary) > 0:
+        df = pd.DataFrame(summary).transpose()
+        df.columns = cols
+    else:
+        df = pd.DataFrame(columns=cols)
     return df, id_to_pb
