@@ -51,3 +51,83 @@ Gymstats next step
 ======= BACKEND =======
 
 - automatic storage of month stats at the end of each month given current threshold of the climber!
+
+------------------------
+- Session
+    - overall grade, motivation, fear, strength
+    - date, time, duration
+    - climber, partners
+    - sleep, alcohol, notes
+    - shoes
+
+
+- OutdoorSession(Session)
+    - link to 'Crag'
+
+
+- IndoorSession(Session)
+    - link to 'Gym' 
+
+------------------------
+------------------------
+
+ClimbingPlace
+    - location
+    - name
+    - picture(s)
+
+- Crag(ClimbingPlace)
+    - topo
+
+- Gym(ClimbingPlace)
+    - city, brand, abv
+
+------------------------
+------------------------
+
+Climbable
+    - grade
+    - crux
+    - methods
+    - handholds
+    - footworks
+    - picture
+    - link to 'Sector'
+
+
+IndoorProblem(Climbable)
+    - date added / removed
+
+
+
+OutdoorRoute(Climbable)
+    - height
+    - nbre de dégaines
+
+------------------------
+------------------------
+
+
+Sector
+    - link to 'ClimbingPlace'
+
+
+------------------------
+------------------------
+
+Problem
+    - REMOVE Gym (Sector is enough)
+
+------------------------
+------------------------
+ 
+Try
+    - link to Session
+    - link to Climbable
+    - add attr (lead climbing, moulinette?)
+
+------------------------
+------------------------
+ Climber
+    - indoor/outdoor preferences
+    - lead/boulder preferences 
