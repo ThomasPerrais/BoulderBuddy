@@ -8,7 +8,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
 
     # Autocomplete routes
-    path('sector-autocomplete/', views.SectorAutocompleteView.as_view(), name='sector-autocomplete'),
+    path('sector-autocomplete/', views.GymSectorAutocompleteView.as_view(), name='sector-autocomplete'),
     path('gym-autocomplete/', views.GymAutocompleteView.as_view(), name="gym-autocomplete"),
     path('problem-autocomplete/', views.ProblemAutocompleteView.as_view(), name="problem-autocomplete"),
     path('grade-autocomplete/', views.GradeAutocompleteView.as_view(), name="grade-autocomplete"),

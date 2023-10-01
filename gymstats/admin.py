@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .forms import ProblemForm, TryForm, SessionForm
-from .models import Problem, ProblemMethod, ProblemType, HandHold, Footwork, Gym, Sector, Climber, HardBoulderThreshold
+from .models import ProblemMethod, ProblemType, HandHold, Footwork
+from .models import IndoorSector, OutdoorSector, Gym, Crag, Problem
+from .models import Climber, HardBoulderThreshold
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
 
@@ -78,7 +80,9 @@ admin.site.register(ProblemMethod)
 admin.site.register(HandHold)
 admin.site.register(Footwork)
 admin.site.register(Gym)
-admin.site.register(Sector)
+admin.site.register(Crag)
+admin.site.register(IndoorSector)
+admin.site.register(OutdoorSector)
 
 admin.site.register(Shoes)
 admin.site.register(ShoesFixing)

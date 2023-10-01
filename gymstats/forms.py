@@ -3,7 +3,7 @@ from django.core.files.base import File
 from django.db.models.base import Model
 from django.forms import ModelForm, Textarea
 from django.forms.utils import ErrorList
-from gymstats.models import Session, Climber, Sector, Problem, Try
+from gymstats.models import Session, Climber, Problem, Try
 from django import forms
 from dal import autocomplete
 from crispy_forms.helper import FormHelper

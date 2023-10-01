@@ -17,16 +17,38 @@ from gymstats.helper.grade_order import grades_list
 from gymstats.helper.names import Rank
 
 
-class Gym(models.Model):
+### CLIMBING PLACES ###
+
+class ClimbingPlace(models.Model):
     """
-    Gym model represents a climbing gym where a Session takes place.
-    Climbing gyms with both lead climbing and bouldering should be split in 2 instances
+    Base class representing a place where one can do outdoor/indoor bouldering/rock climbing/lead/...
+    """
+    location = PlainLocationField(zoom=12)
+    name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        abstract = True
+
+
+class Crag(ClimbingPlace):
+    """
+    Outdoor climbing place.
+    """
+    nearest_city=models.CharField(max_length=100)
+
+
+class Gym(ClimbingPlace):
+    """
+    Indoor climbing place for bouldering or lead.
     """
     city = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     abv = models.CharField(max_length=10)
 
-    location = PlainLocationField(based_fields=['city'], zoom=12)
+    # location = PlainLocationField(based_fields=['city'], zoom=12)
 
     class GymType(models.TextChoices):
         BOULDER = 'Boulder'
@@ -37,6 +59,8 @@ class Gym(models.Model):
     def __str__(self) -> str:
         return "{} {} ({})".format(self.brand, self.city, self.gym_type)
 
+
+### CLIMBING SHOES ###
 
 class Shoes(models.Model):
 
@@ -57,6 +81,9 @@ class ShoesFixing(models.Model):
     def __str__(self) -> str:
         return "{}: {}".format(self.fixing_date, self.shoes)
 
+
+
+### USERS & STATS ###
 
 class Climber(models.Model):
 
@@ -115,6 +142,9 @@ class HardBoulderThreshold(models.Model):
     grade_threshold = models.CharField(max_length=20)
 
 
+
+### HOLDS & METHODS ###
+
 class Describable(models.Model):
 
     def location(self, name):
@@ -156,15 +186,48 @@ class ProblemMethod(Describable):  # choices: [dyno, coordo, lolotte, flex, mant
         super().__init__('problem-method', *args, **kwargs)
 
 
+### SECTORS ###
+
 class Sector(models.Model):
 
     wall_types = models.ManyToManyField(ProblemType, blank=False)
+    map = models.ImageField(upload_to='sectors-maps', blank=True)
+    name = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        abstract = True   
+
+
+class IndoorSector(Sector):
+
     sector_id = models.IntegerField()
     gym = models.ForeignKey(Gym, on_delete=models.CASCADE)  # deleting a gym -> delete its sectors
-    map = models.ImageField(upload_to='sectors-maps', blank=True)
+    
+    def pretty_name(self):
+        if len(self.name) > 0:
+            return self.name
+        else:
+            return "Sector " + str(self.sector_id)
+
+    def __str__(self) -> str:
+        return self.gym.abv + " - " + self.pretty_name()
+
+
+class Orientation(models.Model):
+    
+    name = models.CharField(max_length=10)
+    def __str__(self) -> str:
+        return self.name
+
+class OutdoorSector(Sector):
+    crag = models.ForeignKey(Crag, on_delete=models.CASCADE)  # deleting a crag -> delete its sectors
+    orientations = models.ManyToManyField(Orientation, blank=True)
+
+    notes = models.CharField(max_length=1000)
     
     def __str__(self) -> str:
-        return self.gym.abv + " - Sector " + str(self.sector_id)
+        return self.crag.name + " - " + str(self.name)
+
 
 
 class Problem(models.Model):
@@ -184,7 +247,7 @@ class Problem(models.Model):
 
     # Retrieving the problem
     gym = models.ForeignKey(Gym, on_delete=models.PROTECT)  # PROTECT: cannot delete a gym that has boulder problems 
-    sector = models.ForeignKey(Sector, on_delete=models.PROTECT, blank=True, null=True)  # cannot delete a sector that has problems associated
+    sector = models.ForeignKey(IndoorSector, on_delete=models.PROTECT, blank=True, null=True)  # cannot delete a sector that has problems associated
     date_added = models.DateField(default=datetime.date.today)
     
     # track problem life cycle

@@ -11,7 +11,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .forms import SessionForm, ClimberForm
-from .models import Problem, Gym, Review, Climber, Session, Try, RIC, Sector, Top, Failure, Zone
+from .models import Problem, Gym, Review, Climber, Session, Try, RIC, IndoorSector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import grades_list
@@ -30,11 +30,11 @@ class GymAutocompleteView(autocomplete.Select2QuerySetView):
             gyms = gyms.filter(abv__startswith=self.q)
         return gyms
 
-class SectorAutocompleteView(autocomplete.Select2QuerySetView):
+class GymSectorAutocompleteView(autocomplete.Select2QuerySetView):
     
     def get_queryset(self):
 
-        sectors = Sector.objects.all()
+        sectors = IndoorSector.objects.all()
 
         gym = self.forwarded.get('gym', None)
         if gym:
@@ -257,9 +257,10 @@ def add_session_problems(request, session_id):
             msg = "all fields must be filled..."
             success = False
 
-    sectors = Sector.objects.filter(gym=sess.gym)
+    sectors = IndoorSector.objects.filter(gym=sess.gym)
     sectors_img = set([s.map.url for s in sectors])
     
+    # TODO: use sector name
     sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
     grades = {'g:' + g: g for g in grades_list(sess.gym, default=True)}
 
@@ -346,7 +347,7 @@ def session_details(request, session_id):
             msg = "all fields must be filled..."
             success = False
 
-    sectors = Sector.objects.filter(gym=session.gym)
+    sectors = IndoorSector.objects.filter(gym=session.gym)
     sectors_img = set([s.map.url for s in sectors])
     num_sectors = sectors.count()
 
@@ -382,9 +383,10 @@ def gyms_homepage(request):
 
 def gym_details(request, gym_abv):
     gym = get_object_or_404(Gym, abv=gym_abv)
-    sectors = Sector.objects.filter(gym=gym)
+    sectors = IndoorSector.objects.filter(gym=gym)
     sectors_img = set([s.map.url for s in sectors])
     
+    # TODO use sector name
     sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
     problems = {pb: {} for pb in Problem.objects.filter(gym=gym, removed=False)}
 
