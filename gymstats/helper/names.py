@@ -4,7 +4,7 @@ from enum import Enum
 HANDHOLD = "handhold"
 FOOTWORK = "footwork"
 TYPE = "type"
-METHOD = "method"
+MOVE = "move"
 GRADE = "grade"
 GYM = "gym"
 DATE = "date"

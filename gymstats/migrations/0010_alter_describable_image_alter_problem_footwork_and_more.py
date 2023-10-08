@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="problem",
             name="picture",
-            field=models.ImageField(upload_to=gymstats.models.Problem.upload_picture),
+            field=models.ImageField(upload_to=gymstats.models.IndoorProblem.upload_picture),
         ),
         migrations.AlterField(
             model_name="problem",

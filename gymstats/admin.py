@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .forms import ProblemForm, TryForm, SessionForm
-from .models import ProblemMethod, ProblemType, HandHold, Footwork
-from .models import IndoorSector, OutdoorSector, Gym, Crag, Problem
+from .models import ClimbingMove, WallAngle, HandHold, Footwork
+from .models import IndoorSector, OutdoorSector, Gym, Crag, IndoorProblem
 from .models import Climber, HardBoulderThreshold
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
@@ -44,11 +44,11 @@ class SessionAdmin(admin.ModelAdmin):
     inlines = [TopInline, ZoneInline, FailureInline]
 
 
-@admin.register(Problem)
+@admin.register(IndoorProblem)
 class ProblemAdmin(admin.ModelAdmin):
 
     form = ProblemForm
-    list_filter = ['gym__abv', 'grade', 'removed', 'problem_type', 'hand_holds']
+    list_filter = ['gym__abv', 'grade', 'removed', 'wall_angle', 'hand_holds']
     list_display = ('gym', 'grade', 'picture', 'removed')
     list_editable = ("removed",)
 
@@ -56,7 +56,7 @@ class ProblemAdmin(admin.ModelAdmin):
     fieldsets = [
         ('General', {'fields': ["gym", "grade", "sector", "date_added"]}),
         ('Picture', {'fields': ["picture", "picture_display"]}),
-        ('Details', {'fields': ["problem_type", "hand_holds", "footwork", "problem_method"]}),
+        ('Details', {'fields': ["wall_angle", "hand_holds", "footwork", "moves"]}),
     ]
     inlines = [RICInline]
 
@@ -75,8 +75,8 @@ class ClimberAdmin(admin.ModelAdmin):
     inlines = [HardBoulderInline]
 
 # Register your models here.
-admin.site.register(ProblemType)
-admin.site.register(ProblemMethod)
+admin.site.register(WallAngle)
+admin.site.register(ClimbingMove)
 admin.site.register(HandHold)
 admin.site.register(Footwork)
 admin.site.register(Gym)

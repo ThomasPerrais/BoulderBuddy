@@ -11,7 +11,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .forms import SessionForm, ClimberForm
-from .models import Problem, Gym, Review, Climber, Session, Try, RIC, IndoorSector, Top, Failure, Zone
+from .models import IndoorProblem, Gym, Review, Climber, Session, Try, RIC, IndoorSector, Top, Failure, Zone
 from .helper.parser import parse_filters
 from .helper.query import query_problems_from_filters
 from .helper.grade_order import grades_list
@@ -49,7 +49,7 @@ class ProblemAutocompleteView(autocomplete.Select2QuerySetView):
     re_num = re.compile("^(\d+)(.*)")
 
     def get_queryset(self):
-        problems = Problem.objects.all()
+        problems = IndoorProblem.objects.all()
 
         # Forwarded in Session Form
         gym = self.forwarded.get('gym', None)
@@ -234,7 +234,7 @@ def add_session_problems(request, session_id):
     success = True
     if request.method == "POST":
         try:
-            pb = get_object_or_404(Problem, id=request.POST['pb-id'])
+            pb = get_object_or_404(IndoorProblem, id=request.POST['pb-id'])
             attempts = int(request.POST["attempts"])
             result = request.POST["achievement"]
             if result == "top":
@@ -264,7 +264,7 @@ def add_session_problems(request, session_id):
     sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
     grades = {'g:' + g: g for g in grades_list(sess.gym, default=True)}
 
-    problems = {pb: {} for pb in Problem.objects.filter(gym=sess.gym, removed=False)}
+    problems = {pb: {} for pb in IndoorProblem.objects.filter(gym=sess.gym, removed=False)}
 
     return render(request, 'gymstats/add_session_problems.html', {
             "message": {
@@ -297,7 +297,7 @@ def session_details(request, session_id):
     if request.method == "POST":
         try:
             # this should not raise Errors
-            pb = get_object_or_404(Problem, id=request.POST['pb-id'])
+            pb = get_object_or_404(IndoorProblem, id=request.POST['pb-id'])
             achievement = request.POST['pb-achievement'].lower()
             if achievement == "top":
                 tr = Top.objects.get(session=session, problem=pb)
@@ -388,7 +388,7 @@ def gym_details(request, gym_abv):
     
     # TODO use sector name
     sectors = {'s:' + str(i + 1): 'Sector ' + str(i + 1) for i in range(sectors.count())}
-    problems = {pb: {} for pb in Problem.objects.filter(gym=gym, removed=False)}
+    problems = {pb: {} for pb in IndoorProblem.objects.filter(gym=gym, removed=False)}
 
     return render(request, 'gymstats/gym.html', {
             "gym": gym,
@@ -399,7 +399,7 @@ def gym_details(request, gym_abv):
 
 
 def problems_by_gym(request, gym_abv):
-    pbs = Problem.objects.filter(gym__abv = gym_abv)
+    pbs = IndoorProblem.objects.filter(gym__abv = gym_abv)
     filters = {"gym": gym_abv}
     return render(request, 'gymstats/problem_results.html', {'results': pbs, 'filters': filters})
 
@@ -407,14 +407,14 @@ def problems_by_gym(request, gym_abv):
 # PROBLEM views
 
 def problems_homepage(request):
-    pbs = Problem.objects.all()
+    pbs = IndoorProblem.objects.all()
     return render(request, 'gymstats/problems_list.html', {'problems_list': pbs})
 
 
 def problem_detail(request, problem_id):
 
     climber = request.user.climber_set.first()
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
 
     # Problem data: rating & RIC
     ratings = problem.review_set.all()
@@ -453,13 +453,13 @@ def problem_detail(request, problem_id):
 
 
 def problem_reviews(request, problem_id):
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
     reviews = problem.review_set.all()
     return render(request, 'gymstats/reviews_list.html', {'problem': problem, 'reviews_list': reviews})
 
 
 def problem_review(request, problem_id, review_id):
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
     try:
         review = problem.review_set.get(id=review_id)
     except Review.DoesNotExist:
@@ -468,7 +468,7 @@ def problem_review(request, problem_id, review_id):
 
 
 def review_problem(request, problem_id):
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
     climber = request.user.climber_set.first()
     if not climber:
         return render(request, 'gymstats/problem.html', {
@@ -491,7 +491,7 @@ def review_problem(request, problem_id):
 
 
 def problem_ric(request, problem_id, ric_id):
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
     try:
         ric = problem.ric_set.get(id=ric_id)
     except RIC.DoesNotExist:
@@ -500,7 +500,7 @@ def problem_ric(request, problem_id, ric_id):
 
 
 def evaluate_ric_problem(request, problem_id):
-    problem = get_object_or_404(Problem, id=problem_id)
+    problem = get_object_or_404(IndoorProblem, id=problem_id)
     climber = request.user.climber_set.first()
     if not climber:
         return render(request, 'gymstats/problem.html', {

@@ -7,7 +7,7 @@ filter_pattern = re.compile('(?P<key>.*) ?(?P<comparer>(eq|gte|lte|lt|gt|<|>|=|:
 _map = {
     HANDHOLD: {"handholds","handhold","hh", "h"},
     FOOTWORK: {"footwork", "footworks", "fw", "f"},
-    METHOD: {"method", "problem-method", "pm", "m"},
+    MOVE: {"moves", "move", "m"},
     TYPE: {"type", "problem-type", "t"},
     GRADE: {"grade", "g"},
     GYM: {"gym", "brand", "abv", "gym-abv"},

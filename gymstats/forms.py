@@ -3,7 +3,7 @@ from django.core.files.base import File
 from django.db.models.base import Model
 from django.forms import ModelForm, Textarea
 from django.forms.utils import ErrorList
-from gymstats.models import Session, Climber, Problem, Try
+from gymstats.models import Session, Climber, IndoorProblem, Try
 from django import forms
 from dal import autocomplete
 from crispy_forms.helper import FormHelper
@@ -114,7 +114,7 @@ class TryForm(ModelForm):
 
 class ProblemForm(ModelForm):
     class Meta:
-        model = Problem
+        model = IndoorProblem
         exclude = ("removed",)
         widgets = {
             'sector': autocomplete.ModelSelect2(url='gs:sector-autocomplete',

@@ -43,14 +43,14 @@
         height="560">
 
 <ul class="tagslist">
-    <li class="small ty">{{ problem.problem_type }}</li>
+    <li class="small ty">{{ problem.wall_angle }}</li>
     {% for desc in problem.hand_holds.all %}
         <li class="small hh">{{ desc.name }}</li>
     {% endfor %}
     {% for desc in problem.footwork.all %}
         <li class="small fw">{{ desc.name }}</li>
     {% endfor %}
-    {% for desc in problem.problem_method.all %}
+    {% for desc in problem.moves.all %}
         <li class="small me">{{ desc.name }}</li>
     {% endfor %}
 </ul>

@@ -1,6 +1,6 @@
 from typing import Dict, List
 from functools import reduce
-from gymstats.models import Problem, Footwork, HandHold, ProblemMethod, Climber, Top
+from gymstats.models import IndoorProblem, Footwork, HandHold, ClimbingMove, Climber, Top
 from gymstats.helper.names import *
 from gymstats.statistics.base import fisher_overrepr
 from gymstats.statistics.problems import attr_statistics
@@ -11,7 +11,7 @@ from django.db.models import Q, Prefetch
 _attr_map = {
     HANDHOLD: HandHold,
     FOOTWORK: Footwork,
-    METHOD: ProblemMethod
+    MOVE: ClimbingMove
 }
 
 
@@ -19,7 +19,7 @@ def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]], climber
     """
     query problems given list of parsed filters
     """
-    problems = Problem.objects.prefetch_related(Prefetch('tops', queryset=Top.objects.filter(session__climber=climber))).all()
+    problems = IndoorProblem.objects.prefetch_related(Prefetch('tops', queryset=Top.objects.filter(session__climber=climber))).all()
 
     # TODO: test for statistics change this
     achievement = "all"
@@ -51,7 +51,7 @@ def _add_filter(problems, k, v):
     if k in {GRADE, TYPE, GYM}:
         qs = __build_or_query(v["eq"], k)
         return problems.filter(reduce(lambda x,y: x | y, qs))
-    elif k in {METHOD, HANDHOLD, FOOTWORK}:  # TODO: is this efficient??
+    elif k in {MOVE, HANDHOLD, FOOTWORK}:  # TODO: is this efficient??
         attributes = __get_attr_objects(v["eq"], k)
         subset = reduce(lambda x,y: x|y, [attr.problem_set.all() for attr in attributes])
         return problems & subset

@@ -3,6 +3,7 @@ import itertools
 import os
 import math
 
+from abc import ABC, abstractmethod
 from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -174,13 +175,13 @@ class Footwork(Describable):  # choices: [tiny, edging, smearing, heelhook, cont
         super().__init__('footwork', *args, **kwargs)
 
 
-class ProblemType(Describable):  # choices: [vertical, slab, overhanging, roof, traverse]
+class WallAngle(Describable):  # choices: [vertical, slab, overhanging, roof, traverse, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('problem-type', *args, **kwargs)
 
 
-class ProblemMethod(Describable):  # choices: [dyno, coordo, lolotte, flex, mantle, ...]
+class ClimbingMove(Describable):  # choices: [dyno, coordo, lolotte, flex, mantle, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('problem-method', *args, **kwargs)
@@ -190,7 +191,7 @@ class ProblemMethod(Describable):  # choices: [dyno, coordo, lolotte, flex, mant
 
 class Sector(models.Model):
 
-    wall_types = models.ManyToManyField(ProblemType, blank=False)
+    wall_types = models.ManyToManyField(WallAngle, blank=False)
     map = models.ImageField(upload_to='sectors-maps', blank=True)
     name = models.CharField(max_length=100, blank=True)
 
@@ -219,33 +220,60 @@ class Orientation(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
 class OutdoorSector(Sector):
     crag = models.ForeignKey(Crag, on_delete=models.CASCADE)  # deleting a crag -> delete its sectors
     orientations = models.ManyToManyField(Orientation, blank=True)
 
     notes = models.CharField(max_length=1000)
-    
+
     def __str__(self) -> str:
         return self.crag.name + " - " + str(self.name)
 
 
+### PROBLEMS & ROUTES ###
 
-class Problem(models.Model):
+class Climbable(models.Model):  # base class of something that can be climbed.
+
+    # Grade is a general attr of either Boulder problems or routes
+    grade = models.CharField(max_length=10)
+
+    # TODO: add crux (either as a Describable field or a text field?)
+
+    wall_angle = models.ForeignKey(WallAngle, on_delete=models.PROTECT)  # PROTECT: cannot remove a wall_angle unless it is not referenced by any problem
+    moves = models.ManyToManyField(ClimbingMove, blank=True)
+    
+    class Meta:
+        abstract = True
+    
+
+class Boulder(Climbable):  # indoor or outdoor boulder
+
+    # Specific to boulder since their might be too many holds types and footwork in a route.
+    # We prefer using crux to define a route
+    hand_holds = models.ManyToManyField(HandHold, blank=True)
+    footwork = models.ManyToManyField(Footwork, blank=True)
+
+    class Meta:
+        abstract = True
+
+
+class Route(Climbable):  # indoor or outdoor route
+    
+    height = models.IntegerField()
+    quickdraws = models.IntegerField()  # number of quickdraws needed
+    
+    class Meta:
+        abstract = True
+
+
+class IndoorProblem(Boulder):
 
     class Meta:
         ordering = ["-date_added", "grade"]
 
-    # overall grade of the problem
-    # maybe we should put an integer here to be able to compare between different gyms?
-    grade = models.CharField(max_length=10)
-
-    # problem settings
-    hand_holds = models.ManyToManyField(HandHold, blank=True)
-    footwork = models.ManyToManyField(Footwork, blank=True)
-    problem_type = models.ForeignKey(ProblemType, on_delete=models.PROTECT)  # PROTECT: cannot remove a problem type unless it is not referenced by any problem
-    problem_method = models.ManyToManyField(ProblemMethod, blank=True)
-
     # Retrieving the problem
+    # TODO: remove gym (might not be easy...)
     gym = models.ForeignKey(Gym, on_delete=models.PROTECT)  # PROTECT: cannot delete a gym that has boulder problems 
     sector = models.ForeignKey(IndoorSector, on_delete=models.PROTECT, blank=True, null=True)  # cannot delete a sector that has problems associated
     date_added = models.DateField(default=datetime.date.today)
@@ -253,27 +281,28 @@ class Problem(models.Model):
     # track problem life cycle
     removed = models.BooleanField(default=False)
 
-    def upload_picture(instance, filename):
+    def upload_picture(self, filename):
         _, ext = os.path.splitext(filename)
-        return os.path.join('problems', instance._pic_name() + ext)
-    
+        return os.path.join('problems', self._pic_name() + ext)
+        
+    picture = models.ImageField(upload_to=upload_picture)
+
     def picture_display(self):
         from django.utils.html import format_html
         return format_html('<img src="{}" width="400px" height="500px">', self.picture.url)
 
-    picture = models.ImageField(upload_to=upload_picture)
-
     def description(self):
-        return ", ".join(self.hand_holds + self.footwork + self.problem_method)
+        return ", ".join(self.hand_holds + self.footwork + self.moves)
 
     def name(self, desc: bool = False):
         name = "{}: {} {}".format(self.sector,
                                   self.grade,
-                                  self.problem_type)
+                                  self.wall_angle)
         if desc:
             name += " ({})".format(self.description())
         return name
 
+    # TODO: move to Climbable
     def rank(self, threshold_positions):
         if not threshold_positions or self.gym not in threshold_positions or len(threshold_positions[self.gym]) == 0:
             return Rank.UNK
@@ -290,9 +319,9 @@ class Problem(models.Model):
         except KeyError:
             return Rank.UNK
 
-    def str_repr(self, attr: Union[ProblemMethod, HandHold, Footwork]):
-        if attr == ProblemMethod:
-            return "|".join(self.problem_method.values_list('name', flat=True))
+    def str_repr(self, attr: Union[ClimbingMove, HandHold, Footwork]):
+        if attr == ClimbingMove:
+            return "|".join(self.moves.values_list('name', flat=True))
         elif attr == HandHold:
             return "|".join(self.hand_holds.values_list('name', flat=True))
         elif attr == Footwork:
@@ -310,7 +339,7 @@ class Problem(models.Model):
 class RIC(models.Model):
     
     reviewer = models.ForeignKey(Climber, on_delete=models.PROTECT)
-    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
+    problem = models.ForeignKey(IndoorProblem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
     
     class RICGrade(models.IntegerChoices):
         VERY_LOW = 1
@@ -331,7 +360,7 @@ class Review(models.Model):
 
     reviewer = models.ForeignKey(Climber, on_delete=models.PROTECT)  # PROTECT: cannot remove a climber who posted reviews
     comment = models.CharField(max_length=120)
-    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
+    problem = models.ForeignKey(IndoorProblem, on_delete=models.CASCADE)  # CASCADE: if problem is deleted, comments are deleted
 
     class Rating(models.IntegerChoices):
         NOT_RATED = 0
@@ -411,7 +440,7 @@ class Session(models.Model):
         pb_holds = defaultdict(lambda: [0,0])
 
         def _add(t, pos: int):
-            pb_types[str(t.problem.problem_type)][pos] += 1
+            pb_types[str(t.problem.wall_angle)][pos] += 1
             pb_grades[str(t.problem.grade)][pos] += 1
             for hh in t.problem.hand_holds.all():
                 pb_holds[str(hh)][pos] += 1
@@ -442,7 +471,7 @@ class Session(models.Model):
 class Try(models.Model):
 
     session = models.ForeignKey(Session, on_delete=models.PROTECT, related_name="%(class)ss")
-    problem = models.ForeignKey(Problem, on_delete=models.PROTECT, related_name="%(class)ss")
+    problem = models.ForeignKey(IndoorProblem, on_delete=models.PROTECT, related_name="%(class)ss")
     attempts = models.IntegerField(default=1)
     
     def name(self):
