@@ -52,6 +52,11 @@ Gymstats next step
 
 - automatic storage of month stats at the end of each month given current threshold of the climber!
 
+- urgent fix -> Problem Form in Admin
+
+- fix everything after migrating the database
+
+
 ------------------------
 
 - Session
@@ -72,57 +77,15 @@ Gymstats next step
 ------------------------
 ------------------------
 
-ClimbingPlace
-    - location
-    - name
-    - picture(s)
-
-- Crag(ClimbingPlace)
-    - topo
-
-- Gym(ClimbingPlace)
-    - city, brand, abv
-
-------------------------
-------------------------
-
-Climbable
-    - grade
-    - crux
-    - methods
-    - handholds
-    - footworks
-    - picture
-    - link to 'Sector'
-
-
-IndoorProblem(Climbable)
-    - date added / removed
-
-
-
-OutdoorRoute(Climbable)
-    - height
-    - nbre de dégaines
-
-------------------------
-------------------------
-
 Sector
     - link to 'ClimbingPlace'
 
 ------------------------
 ------------------------
-
-Problem
-    - REMOVE Gym (Sector is enough)
-
-------------------------
-------------------------
  
 Try
-    - link to Session
     - link to Climbable
+    - need manual modif of database
     - add attr (lead climbing, moulinette?)
 
 ------------------------
