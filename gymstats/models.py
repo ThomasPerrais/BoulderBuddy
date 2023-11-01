@@ -8,13 +8,15 @@ from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.html import format_html
+
 from enum import Enum
 from location_field.models.plain import PlainLocationField
 from picklefield.fields import PickledObjectField
 from typing import Any,  Dict, List, Union
 
 from gymstats.helper.utils import rand_name
-from gymstats.helper.grade_order import grades_list
+from gymstats.helper.grade_order import grades_list, FONT_SCALE
 from gymstats.helper.names import Rank
 
 
@@ -149,49 +151,64 @@ class HardBoulderThreshold(models.Model):
 class Describable(models.Model):
 
     def location(self, name):
-        return os.path.join(self.location, name)
+        return os.path.join(self.dir, name)
 
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=300)
     image = models.ImageField(upload_to=location, blank=True)
 
-    def __init__(self, location, *args: Any, **kwargs: Any) -> None:
+    def __init__(self, directory, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        self.location = os.path.join("problems", location)
+        self.dir = directory
 
     def __str__(self) -> str:
         return self.name
 
 
-class HandHold(Describable): # choices: [jugs, slopers, pockets, pinches, crimps, edges, gaston, undercling, crack, volume]
+class HandHold(Describable): # choices: [jugs, slopers, pockets, pinches, crimps, edges, gaston, undercling, crack, volume, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('hand-holds', *args, **kwargs)
 
 
-class Footwork(Describable):  # choices: [tiny, edging, smearing, heelhook, contre-pointe]
+class Footwork(Describable):  # choices: [tiny, edging, smearing, heelhook, toehook, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__('footwork', *args, **kwargs)
 
 
-class WallAngle(Describable):  # choices: [vertical, slab, overhanging, roof, traverse, ...]
-    
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__('problem-type', *args, **kwargs)
-
-
 class ClimbingMove(Describable):  # choices: [dyno, coordo, lolotte, flex, mantle, ...]
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__('problem-method', *args, **kwargs)
+        super().__init__('climbing-move', *args, **kwargs)
+
+
+class WallAngle(Describable):  # choices: [vertical, slab, overhanging, roof...]
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__('wall-angle', *args, **kwargs)
+
+
+class ClimbType(Describable):  # choices: [traverse, diedre, ...]
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__('climb-type', *args, **kwargs)
+
+
+class ClimbAttribute(Describable):  # choices [rési, long route, départ assis, ...]
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__('climb-attrs', *args, **kwargs)
 
 
 ### SECTORS ###
 
 class Sector(models.Model):
 
-    wall_types = models.ManyToManyField(WallAngle, blank=False)
+    wall_angles = models.ManyToManyField(WallAngle, blank=False)
+    climb_types = models.ManyToManyField(ClimbType, blank=True)
+    climb_attrs = models.ManyToManyField(ClimbAttribute, blank=True)
+
     map = models.ImageField(upload_to='sectors-maps', blank=True)
     name = models.CharField(max_length=100, blank=True)
 
@@ -233,19 +250,133 @@ class OutdoorSector(Sector):
 
 ### PROBLEMS & ROUTES ###
 
-class Climbable(models.Model):  # base class of something that can be climbed.
+class NewClimbable(models.Model):  # base class of something that can be climbed.
+
+    def __init__(self, folder: str, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self.folder = folder
 
     # Grade is a general attr of either Boulder problems or routes
     grade = models.CharField(max_length=10)
 
-    # TODO: add crux (either as a Describable field or a text field?)
-
     wall_angle = models.ForeignKey(WallAngle, on_delete=models.PROTECT)  # PROTECT: cannot remove a wall_angle unless it is not referenced by any problem
+    climb_attr = models.ManyToManyField(ClimbAttribute, blank=True)
     moves = models.ManyToManyField(ClimbingMove, blank=True)
     
+    def upload_picture(self, filename):
+        _, ext = os.path.splitext(filename)
+        return os.path.join(self.folder, self._pic_name() + ext)
+        
+    picture = models.ImageField(upload_to=upload_picture)
+
+    def picture_display(self):
+        return format_html('<img src="{}" width="400px" height="500px">', self.picture.url)
+
+    @abstractmethod
+    def _pic_name(self):
+        pass
+
+    def rank(self, **kwargs) -> Rank:
+        """
+        Return the rank of the climbable given climber preferences and thresholds
+        """
+        try:
+            order = self.get_grade_order(**kwargs)
+            expected_levels = self.get_climber_level(**kwargs)
+            if len(expected_levels) == 0 or not order:
+                return Rank.UNK
+            grade_pos = order.index(self.grade) # position of problem grade in the scale
+            if grade_pos < expected_levels[0]:
+                return Rank.LOWER
+            if grade_pos > expected_levels[-1]:
+                return Rank.HIGHER
+            return Rank.EXPECT
+        except KeyError:
+            return Rank.UNK
+
+    @abstractmethod
+    def get_grade_order(self) -> List[str]:
+        """
+        return grade order relative to the given climbable object
+        """
+
+    @abstractmethod
+    def get_climber_level(self, **kwargs) -> List[int]:
+        """
+        extract climber expected level of difficulty.
+        """
+
+
+class Climbable(models.Model):  # base class of something that can be climbed.
+
+    def __init__(self, folder: str, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self.folder = folder
+
+    # Grade is a general attr of either Boulder problems or routes
+    grade = models.CharField(max_length=10)
+
+    wall_angle = models.ForeignKey(WallAngle, on_delete=models.PROTECT)  # PROTECT: cannot remove a wall_angle unless it is not referenced by any problem
+    climb_attr = models.ManyToManyField(ClimbAttribute, blank=True)
+    moves = models.ManyToManyField(ClimbingMove, blank=True)
+    
+    def upload_picture(self, filename):
+        _, ext = os.path.splitext(filename)
+        return os.path.join(self.folder, self._pic_name() + ext)
+        
+    picture = models.ImageField(upload_to=upload_picture)
+
+    def picture_display(self):
+        return format_html('<img src="{}" width="400px" height="500px">', self.picture.url)
+
+    @abstractmethod
+    def _pic_name(self):
+        pass
+
+    def rank(self, **kwargs) -> Rank:
+        """
+        Return the rank of the climbable given climber preferences and thresholds
+        """
+        try:
+            order = self.get_grade_order(**kwargs)
+            expected_levels = self.get_climber_level(**kwargs)
+            if len(expected_levels) == 0 or not order:
+                return Rank.UNK
+            grade_pos = order.index(self.grade) # position of problem grade in the scale
+            if grade_pos < expected_levels[0]:
+                return Rank.LOWER
+            if grade_pos > expected_levels[-1]:
+                return Rank.HIGHER
+            return Rank.EXPECT
+        except KeyError:
+            return Rank.UNK
+
+    @abstractmethod
+    def get_grade_order(self) -> List[str]:
+        """
+        return grade order relative to the given climbable object
+        """
+
+    @abstractmethod
+    def get_climber_level(self, **kwargs) -> List[int]:
+        """
+        extract climber expected level of difficulty.
+        """
+
     class Meta:
         abstract = True
-    
+
+
+# class Crux(models.Model):
+#     notes = models.CharField(max_length=1000)
+#     climbable = models.ForeignKey(Climbable, on_delete=models.CASCADE, related_name="cruxes")  # deleting a Climbable -> delete its crux
+
+#     wall_angle = models.ManyToManyField(WallAngle, blank=True)
+#     hand_holds = models.ManyToManyField(HandHold, blank=True)
+#     footwork = models.ManyToManyField(Footwork, blank=True)
+#     climb_move = models.ManyToManyField(ClimbingMove, blank=True)
+#     climb_attr = models.ManyToManyField(ClimbAttribute, blank=True)
+
 
 class Boulder(Climbable):  # indoor or outdoor boulder
 
@@ -253,6 +384,30 @@ class Boulder(Climbable):  # indoor or outdoor boulder
     # We prefer using crux to define a route
     hand_holds = models.ManyToManyField(HandHold, blank=True)
     footwork = models.ManyToManyField(Footwork, blank=True)
+
+    def str_repr(self, attr: Union[ClimbingMove, HandHold, Footwork, ClimbAttribute]):
+        if attr == ClimbingMove:
+            return "|".join(self.moves.values_list('name', flat=True))
+        elif attr == HandHold:
+            return "|".join(self.hand_holds.values_list('name', flat=True))
+        elif attr == Footwork:
+            return "|".join(self.footwork.values_list('name', flat=True))
+        elif attr == ClimbAttribute:
+            return "|".join(self.climb_attr.values_list('name', flat=True))
+        else:
+            return ""
+    
+    @abstractmethod
+    def get_grade_order(self) -> List[str]:
+        pass
+    
+    @abstractmethod
+    def _pic_name(self):
+        pass
+
+    @abstractmethod
+    def get_climber_level(self, **kwargs) -> List[int]:
+        pass
 
     class Meta:
         abstract = True
@@ -269,6 +424,9 @@ class Route(Climbable):  # indoor or outdoor route
 
 class IndoorProblem(Boulder):
 
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__("indoor-boulder", *args, **kwargs)
+
     class Meta:
         ordering = ["-date_added", "grade"]
 
@@ -281,20 +439,10 @@ class IndoorProblem(Boulder):
     # track problem life cycle
     removed = models.BooleanField(default=False)
 
-    def upload_picture(self, filename):
-        _, ext = os.path.splitext(filename)
-        return os.path.join('problems', self._pic_name() + ext)
-        
-    picture = models.ImageField(upload_to=upload_picture)
-
-    def picture_display(self):
-        from django.utils.html import format_html
-        return format_html('<img src="{}" width="400px" height="500px">', self.picture.url)
-
-    def description(self):
+    def description(self) -> str:  # TODO remove or change?
         return ", ".join(self.hand_holds + self.footwork + self.moves)
 
-    def name(self, desc: bool = False):
+    def name(self, desc: bool = False) -> str:
         name = "{}: {} {}".format(self.sector,
                                   self.grade,
                                   self.wall_angle)
@@ -302,38 +450,45 @@ class IndoorProblem(Boulder):
             name += " ({})".format(self.description())
         return name
 
-    # TODO: move to Climbable
-    def rank(self, threshold_positions):
-        if not threshold_positions or self.gym not in threshold_positions or len(threshold_positions[self.gym]) == 0:
-            return Rank.UNK
-        try:
-            order = grades_list(self.gym, default=False)
-            grade_pos = order.index(self.grade) # position of problem grade in the scale
-            positions = threshold_positions[self.gym]
-            if grade_pos < positions[0]:
-                return Rank.LOWER
-            if grade_pos > positions[-1]:
-                return Rank.HIGHER
-            else:
-                return Rank.EXPECT
-        except KeyError:
-            return Rank.UNK
+    def get_grade_order(self) -> List[str]:
+        return grades_list(self.gym, default=False)
+        
+    def get_climber_level(self, **kwargs) -> List[int]:
+        thresholds = kwargs.get("threhold_positions", {})
+        return thresholds[self.gym]
 
-    def str_repr(self, attr: Union[ClimbingMove, HandHold, Footwork]):
-        if attr == ClimbingMove:
-            return "|".join(self.moves.values_list('name', flat=True))
-        elif attr == HandHold:
-            return "|".join(self.hand_holds.values_list('name', flat=True))
-        elif attr == Footwork:
-            return "|".join(self.footwork.values_list('name', flat=True))
-        else:
-            return ""
-
-    def _pic_name(self):
-        return "{}_{}_{}_{}".format(self.gym.abv, self.grade, self.date_added.strftime("%m%y"), rand_name())
+    def _pic_name(self) -> str:
+        return "{}_{}_{}_{}".format(self.sector.gym.abv, self.grade, self.date_added.strftime("%m%y"), rand_name())
 
     def __str__(self) -> str:
         return self.name()
+
+
+class OutdoorProblem(Boulder):
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__("outdoor-boulder", *args, **kwargs)
+
+    class Meta:
+        ordering = ["grade"]
+
+    sector = models.ForeignKey(OutdoorSector, on_delete=models.PROTECT, blank=True, null=True)  # cannot delete a sector that has problems associated
+    name = models.CharField(max_length=100)
+
+    def description(self) -> str:
+        return ", ".join(self.hand_holds + self.footwork + self.moves)
+
+    def get_grade_order(self) -> List[str]:
+        return FONT_SCALE
+        
+    def get_climber_level(self, **kwargs) -> List[int]:
+        return kwargs.get("outdoor-boulder", [])
+
+    def _pic_name(self) -> str:
+        return "{}_{}_{}".format(self.sector.crag.name, self.sector.name, self.name)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class RIC(models.Model):
