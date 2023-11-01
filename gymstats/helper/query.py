@@ -1,6 +1,6 @@
 from typing import Dict, List
 from functools import reduce
-from gymstats.models import IndoorProblem, Footwork, HandHold, ClimbingMove, Climber, Top
+from gymstats.models import IndoorBoulder, Footwork, HandHold, ClimbingMove, Climber, Top
 from gymstats.helper.names import *
 from gymstats.statistics.base import fisher_overrepr
 from gymstats.statistics.problems import attr_statistics
@@ -19,7 +19,7 @@ def query_problems_from_filters(parsed: Dict[str, Dict[str, List[str]]], climber
     """
     query problems given list of parsed filters
     """
-    problems = IndoorProblem.objects.prefetch_related(Prefetch('tops', queryset=Top.objects.filter(session__climber=climber))).all()
+    problems = IndoorBoulder.objects.prefetch_related(Prefetch('tops', queryset=Top.objects.filter(session__climber=climber))).all()
 
     # TODO: test for statistics change this
     achievement = "all"

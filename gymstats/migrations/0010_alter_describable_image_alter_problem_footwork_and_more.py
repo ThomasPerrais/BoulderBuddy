@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             model_name="describable",
             name="image",
             field=models.ImageField(
-                blank=True, upload_to=gymstats.models.Describable.location
+                blank=True, upload_to="describable"
             ),
         ),
         migrations.AlterField(
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="problem",
             name="picture",
-            field=models.ImageField(upload_to=gymstats.models.IndoorProblem.upload_picture),
+            field=models.ImageField(upload_to=gymstats.models.Climbable.upload_picture),
         ),
         migrations.AlterField(
             model_name="problem",

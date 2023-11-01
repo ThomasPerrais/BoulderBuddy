@@ -2,7 +2,7 @@ import math
 import random
 
 
-def rand_name(size: int = 5):
+def rand_name(size: int = 15):
     return "".join([chr(random.randint(97, 122)) for _ in range(size)])
 
 

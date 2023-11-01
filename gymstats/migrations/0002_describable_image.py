@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             model_name="describable",
             name="image",
             field=models.ImageField(
-                default=None, upload_to=gymstats.models.Describable.location
+                default=None, upload_to="describable"
             ),
             preserve_default=False,
         ),

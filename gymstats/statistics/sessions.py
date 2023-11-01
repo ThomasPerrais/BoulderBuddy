@@ -4,7 +4,7 @@ from typing import List, Dict, Set, Any
 
 import pandas as pd
 
-from gymstats.models import Session, Gym, Top, IndoorProblem, Failure, Zone, HandHold, Footwork, ClimbingMove
+from gymstats.models import Session, Gym, Top, IndoorBoulder, Failure, Zone, HandHold, Footwork, ClimbingMove
 from gymstats.helper.utils import float_duration_to_hour
 from gymstats.helper.names import ATPS, TOP_ATPS, ZONE_ATPS, RANK, PREV
 from gymstats.helper.names import RANK_TO_ID, Rank
@@ -88,7 +88,7 @@ def base_sessions_stats(sessions: List[Session]) -> Dict[str, Any]:
     }
 
 
-def strength_and_weaknesses(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem], max_pvalue: float = 0.2) -> Dict[str, Any]:
+def strength_and_weaknesses(df: pd.DataFrame, id_to_pb: Dict[int, IndoorBoulder], max_pvalue: float = 0.2) -> Dict[str, Any]:
     results = {}
     
     attrs = [
@@ -108,48 +108,48 @@ def strength_and_weaknesses(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem]
     return results
 
 
-def _serie_handholds_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem]) -> pd.Series:
+def _serie_handholds_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorBoulder]) -> pd.Series:
     """
     Return a pandas Serie containing hand holds for each problem of the given DataFrame.
     Fastest method since it use cached Problems associated with the DataFrame.
     """
-    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(HandHold)), axis=1)
+    return df.apply(lambda row: str(id_to_pb[row.name].hand_holds.values_list('name', flat=True)), axis=1)
 
 
-def _serie_footworks_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem]) -> pd.Series:
+def _serie_footworks_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorBoulder]) -> pd.Series:
     """
     Return a pandas Serie containing footwork for each problem of the given DataFrame.
     Fastest method since it use cached Problems associated with the DataFrame.
     """
-    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(Footwork)), axis=1)
+    return df.apply(lambda row: str(id_to_pb[row.name].footwork.values_list('name', flat=True)), axis=1)
 
 
-def _serie_pb_methods_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem]) -> pd.Series:
+def _serie_pb_methods_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorBoulder]) -> pd.Series:
     """
     Return a pandas Serie containing problem methods for each problem of the given DataFrame.
     Fastest method since it use cached Problems associated with the DataFrame.
     """
-    return df.apply(lambda row: str(id_to_pb[row.name].str_repr(ClimbingMove)), axis=1)
+    return df.apply(lambda row: str(id_to_pb[row.name].climbable.moves.values_list("name", flat=True)), axis=1)
 
 
-def _serie_wall_type_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorProblem]) -> pd.Series:
+def _serie_wall_type_fast(df: pd.DataFrame, id_to_pb: Dict[int, IndoorBoulder]) -> pd.Series:
     """
     Return a pandas Serie containing problem wall type for each problem of the given DataFrame.
     Fastest method since it use cached Problems associated with the DataFrame.
     """
-    return df.apply(lambda row: str(id_to_pb[row.name].wall_angle), axis=1)
+    return df.apply(lambda row: str(id_to_pb[row.name].climbable.wall_angle), axis=1)
 
 
 def _serie_wall_type_slow(df: pd.DataFrame) -> pd.Series:
     """
     Return a pandas Serie containing problem wall type for each problem of the given DataFrame.
     """
-    return df.apply(lambda row: str(IndoorProblem.objects.get(id=row.name).wall_angle), axis=1)
+    return df.apply(lambda row: str(IndoorBoulder.objects.get(id=row.name).climbable.wall_angle), axis=1)
 
 
 def sessions_to_pandas(sessions: List[Session], start_date: datetime.date, 
                        threshold_positions: Dict[Gym, List[int]],
-                       compute_prev: bool = True, pb_filter: Set[IndoorProblem] = None) -> pd.DataFrame:
+                       compute_prev: bool = True, pb_filter: Set[IndoorBoulder] = None) -> pd.DataFrame:
     sessions = sorted(sessions, key = lambda s: s.date)
     summary = {}
     # TODO: decide whether or not we want to return id_to_pb

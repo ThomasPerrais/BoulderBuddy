@@ -53,6 +53,7 @@ Gymstats next step
 - automatic storage of month stats at the end of each month given current threshold of the climber!
 
 ------------------------
+
 - Session
     - overall grade, motivation, fear, strength
     - date, time, duration
@@ -107,10 +108,8 @@ OutdoorRoute(Climbable)
 ------------------------
 ------------------------
 
-
 Sector
     - link to 'ClimbingPlace'
-
 
 ------------------------
 ------------------------
@@ -128,6 +127,7 @@ Try
 
 ------------------------
 ------------------------
+ 
  Climber
     - indoor/outdoor preferences
     - lead/boulder preferences 

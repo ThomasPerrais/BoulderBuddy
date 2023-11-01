@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .forms import ProblemForm, TryForm, SessionForm
-from .models import ClimbingMove, WallAngle, HandHold, Footwork
-from .models import IndoorSector, OutdoorSector, Gym, Crag, IndoorProblem
+from .forms import IndoorBoulderForm, TryForm, SessionForm
+from .models import ClimbingMove, WallAngle, HandHold, Footwork, ClimbAttribute, ClimbType
+from .models import IndoorSector, OutdoorSector, Gym, Crag, IndoorBoulder, Crux, Climbable
 from .models import Climber, HardBoulderThreshold
 from .models import Shoes, ShoesFixing, Session, Top, Failure, Zone, Review, RIC  # ideally those should be removed once views are written
 
@@ -31,6 +31,17 @@ class HardBoulderInline(admin.TabularInline):
     extra = 1
 
 
+class CruxInline(admin.TabularInline):
+    # form = ClimbableCruxForm
+    model = Crux
+    extra = 1
+
+
+# class ClimbableInline(admin.StackedInline):
+#     model = Climbable
+#     inlines = [CruxInline]
+
+
 @admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):
     # form = SessionForm
@@ -44,21 +55,27 @@ class SessionAdmin(admin.ModelAdmin):
     inlines = [TopInline, ZoneInline, FailureInline]
 
 
-@admin.register(IndoorProblem)
-class ProblemAdmin(admin.ModelAdmin):
+@admin.register(IndoorBoulder)
+class IndoorBoulderAdmin(admin.ModelAdmin):
 
-    form = ProblemForm
-    list_filter = ['gym__abv', 'grade', 'removed', 'wall_angle', 'hand_holds']
-    list_display = ('gym', 'grade', 'picture', 'removed')
+    form = IndoorBoulderForm
+    list_filter = ['sector__gym__abv', 'climbable__grade', 'removed', 'climbable__wall_angle', 'hand_holds']
+    list_display = ('sector', 'grade', 'picture', 'removed')
     list_editable = ("removed",)
 
-    readonly_fields = ["picture_display"]
     fieldsets = [
-        ('General', {'fields': ["gym", "grade", "sector", "date_added"]}),
-        ('Picture', {'fields': ["picture", "picture_display"]}),
-        ('Details', {'fields': ["wall_angle", "hand_holds", "footwork", "moves"]}),
+        ('General', {'fields': ["sector__gym", "climbable__grade", "sector", "date_added"]}),
+        ('Picture', {'fields': ["climbable__picture"]}),
+        ('Details', {'fields': ["climbable__wall_angle", "hand_holds", "footwork", "climbable__moves"]}),
     ]
     inlines = [RICInline]
+
+    def grade(self, obj):
+        return obj.climbable.grade
+
+    def picture(self, obj):
+        return obj.climbable.picture
+
 
 @admin.register(Top, Zone, Failure)
 class TryAdmin(admin.ModelAdmin):
@@ -77,6 +94,8 @@ class ClimberAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(WallAngle)
 admin.site.register(ClimbingMove)
+admin.site.register(ClimbAttribute)
+admin.site.register(ClimbType)
 admin.site.register(HandHold)
 admin.site.register(Footwork)
 admin.site.register(Gym)

@@ -1,0 +1,6295 @@
+[
+{
+    "model": "gymstats.nc1",
+    "pk": 1,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 38,
+        "picture": "problems/BON_B10_V_0000000000.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 2,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 38,
+        "picture": "problems/BON_B6_V_0000000000.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 3,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 38,
+        "picture": "problems/BON_B9_V_0000000000.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 4,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_V_0000000000.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 5,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 38,
+        "picture": "problems/BON_B7_V_0000000000.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 6,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 6,
+        "picture": "problems/BON_B7_O_0000000000.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 7,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 6,
+        "picture": "problems/BON_B7_O_0000000001.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 8,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_O_0000000000.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 9,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 6,
+        "picture": "problems/BON_B10_0323_biono.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 10,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 6,
+        "picture": "problems/BON_B10_0323_tmndr.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 11,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0323_oegpl.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 12,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 6,
+        "picture": "problems/BON_B8_0323_lqgzn.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 13,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 5,
+        "picture": "problems/BON_B7_0323_tnvzw.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 14,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 25,
+        "picture": "problems/BON_B7_0323_sncoa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 15,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 6,
+        "picture": "problems/BON_B7_0323_whexu.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 16,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 5,
+        "picture": "problems/BON_B6_0423_thtto.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 17,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 5,
+        "picture": "problems/BON_B7_0323_kvcsy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 18,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 4,
+        "picture": "problems/BON_B10_0323_mimil.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 19,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0323_kfqux.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 20,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0323_lxwhc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 21,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0323_yosqq.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 22,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 5,
+        "picture": "problems/BON_B6_0323_iykwt.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 23,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0323_gthoi.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 24,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0323_okxxc.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 25,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0323_cxfnr.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 26,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Violet_0423_nfhlc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 27,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Rouge_0423_pasqy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 28,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Rouge_0423_jqklu.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 29,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/UCPARP_Rouge_0423_oussp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 30,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/UCPARP_Bleu_0423_cntwp.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 31,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/UCPARP_Rouge_0423_lkssv.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 32,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Violet_0423_byhik.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 33,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 6,
+        "picture": "problems/UCPARP_Purple_0423_tsrwu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 34,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 5,
+        "picture": "problems/UCPARP_Purple_0423_papan.jpg",
+        "climb_attr": [],
+        "moves": [
+            22,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 35,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/UCPARP_Red_0423_nnbte.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 36,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Purple_0423_rklpr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 37,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/UCPARP_Blue_0423_fbsfn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 38,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0423_srsxg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 39,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0423_igkbx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 40,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0323_gyxhb.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 41,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0323_ezuvt.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 42,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0323_rtsyz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 43,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0423_vetmn.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 44,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0423_vuxym.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 45,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0323_wivzy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 46,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0323_rtajq.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 47,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0323_qrohe.jpg",
+        "climb_attr": [],
+        "moves": [
+            22,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 48,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0323_ymtyl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 49,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Blue_0323_zxdym.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 50,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0323_hiovt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 51,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0323_npoxu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 52,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0323_gmwfs.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 53,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0323_fugmz.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 54,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0323_hckpm.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 55,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0323_rgrts.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 56,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0323_vefxj.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 57,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0323_yolne.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 58,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0323_wjyae.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 59,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0423_znzts.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 60,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_quqcj.jpg",
+        "climb_attr": [],
+        "moves": [
+            22,
+            32
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 61,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0323_kovme.jpg",
+        "climb_attr": [],
+        "moves": [
+            24,
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 62,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0323_fphrq.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 63,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0423_sjzgo.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 64,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0423_ofqbc.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 65,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0423_ualxx.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 66,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0423_syqqa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 67,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0423_wayhe.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 68,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0323_saivt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 69,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0323_dzkwu.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 70,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0323_qszwl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 71,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 25,
+        "picture": "problems/VAP_Blue_0423_akqyy.png",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 72,
+    "fields": {
+        "grade": "3",
+        "wall_angle": 4,
+        "picture": "problems/GCL_3_0423_ijnoe.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 73,
+    "fields": {
+        "grade": "4",
+        "wall_angle": 6,
+        "picture": "problems/GCL_4_0423_mftsa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 74,
+    "fields": {
+        "grade": "4",
+        "wall_angle": 4,
+        "picture": "problems/GCL_4_0423_fucgv.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 75,
+    "fields": {
+        "grade": "5",
+        "wall_angle": 4,
+        "picture": "problems/GCL_5_0423_oueyh.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 76,
+    "fields": {
+        "grade": "4",
+        "wall_angle": 6,
+        "picture": "problems/GCL_4_0423_rzore.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 77,
+    "fields": {
+        "grade": "5",
+        "wall_angle": 6,
+        "picture": "problems/GCL_5_0423_xmypx.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 78,
+    "fields": {
+        "grade": "5",
+        "wall_angle": 6,
+        "picture": "problems/GCL_5_0423_ymwra.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 79,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0423_rryjk.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 80,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0423_eaaag.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 81,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0323_uelqd.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 82,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 5,
+        "picture": "problems/BON_B7_0423_npswb.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 83,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0423_frpef.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 84,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 38,
+        "picture": "problems/BON_B10_0423_ppuzh.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 85,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 25,
+        "picture": "problems/BON_B6_0423_obill.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 87,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Red_0423_fsvra.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 88,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Blue_0423_azmgu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 89,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Red_0423_qzdgr.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 90,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Blue_0423_siifh.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 91,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Red_0423_yhafh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 92,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Blue_0423_nbepz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 93,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Blue_0423_sozkn.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 94,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Red_0423_mqyvc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 95,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Blue_0423_cmqzy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 96,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 25,
+        "picture": "problems/VAN_Blue_0423_navjv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 97,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAN_Blue_0423_sixve.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 98,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 34,
+        "picture": "problems/VAN_Blue_0423_yzpgj.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 99,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Blue_0423_kmrsa.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 100,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAN_Blue_0423_ntkha.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 101,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0423_syjtz.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 102,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 38,
+        "picture": "problems/BON_B5_0423_aaxre.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 103,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 38,
+        "picture": "problems/BON_B6_0423_mcspo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 104,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0423_vaujc.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 105,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 34,
+        "picture": "problems/BON_B7_0423_fbmpe.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 106,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 4,
+        "picture": "problems/BON_B5_0423_iiseb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 107,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 38,
+        "picture": "problems/BON_B10_0423_kbvei.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 108,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 6,
+        "picture": "problems/BON_B8_0423_unhkr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 109,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0423_vpxcv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 110,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0423_tqsop.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 111,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0423_ltgdl.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 112,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0423_gpsbe.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 113,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0423_orrrl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 114,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0423_quoww.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 115,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0423_oatds.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 116,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0423_rlokq.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 117,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0423_vxime.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 118,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0423_jubkh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 119,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0423_iqjuu.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 120,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0423_mrinw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 121,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_ouzsg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 122,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0423_reezb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 123,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0423_pxlhz.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            32
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 124,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0423_hkoha.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 125,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0423_xiren.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 126,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0423_xwbrg.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 127,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_tqpfj.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 128,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0423_uitnz.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 129,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0423_kmojv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 130,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Blue_0423_ocool.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 131,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_eqxwb.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 132,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Blue_0423_vyfse.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 133,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0423_fgsjx.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 134,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_ysrfs.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 135,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Blue_0423_xytwy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 136,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_akyvt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 137,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0423_fnrnr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 138,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0523_okomm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 139,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0523_eursz.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 140,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 4,
+        "picture": "problems/BON_B5_0523_rjhug.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 141,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 6,
+        "picture": "problems/BON_B8_0523_mtoyc.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 142,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0523_fgaax.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 143,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 38,
+        "picture": "problems/BON_B6_0523_wbnmf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 144,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0523_erssq.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 145,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 38,
+        "picture": "problems/BON_B8_0523_vyted.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 146,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 38,
+        "picture": "problems/BON_B9_0523_dzuyo.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 147,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 6,
+        "picture": "problems/BON_B7_0523_bjuhi.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 148,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAC_Red_0523_ggrcn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 149,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0523_vlakx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 150,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0523_kqecx.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 151,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAC_Blue_0523_zleqm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 152,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0523_skecs.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 153,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 5,
+        "picture": "problems/VAC_Blue_0523_nfvco.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 154,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0523_uievm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 155,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Red_0523_rncon.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 156,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAC_Red_0523_kqfuw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 157,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Red_0523_ivmxr.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 158,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAC_Red_0523_vaiue.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 159,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Red_0523_wxyug.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 160,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAC_Red_0523_acngf.jpg",
+        "climb_attr": [],
+        "moves": [
+            22,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 161,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Red_0523_aabll.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 162,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0423_zxgtn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 163,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0523_gpsal.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 164,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0523_onxlt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 165,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Black_0423_tzlad.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 166,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Black_0423_guvzx.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            32
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 167,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0523_fiycj.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 168,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 34,
+        "picture": "problems/BON_B8_0523_xfdwz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 169,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 38,
+        "picture": "problems/BON_B6_0523_tarme.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 170,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0523_steuv.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 171,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 6,
+        "picture": "problems/BON_B9_0523_ephap.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 172,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0523_ppcmm.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 173,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 38,
+        "picture": "problems/BON_B7_0523_jjrry.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 174,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 38,
+        "picture": "problems/BON_B10_0523_dmwcc.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 175,
+    "fields": {
+        "grade": "B12",
+        "wall_angle": 38,
+        "picture": "problems/BON_B12_0523_qrwtq.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 176,
+    "fields": {
+        "grade": "B13",
+        "wall_angle": 38,
+        "picture": "problems/BON_B13_0523_hfnxf.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 177,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 4,
+        "picture": "problems/BON_B5_0523_algen.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 178,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0523_hietn.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 179,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0523_sntjf.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 180,
+    "fields": {
+        "grade": "B11",
+        "wall_angle": 38,
+        "picture": "problems/BON_B11_0523_scvgf.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 181,
+    "fields": {
+        "grade": "B13",
+        "wall_angle": 38,
+        "picture": "problems/BON_B13_0523_hpapa.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 182,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0523_eucxu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 183,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Blue_0523_ydiax.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 184,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0523_voteo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 185,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0523_bfczq.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 186,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_zzkqg.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 187,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0523_wzisi.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 188,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0523_mlxnj.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 189,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0523_bbmgp.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 190,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Blue_0523_hzwpz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 191,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_tcnbv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 192,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0523_ztsxc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 193,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_agyiy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 194,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0523_ctkfi.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 195,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0523_oklrf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 196,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0523_wxfmd.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 197,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0523_dxsga.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 198,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0523_kweng.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 199,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Blue_0523_aeeqa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 200,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_nvkmh.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 201,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0523_hpfrv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 202,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_uzehi.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 203,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0523_lhjha.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 204,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0523_mhrvo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 205,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0523_adfnu.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 206,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_zryce.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 207,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0523_ebfag.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 208,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_mrwkj.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 209,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0523_xgfnj.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 210,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0523_jforb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 211,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0523_hkmsw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 212,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_yuviz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 213,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0523_rhmjh.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 214,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0523_bffze.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 215,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0523_ongyb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 216,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0523_yuyuk.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 217,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Black_0523_rznla.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 218,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0523_nnbtu.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 219,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0523_tfdcx.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 220,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0523_hbuhv.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 221,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 34,
+        "picture": "problems/CDJ_Blue_0523_elvkr.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 222,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0523_hffsu.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 223,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0523_reyqn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 224,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0523_mqmlg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 225,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSA_Black_0523_rbgrk.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 226,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 6,
+        "picture": "problems/BSA_Pink_0523_bpvqg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 227,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0523_ortja.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 228,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSA_Black_0523_kbofk.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 229,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 34,
+        "picture": "problems/BSA_Pink_0523_hkpma.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 230,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 34,
+        "picture": "problems/BSA_Gray_0523_trmpm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 231,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Gray_0523_cdjer.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 232,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0523_ftvgb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 233,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0523_xkjxv.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 234,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0523_khovh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 235,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0523_wtvbr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 236,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0523_ztpkf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 237,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0523_eztjr.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 238,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Black_0523_knbjf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 239,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_efdlo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 240,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_yfyec.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 241,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0523_qnjfs.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 242,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0523_qnpdh.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 243,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0523_xxoqu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 244,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0523_gxmwg.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 245,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Black_0523_srgua.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 246,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 6,
+        "picture": "problems/BON_B9_0623_aifsm.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 247,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0623_itvaq.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 248,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0623_uldaq.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 249,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0623_mkaug.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 250,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0623_xnhoo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 251,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_gfbbv.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 252,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0623_rldho.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 253,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_qpeuf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 254,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_kthcr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 255,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_snekk.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 256,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 6,
+        "picture": "problems/BON_B5_0623_ejdnu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 257,
+    "fields": {
+        "grade": "B5",
+        "wall_angle": 4,
+        "picture": "problems/BON_B5_0623_durgf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 258,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_csbwz.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 259,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 4,
+        "picture": "problems/BON_B9_0623_ugbmg.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 260,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_vosss.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 261,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Blue_0623_ceebg.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 262,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_beeip.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 263,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0623_upamk.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 264,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_plbzv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 265,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0623_berev.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 266,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_mwfki.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 267,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0623_xegus.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 268,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_hzhpp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 269,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0623_xordu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 270,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0623_hrkmv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 271,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 34,
+        "picture": "problems/VAC_Blue_0623_nlzmm.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 272,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Blue_0623_gzhob.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 273,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAC_Red_0623_djkyw.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 274,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAC_Red_0623_lukxh.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 275,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAC_Red_0623_kjdkn.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 276,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Blue_0623_tdrpc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 277,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0623_qayko.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 278,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0623_nvnsc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 279,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0623_mnxdb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 280,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_qakni.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 281,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_juctu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 282,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0623_hntvo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 283,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0623_ksbth.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 284,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_pnonn.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 285,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_pejoa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 286,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0623_ujuer.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 287,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0623_awtoc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 288,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0623_espvm.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 289,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_puona.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 290,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_jbvpx.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 291,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0623_uejgm.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 292,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0623_pqwnv.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 293,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Black_0623_ijakd.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 294,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0623_okipk.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 295,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Black_0623_optht.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 296,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_xpddr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 297,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_uwnhc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 298,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_lgqmx.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 299,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Blue_0623_tnnht.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 300,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Pink_0623_ufwjh.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 301,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0623_zzpeq.jpg",
+        "climb_attr": [],
+        "moves": [
+            21,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 302,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0623_wdwsz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 303,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/VAP_Red_0623_whphu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 304,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0623_rpbrh.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 305,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0623_wyvol.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 306,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0623_emlxc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 307,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_dabtp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 308,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_npomn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 309,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Red_0623_byfmx.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 310,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/VAP_Red_0623_vujje.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 311,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0623_rhwon.jpg",
+        "climb_attr": [],
+        "moves": [
+            24,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 312,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Blue_0623_jmiod.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 313,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Red_0623_muflt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 314,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Black_0623_gvmmy.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 315,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/VAP_Black_0623_ripnq.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 316,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 5,
+        "picture": "problems/VAP_Black_0623_zsjrv.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 317,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 25,
+        "picture": "problems/VAP_Blue_0623_bogup.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 318,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0623_hadop.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 319,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 25,
+        "picture": "problems/VAP_Blue_0623_tgtqx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 320,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/VAP_Red_0623_ldmqe.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 321,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0623_darix.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 322,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0623_xbylg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 323,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_kixuo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 324,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_okbqh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 325,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0623_wjghw.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            32
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 326,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0623_gxcfo.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 327,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0623_nrbba.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 328,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0623_wvuvr.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 329,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Black_0623_hijtr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 330,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Red_0623_oizet.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 331,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Black_0623_cmkhz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 332,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 5,
+        "picture": "problems/CDJ_Black_0623_apcti.jpg",
+        "climb_attr": [],
+        "moves": [
+            21,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 333,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 6,
+        "picture": "problems/BON_B8_0623_qdtee.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 334,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 34,
+        "picture": "problems/BON_B8_0623_qxcbp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 335,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 6,
+        "picture": "problems/BON_B7_0623_aqkms.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 336,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 38,
+        "picture": "problems/BON_B8_0623_qdqpe.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 337,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 6,
+        "picture": "problems/BON_B8_0623_szqja.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 338,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 4,
+        "picture": "problems/BON_B10_0623_ezqbb.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 339,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0623_ptgmj.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 340,
+    "fields": {
+        "grade": "B11",
+        "wall_angle": 4,
+        "picture": "problems/BON_B11_0623_hfphp.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 341,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 4,
+        "picture": "problems/BON_B7_0623_bulyi.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 342,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0623_ghvqh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 343,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0623_psfgx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 344,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_rfixc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 345,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_mazwz.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 346,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 4,
+        "picture": "problems/BON_B10_0623_vhvqz.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 347,
+    "fields": {
+        "grade": "B9",
+        "wall_angle": 6,
+        "picture": "problems/BON_B9_0623_wqgaf.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 348,
+    "fields": {
+        "grade": "B10",
+        "wall_angle": 38,
+        "picture": "problems/BON_B10_0623_tgbbq.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 349,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 38,
+        "picture": "problems/BON_B8_0623_krsri.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 350,
+    "fields": {
+        "grade": "B8",
+        "wall_angle": 4,
+        "picture": "problems/BON_B8_0623_ivmyh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 351,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 4,
+        "picture": "problems/BON_B6_0623_ocejn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 352,
+    "fields": {
+        "grade": "B7",
+        "wall_angle": 5,
+        "picture": "problems/BON_B7_0623_ydxpg.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 353,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 6,
+        "picture": "problems/BON_B6_0623_pzxec.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 354,
+    "fields": {
+        "grade": "B6",
+        "wall_angle": 5,
+        "picture": "problems/BON_B6_0623_kuoss.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 355,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0723_pfjic.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 356,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Black_0723_hscit.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 357,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0723_rwmmd.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 358,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Black_0723_qbneo.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 359,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Red_0723_yyhss.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 360,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/VAP_Blue_0723_nlmxt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 361,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 5,
+        "picture": "problems/BSA_Black_0823_gcjuc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 362,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Pink_0823_cmzew.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 363,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Pink_0823_yxfgb.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 364,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0823_lqsyz.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 365,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0823_felxc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 366,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Pink_0823_qtibj.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 367,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 34,
+        "picture": "problems/BSA_Black_0823_qbrve.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 368,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 34,
+        "picture": "problems/BSA_Pink_0823_yndtu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 369,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0823_zxwsw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 370,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSA_Black_0823_btqxb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 371,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_0823_rxrgg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 372,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_0823_apghb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 373,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0823_xftju.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 374,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/BLM_Red_0823_twpfo.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 375,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_0823_hubgs.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 376,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0823_ppqpx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 377,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0823_wlctc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 378,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_0823_mxjls.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 379,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0823_gtheg.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 380,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0823_jhmvl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 381,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0823_bxghc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 382,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0823_aazlf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 383,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0823_wxqcs.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 384,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0823_snzsr.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 385,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/CDJ_Red_0823_guzcj.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 386,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0823_doqwf.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            20,
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 387,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0823_uguht.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 388,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CDJ_Red_0823_fdikz.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 389,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0823_uxurg.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 390,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Red_0823_heaol.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 391,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Red_0823_awill.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 392,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0823_fbfag.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 393,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0823_tlvrh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 394,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CDJ_Blue_0823_nxsve.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 395,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0823_lnhqe.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 396,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0823_tfejl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 397,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CDJ_Blue_0823_nbbvk.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 398,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0823_tpipu.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 399,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0823_vjoqy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 400,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_0823_dstmy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 401,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0823_cehwu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 402,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0823_tonth.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 403,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 25,
+        "picture": "problems/BSM_Pink_0823_follj.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 404,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Red_0823_obvpx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 405,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/BSM_Red_0823_iluqh.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 406,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Red_0823_hkpix.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 407,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_0823_kmwcm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 408,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_0823_zivqr.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 409,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0823_mxedc.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 410,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_0923_qvauj.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 411,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0923_pndwe.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 412,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_wnzww.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 413,
+    "fields": {
+        "grade": "Green",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Green_0923_obxol.jpg",
+        "climb_attr": [],
+        "moves": [
+            21
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 414,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_ppowz.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 415,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_trhmm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 416,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0923_ndamx.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 417,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_0923_ucmae.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 418,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_aaizb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 419,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_0923_bwlgo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 420,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Red_0923_qdbdg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 421,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Red_0923_cdzuh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 422,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Pink_0923_taojm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 423,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_0923_uowaf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 424,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Black_0923_gznxp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 425,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_ondyg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 426,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_ateaa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 427,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Black_0923_uaurl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 428,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Black_0923_mdsxh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 429,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_mnslr.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 430,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_mgivt.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 431,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 34,
+        "picture": "problems/BSM_Black_0923_cczif.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 432,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_tntxk.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 433,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_cmild.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 434,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_gbylh.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 435,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_itoon.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 436,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 34,
+        "picture": "problems/BLM_Blue_0923_tfpkp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 437,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_lhlhu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 438,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_0923_qoirh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 439,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_0923_xfczh.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 440,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0923_rkaiz.jpg",
+        "climb_attr": [],
+        "moves": [
+            39
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 441,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_0923_dvubn.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 442,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_0923_bfqee.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 443,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_ccjir.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 444,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_vcvfj.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 445,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/BLM_Red_0923_ihtwb.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 446,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_ccxan.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 447,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_0923_rviby.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 448,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Gray_0923_ortno.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 449,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_oxdue.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 450,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_icsme.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 451,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_jgvbj.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 452,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Pink_0923_thgqa.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 453,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Gray_0923_qcbvu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 454,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_beobw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 455,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_wrfdn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 456,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Gray_0923_lmmva.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 457,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_skfxq.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 458,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_0923_ankmv.jpg",
+        "climb_attr": [],
+        "moves": [
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 459,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Gray_0923_pzzxt.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 460,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/CUA_Red_0923_zzghg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 461,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/CUA_Blue_0923_obthk.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 462,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CUA_Blue_0923_gkxpx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 463,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CUA_Blue_0923_hnwwc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 464,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/CUA_Blue_0923_hopbw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 465,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CUA_Red_0923_gvqkb.jpg",
+        "climb_attr": [],
+        "moves": [
+            20,
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 466,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/CUA_Red_0923_fverz.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 467,
+    "fields": {
+        "grade": "Purple",
+        "wall_angle": 6,
+        "picture": "problems/CUA_Purple_0923_jlupm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 468,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/CUA_Blue_0923_eotes.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 469,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_qdkxd.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 470,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 25,
+        "picture": "problems/BLM_Red_0923_qolyn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 471,
+    "fields": {
+        "grade": "Green",
+        "wall_angle": 25,
+        "picture": "problems/BLM_Green_0923_inhhf.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 472,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_duhzu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 473,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_rwcdy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 474,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_pnlev.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 475,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_eeyyu.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 476,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_ednom.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 477,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_0923_azixl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 478,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_0923_xoibt.jpg",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 479,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_tvnum.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 480,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_avkwa.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 481,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_0923_xgyai.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 482,
+    "fields": {
+        "grade": "Green",
+        "wall_angle": 5,
+        "picture": "problems/BLM_Green_0923_oyoqw.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 483,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_0923_mjmnu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 484,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Red_0923_ttesp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 485,
+    "fields": {
+        "grade": "Green",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Green_0923_hpfef.jpg",
+        "climb_attr": [],
+        "moves": [
+            24,
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 486,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 42,
+        "picture": "problems/BLM_Red_0923_zhfjo.jpg",
+        "climb_attr": [],
+        "moves": [
+            7,
+            24
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 487,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Black_0923_lfogc.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 488,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Gray_1023_dwbyo.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 489,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Gray_1023_vgxio.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 490,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Pink_1023_xiijx.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 491,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_1023_lycac.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 492,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_1023_xciaf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 493,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Pink_1023_vkujt.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 494,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 25,
+        "picture": "problems/BSM_Gray_1023_oujmv.png",
+        "climb_attr": [],
+        "moves": [
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 495,
+    "fields": {
+        "grade": "5a",
+        "wall_angle": 4,
+        "picture": "problems/AOM_5a_1023_fhcgu.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 496,
+    "fields": {
+        "grade": "6a",
+        "wall_angle": 4,
+        "picture": "problems/AOM_6a_1023_ggdfp.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 497,
+    "fields": {
+        "grade": "6b",
+        "wall_angle": 4,
+        "picture": "problems/AOM_6b_1023_rzyga.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 498,
+    "fields": {
+        "grade": "6a+",
+        "wall_angle": 38,
+        "picture": "problems/AOM_6a_1023_ijvpw.jpg",
+        "climb_attr": [],
+        "moves": [
+            7
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 499,
+    "fields": {
+        "grade": "6b+",
+        "wall_angle": 6,
+        "picture": "problems/AOM_6b_1023_hgzbb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 500,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_1023_ltnur.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 501,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_1023_pzlgw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 502,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_1023_ukcxw.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 503,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 34,
+        "picture": "problems/BLM_Blue_1023_ugykg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 504,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_1023_fabji.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 505,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_1023_zlbru.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 506,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_1023_vnqdc.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 507,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Blue_1023_vhqbh.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 508,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Red_1023_xhgct.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 509,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_1023_opxfy.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 510,
+    "fields": {
+        "grade": "Red",
+        "wall_angle": 4,
+        "picture": "problems/BLM_Red_1023_nzycb.jpg",
+        "climb_attr": [],
+        "moves": [
+            22
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 511,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 38,
+        "picture": "problems/BLM_Blue_1023_plfio.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 512,
+    "fields": {
+        "grade": "Blue",
+        "wall_angle": 6,
+        "picture": "problems/BLM_Blue_1023_ocsjb.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 513,
+    "fields": {
+        "grade": "5b",
+        "wall_angle": 4,
+        "picture": "problems/AOM_5b_1023_vbpwy.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 514,
+    "fields": {
+        "grade": "6b",
+        "wall_angle": 4,
+        "picture": "problems/AOM_6b_1023_ioqmi.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 515,
+    "fields": {
+        "grade": "6b+",
+        "wall_angle": 6,
+        "picture": "problems/AOM_6b_1023_cxzas.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 516,
+    "fields": {
+        "grade": "6b+",
+        "wall_angle": 6,
+        "picture": "problems/AOM_6b_1023_phlxg.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 517,
+    "fields": {
+        "grade": "6b",
+        "wall_angle": 38,
+        "picture": "problems/AOM_6b_1023_gyjgn.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 518,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 42,
+        "picture": "problems/BSM_Pink_1023_oxrzx.jpg",
+        "climb_attr": [],
+        "moves": [
+            30
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 519,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Black_1023_tvcpg.jpg",
+        "climb_attr": [],
+        "moves": [
+            20
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 520,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 25,
+        "picture": "problems/BSM_Black_1023_wcacd.jpg",
+        "climb_attr": [],
+        "moves": [
+            24,
+            33
+        ]
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 521,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 25,
+        "picture": "problems/BSM_Gray_1023_ltqtd.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 522,
+    "fields": {
+        "grade": "Gray",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Gray_1023_ofhlk.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 523,
+    "fields": {
+        "grade": "Black",
+        "wall_angle": 4,
+        "picture": "problems/BSM_Black_1023_hwjzf.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 524,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 38,
+        "picture": "problems/BSM_Pink_1023_ssdxk.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 525,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 6,
+        "picture": "problems/BSM_Pink_1023_uockm.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+},
+{
+    "model": "gymstats.nc1",
+    "pk": 526,
+    "fields": {
+        "grade": "Pink",
+        "wall_angle": 5,
+        "picture": "problems/BSM_Pink_1023_htgrl.jpg",
+        "climb_attr": [],
+        "moves": []
+    }
+}
+]

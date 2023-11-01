@@ -1,11 +1,11 @@
 from collections import defaultdict
 from typing import List, Dict, Any
 
-from gymstats.models import IndoorProblem
+from gymstats.models import IndoorBoulder
 from gymstats.helper.names import TYPE_ABV, METHOD_ABV, FOOTWORK_ABV, HANDHOLD_ABV
 
 
-def attr_statistics(pbs: List[IndoorProblem]) -> Dict[str, Any]:
+def attr_statistics(pbs: List[IndoorBoulder]) -> Dict[str, Any]:
     stats = {
         TYPE_ABV: defaultdict(int),
         HANDHOLD_ABV: defaultdict(int),
